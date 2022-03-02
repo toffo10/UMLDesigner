@@ -1,0 +1,28 @@
+class
+    id: prova
+    implements: mario
+    extends: mario
+    relations: loca 0..1, mario 1
+    params:
+        +de: String
+        +surname: String
+        -age: int
+    methods:
+        +born(name: String, age: int)
+endClass
+
+class
+    id: loca
+endClass
+
+abstractClass
+    id: mario
+endAbstractClass
+
+interface
+    id: mario
+    params:
+        +sugo: Shish
+    methods:
+        +doSugo()
+endInterface
