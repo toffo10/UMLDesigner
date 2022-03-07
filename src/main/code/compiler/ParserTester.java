@@ -1,11 +1,9 @@
 package compiler;
 
+import compiler.generated.UmlDesignerParser;
 import org.antlr.runtime.CommonTokenStream;
 
-import java.io.FileReader;
-
 public class ParserTester  {
-//	static SimpleLanguageParser parser;
 	static UmlDesignerParser parser;
   
 	public static void main(String[] args) {

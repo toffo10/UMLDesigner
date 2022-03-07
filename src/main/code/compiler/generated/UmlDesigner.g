@@ -6,18 +6,22 @@ options {
 }
 
 @lexer::header {
-package compiler;
+package compiler.generated;
+
+import compiler.handlers.*;
 }
 
 @lexer::members {
 }
 
 @header {
-package compiler;
+package compiler.generated;
 
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import compiler.util.*;
+import compiler.handlers.*;
 }
 
 @members {
@@ -49,7 +53,7 @@ classDefinition
     ;
     
 abstractClassDefinition
-    :  'abstractClass' 
+    :  'abstractClass'
     	classValues
        'endAbstractClass'
     ;
@@ -67,8 +71,8 @@ classValues
 interfaceDefinition
     :  'interface'
        'id' COLON i = ID { h.createNewInterface($i); }
-       ('params' COLON (p = interfaceParams)+   { h.addInterfaceParams($i, p); })?
-       ('methods' COLON (m = interfaceMethods)+ { h.addMethodsParams($i, m);   })?
+       ('params' COLON  (p = interfaceParams  { h.interfaces.addInterfaceParams($i, p); } )+ )?
+       ('methods' COLON (m = interfaceMethods { h.interfaces.addInterfaceMethod($i, m); } )+ )?
        'endInterface'
     ;    
 
@@ -76,14 +80,20 @@ classRelations
     :  ID cardinality (COMMA ID cardinality)*
     ;
 
-interfaceParams
-    :  PLUS ID (COLON type)?
+interfaceParams returns [Param ip]
+    :  PLUS i = ID COLON t = type { ip = h.interfaces.returnParam($i, t); }
     ;
     
-interfaceMethods
-    :  PLUS ID LP methodParams? RP (COLON type)?
+interfaceMethods returns [Method im]
+    :  PLUS i = ID LP p = methodParams? RP (COLON t = type)? { im = h.interfaces.returnMethod($i, t, p); }
     ;
 
+methodParams returns [List<MethodParam> imp]
+@init { imp = new ArrayList<MethodParam>(); }
+    :   i1 = ID COLON t1 = type       { h.interfaces.addInterfaceMethodParam(imp, $i1, t1); }
+       (COMMA i2 = ID COLON t2 = type { h.interfaces.addInterfaceMethodParam(imp, $i2, t2); } )* 
+    ;
+    
 classParameters
     :	visibility ID (COLON type)?
     ;
@@ -98,10 +108,6 @@ classes
         
 classMethods
     :	visibility ID LP methodParams? RP (COLON type)?
-    ;
-    
-methodParams
-    :   ID COLON type (COMMA ID COLON type)*
     ;
     
 visibility

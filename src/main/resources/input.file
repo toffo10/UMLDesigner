@@ -26,3 +26,11 @@ interface
     methods:
         +doSugo()
 endInterface
+
+interface
+    id: marsio
+    params:
+        +sugo: Shish
+    methods:
+        +doSugo()
+endInterface
