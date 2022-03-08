@@ -1,6 +1,6 @@
 class
     id: prova
-    implements: marsioz
+    implements: mario
     extends: mario
     relations: loca 0..1, mario 1
     params:

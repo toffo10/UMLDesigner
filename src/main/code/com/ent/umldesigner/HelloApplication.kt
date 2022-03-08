@@ -2,7 +2,9 @@ package com.ent.umldesigner
 
 import javafx.application.Application
 import javafx.fxml.FXMLLoader
+import javafx.geometry.Rectangle2D
 import javafx.scene.Scene
+import javafx.stage.Screen
 import javafx.stage.Stage
 
 class HelloApplication : Application() {
@@ -12,6 +14,10 @@ class HelloApplication : Application() {
         stage.title = "Hello!"
         stage.scene = scene
         stage.show()
+
+        stage.isResizable = false;
+        stage.width = 800.0;
+        stage.height = 800.0;
     }
 }
 
