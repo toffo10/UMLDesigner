@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Method {
+    private String visiblity;
     private String id;
     private String type;
     private List<MethodParam> mp;
 
-    public Method(String id, String type) {
+    public Method(String visiblity, String id, String type) {
         this.id = id;
+        this.visiblity = visiblity;
         this.type = type;
         mp = new ArrayList<>();
     }
@@ -20,6 +22,14 @@ public class Method {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getVisiblity() {
+        return visiblity;
+    }
+
+    public void setVisiblity(String visiblity) {
+        this.visiblity = visiblity;
     }
 
     public String getType() {

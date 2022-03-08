@@ -43,36 +43,46 @@ import compiler.handlers.*;
 
 initUml
 @init { setUp(); }
-    : (abstractClassDefinition | classDefinition | interfaceDefinition)*
+    : (abstractClassDefinition | classDefinition | interfaceDefinition)* { h.setUpRelations(); }
     ;
     
 classDefinition
     :  'class' 
-    	classValues
+       'id' COLON i = ID { h.createNewClass($i); }
+    	classValues[$i]
        'endClass'
     ;
     
 abstractClassDefinition
+
     :  'abstractClass'
-    	classValues
+       'id' COLON i = ID { h.createNewClass($i); }
+    	classValues[$i]
        'endAbstractClass'
     ;
     
-classValues
+classValues [Token i]
     :
-        'id' COLON ID
-       ('implements' COLON (interfaces)+ )?
-       ('extends' COLON (classes)+ )?
+       ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
+       ('extends' COLON (c = classes { h.addExtension($i, c); })+ )?
        ('relations' COLON (classRelations)+)?
-       ('params' COLON (classParameters)+)?
-       ('methods' COLON (classMethods)+)?
+       ('params' COLON  (p = classParameters { h.addParams($i, p); })+)?
+       ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)?
+    ;
+    
+classParameters returns [Param ip]
+    :	visibility i = ID (COLON t = type) { ip = h.returnParam($i, t); }
+    ;
+
+classMethods returns [Method im]
+    :	v = visibility i = ID LP p = methodParams? RP (COLON t = type)? { im = h.returnMethod(v, $i, t, p); }
     ;
 
 interfaceDefinition
     :  'interface'
        'id' COLON i = ID { h.createNewInterface($i); }
-       ('params' COLON  (p = interfaceParams  { h.interfaces.addInterfaceParams($i, p); } )+ )?
-       ('methods' COLON (m = interfaceMethods { h.interfaces.addInterfaceMethod($i, m); } )+ )?
+       ('params' COLON  (p = interfaceParams  { h.addParams($i, p); } )+ )?
+       ('methods' COLON (m = interfaceMethods { h.addMethod($i, m); } )+ )?
        'endInterface'
     ;    
 
@@ -81,37 +91,33 @@ classRelations
     ;
 
 interfaceParams returns [Param ip]
-    :  PLUS i = ID COLON t = type { ip = h.interfaces.returnParam($i, t); }
+    :  PLUS i = ID COLON t = type { ip = h.returnParam($i, t); }
     ;
     
 interfaceMethods returns [Method im]
-    :  PLUS i = ID LP p = methodParams? RP (COLON t = type)? { im = h.interfaces.returnMethod($i, t, p); }
+    :  v = PLUS i = ID LP p = methodParams? RP (COLON t = type)? { im = h.returnMethod($v, $i, t, p); }
     ;
 
 methodParams returns [List<MethodParam> imp]
 @init { imp = new ArrayList<MethodParam>(); }
-    :   i1 = ID COLON t1 = type       { h.interfaces.addInterfaceMethodParam(imp, $i1, t1); }
-       (COMMA i2 = ID COLON t2 = type { h.interfaces.addInterfaceMethodParam(imp, $i2, t2); } )* 
+    :   i1 = ID COLON t1 = type       { h.addMethodParam(imp, $i1, t1); }
+       (COMMA i2 = ID COLON t2 = type { h.addMethodParam(imp, $i2, t2); } )* 
     ;
     
-classParameters
-    :	visibility ID (COLON type)?
-    ;
-    
-interfaces
-    :   ID (COMMA ID)*
+interfaces returns [List<String> ifList]
+@init { ifList = new ArrayList<String>(); }
+    :   i = ID 		{ ifList.add($i.getText());  }
+        (COMMA i1 = ID  { ifList.add($i1.getText()); })* 
     ;
 
-classes
-    :  ID (COMMA ID)*
+classes returns [List<String> classList]
+@init { classList = new ArrayList<String>(); }
+    :  i = ID 		{ classList.add($i.getText()) ; }
+      (COMMA i1 = ID    { classList.add($i1.getText()); })*
     ;
-        
-classMethods
-    :	visibility ID LP methodParams? RP (COLON type)?
-    ;
-    
-visibility
-    : (PLUS | MINUS | HASHTAG)
+      
+visibility returns [Token t]
+    : (x = PLUS | x = MINUS | x = HASHTAG) { t = x; }
     ;
     
 cardinality

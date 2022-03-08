@@ -13,10 +13,11 @@ endClass
 
 class
     id: loca
+    implements: mario
 endClass
 
 abstractClass
-    id: mario
+    id: mariod
 endAbstractClass
 
 interface

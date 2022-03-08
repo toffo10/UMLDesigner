@@ -1,6 +1,6 @@
 class
     id: prova
-    implements: mario
+    implements: marsioz
     extends: mario
     relations: loca 0..1, mario 1
     params:
@@ -13,10 +13,11 @@ endClass
 
 class
     id: loca
+    implements: mario
 endClass
 
 abstractClass
-    id: mario
+    id: mariod
 endAbstractClass
 
 interface
