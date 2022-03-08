@@ -84,4 +84,8 @@ public class UmlHandler {
         method.setMp(methodParams);
         return method;
     }
+
+    public void addExtension(Token c, List<String> classList) {
+
+    }
 }

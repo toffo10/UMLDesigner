@@ -20,6 +20,7 @@ package compiler.generated;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.StringReader;
 import compiler.util.*;
 import compiler.handlers.*;
 }
@@ -31,14 +32,23 @@ import compiler.handlers.*;
     	h = new UmlHandler();
     }
 	
-    public UmlDesignerParser(String fileIn) throws 
+    public UmlDesignerParser(FileReader fileIn) throws 
 		FileNotFoundException, IOException {
 	this(new CommonTokenStream(
 			new UmlDesignerLexer(
 				new ANTLRReaderStream(
-				 new FileReader(fileIn)
+				 fileIn
 				 ))));
      }
+     
+    public UmlDesignerParser(String input) throws
+            FileNotFoundException, IOException {
+        this(new CommonTokenStream(
+                new UmlDesignerLexer(
+                        new ANTLRReaderStream(
+                                new StringReader(input)
+                        ))));
+    }
 }
 
 initUml
