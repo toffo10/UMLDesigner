@@ -1,12 +1,14 @@
 package compiler.util;
 
+import javafx.util.Pair;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class ClassBehaviour implements ComponentBehaviour {
     HashMap<String, Component> implementedComponent;
     HashMap<String, Component> extendedComponent;
-    HashMap<String, Component> relatedComponent;
+    HashMap<String, Pair> relatedComponent;
 
     public ClassBehaviour() {
         implementedComponent = new HashMap<>();
@@ -20,28 +22,28 @@ public class ClassBehaviour implements ComponentBehaviour {
     }
 
     @Override
-    public void addRelation(String name, Component component) {
-
+    public void addRelation(String name, String cardinality, Component component) {
+        relatedComponent.put(name, new Pair<>(component, cardinality));
     }
 
     @Override
     public void addExtension(String name, Component component) {
-
+        extendedComponent.put(name, component);
     }
 
     @Override
     public List<Component> getImplementedComponents() {
-        return null;
+        return implementedComponent.values().stream().toList();
     }
 
     @Override
-    public List<Component> getRelatedComponents() {
-        return null;
+    public List<Pair> getRelatedComponents() {
+        return relatedComponent.values().stream().toList();
     }
 
     @Override
     public List<Component> getExtendedComponents() {
-        return null;
+        return extendedComponent.values().stream().toList();
     }
 
     @Override
@@ -50,9 +52,10 @@ public class ClassBehaviour implements ComponentBehaviour {
             if (component.getComponentType().equals(ComponentType.INTERFACE))
                 implementedComponent.replace(component.getName(), component);
         } else if (relatedComponent.containsKey(component.getName())) {
-            relatedComponent.replace(component.getName(), component);
+                relatedComponent.replace(component.getName(), new Pair<>(component, relatedComponent.get(component.getName()).getValue()));
         } else if (extendedComponent.containsKey(component.getName())) {
-            extendedComponent.replace(component.getName(), component);
+            if (component.getComponentType().equals(ComponentType.CLASS))
+                extendedComponent.replace(component.getName(), component);
         }
     }
 
@@ -64,7 +67,7 @@ public class ClassBehaviour implements ComponentBehaviour {
             }
         }
         for (String key : relatedComponent.keySet()) {
-            if (relatedComponent.get(key) == null) {
+            if (relatedComponent.get(key).getKey() == null) {
                 System.out.printf("Non esiste la classe %s \n", key);
             }
         }

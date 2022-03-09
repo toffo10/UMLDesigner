@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
+import javafx.util.Pair;
 import compiler.util.*;
 import compiler.handlers.*;
 }
@@ -75,7 +76,7 @@ classValues [Token i]
     :
        ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
        ('extends' COLON (c = classes { h.addExtension($i, c); })+ )?
-       ('relations' COLON (classRelations)+)?
+       ('relations' COLON (cr = classRelations { h.addRelations($i, cr); })+)?
        ('params' COLON  (p = classParameters { h.addParams($i, p); })+)?
        ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)?
     ;
@@ -96,8 +97,10 @@ interfaceDefinition
        'endInterface'
     ;    
 
-classRelations
-    :  ID cardinality (COMMA ID cardinality)*
+classRelations returns [List<Pair> classList]
+@init { classList = new ArrayList<>(); }
+    :  i = ID c = cardinality 	      { classList.add(new Pair<>($i.getText(),  c.getText())) ; }
+      (COMMA i1 = ID c1 = cardinality { classList.add(new Pair<>($i1.getText(), c1.getText())) ; })*
     ;
 
 interfaceParams returns [Param ip]
@@ -130,8 +133,12 @@ visibility returns [Token t]
     : (x = PLUS | x = MINUS | x = HASHTAG) { t = x; }
     ;
     
-cardinality
-    : ('0..1' | '1' | '0..*' | '1..*')
+cardinality returns [Token t]
+    : (x = '0..1' 
+    | x = '1' 
+    | x = '0..*' 
+    | x = '1..*')
+    { t = x; }
     ;
     
 type returns [Token t]

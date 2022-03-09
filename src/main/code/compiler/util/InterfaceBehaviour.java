@@ -1,5 +1,7 @@
 package compiler.util;
 
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class InterfaceBehaviour implements ComponentBehaviour {
     }
 
     @Override
-    public void addRelation(String name, Component component) {
+    public void addRelation(String name, String cardinality, Component component) {
         System.out.println("Non è possibile aggiungere relazioni su una interfaccia");
     }
 
@@ -28,7 +30,7 @@ public class InterfaceBehaviour implements ComponentBehaviour {
     }
 
     @Override
-    public List<Component> getRelatedComponents() {
+    public List<Pair> getRelatedComponents() {
         return new ArrayList<>();
     }
 

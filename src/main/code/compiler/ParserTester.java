@@ -3,6 +3,8 @@ package compiler;
 import compiler.generated.UmlDesignerParser;
 import org.antlr.runtime.CommonTokenStream;
 
+import java.io.FileReader;
+
 public class ParserTester  {
 	static UmlDesignerParser parser;
   
@@ -15,7 +17,7 @@ public class ParserTester  {
 		try {
 			System.out.println ("Parsing con ANTLR lexer");
 			System.out.println ("-----------------------");
-			parser = new UmlDesignerParser(fileIn);
+			parser = new UmlDesignerParser(new FileReader(fileIn));
 			parser.initUml();
 			System.out.println ("T'appost");
 		} catch (Exception e) {

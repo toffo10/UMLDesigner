@@ -1,17 +1,19 @@
 package compiler.util;
 
+import javafx.util.Pair;
+
 import java.util.List;
 
 public interface ComponentBehaviour {
     void addImplementation(String name, Component component);
 
-    void addRelation(String name, Component component);
+    void addRelation(String name, String cardinality, Component component);
 
     void addExtension(String name, Component component);
 
     List<Component> getImplementedComponents();
 
-    List<Component> getRelatedComponents();
+    List<Pair> getRelatedComponents();
 
     List<Component> getExtendedComponents();
 

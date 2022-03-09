@@ -2,6 +2,7 @@ package compiler.handlers;
 
 import compiler.util.*;
 import compiler.util.ClassBehaviour;
+import javafx.util.Pair;
 import org.antlr.runtime.Token;
 
 import java.util.Hashtable;
@@ -47,10 +48,7 @@ public class UmlHandler {
     }
 
     private boolean idAlreadyExists(String id) {
-        if (components.containsKey(id))
-            return true;
-        else
-            return false;
+        return components.containsKey(id);
     }
 
     public void setUpRelations() {
@@ -85,7 +83,16 @@ public class UmlHandler {
         return method;
     }
 
-    public void addExtension(Token c, List<String> classList) {
+    public void addExtension(Token id, List<String> classList) {
+        for (String ifs : classList) {
+            components.get(id.getText()).getComponentBehaviour().addExtension(ifs, components.get(ifs));
+        }
+    }
 
+    public void addRelations(Token id, List<Pair> classList) {
+        for (Pair pair : classList) {
+            components.get(id.getText()).getComponentBehaviour().addRelation(pair.getKey().toString(),
+                    pair.getValue().toString(), components.get(pair.getKey()));
+        }
     }
 }
