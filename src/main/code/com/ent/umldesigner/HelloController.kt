@@ -9,7 +9,11 @@ class HelloController {
     private lateinit var umlTextArea: TextArea
 
     @FXML
+    private lateinit var resultArea: TextArea
+
+    @FXML
     private fun convertUml() {
         Parser.doParsing(umlTextArea.text);
+        resultArea.text = Parser.sb.toString()
     }
 }
