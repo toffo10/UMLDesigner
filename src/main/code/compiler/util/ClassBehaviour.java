@@ -1,5 +1,6 @@
 package compiler.util;
 
+import compiler.Parser;
 import javafx.util.Pair;
 
 import java.util.HashMap;
@@ -63,17 +64,17 @@ public class ClassBehaviour implements ComponentBehaviour {
     public void checkClassesExistence() {
         for (String key : implementedComponent.keySet()) {
             if (implementedComponent.get(key) == null) {
-                System.out.printf("Non esiste l'interfaccia %s \n", key);
+                Parser.sb.append(String.format("Non esiste l'interfaccia %s \n", key));
             }
         }
         for (String key : relatedComponent.keySet()) {
             if (relatedComponent.get(key).getKey() == null) {
-                System.out.printf("Non esiste la classe %s \n", key);
+                Parser.sb.append(String.format("Non esiste la classe %s \n", key));
             }
         }
         for (String key : extendedComponent.keySet()) {
             if (extendedComponent.get(key) == null) {
-                System.out.printf("Non esiste la classe %s \n", key);
+                Parser.sb.append(String.format("Non esiste la classe %s \n", key));
             }
         }
     }

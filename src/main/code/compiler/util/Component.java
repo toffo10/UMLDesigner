@@ -1,5 +1,7 @@
 package compiler.util;
 
+import compiler.Parser;
+
 import java.util.Hashtable;
 
 public class Component {
@@ -17,7 +19,7 @@ public class Component {
 
     public void addParam(Param param) {
         if (params.containsKey(param.getId())) {
-            System.out.printf("Il parametro %s è già stato dichiarato \n", param.getId());
+            Parser.sb.append(String.format("Il parametro %s è già stato dichiarato \n", param.getId()));
         } else {
             params.put(param.getId(), param);
         }
@@ -25,7 +27,7 @@ public class Component {
 
     public void addMethod(Method method) {
         if (params.containsKey(method.getId())) {
-            System.out.printf("Il metodo %s è già stato dichiarato \n", method.getId());
+            Parser.sb.append(String.format("Il metodo %s è già stato dichiarato \n", method.getId()));
         } else {
             methods.put(method.getId(), method);
         }

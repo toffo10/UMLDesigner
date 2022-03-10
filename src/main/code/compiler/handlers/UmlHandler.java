@@ -1,5 +1,6 @@
 package compiler.handlers;
 
+import compiler.Parser;
 import compiler.util.*;
 import compiler.util.ClassBehaviour;
 import javafx.util.Pair;
@@ -9,7 +10,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 public class UmlHandler {
-    private final Hashtable<String, Component> components;
+    private static Hashtable<String, Component> components;
 
     public UmlHandler() {
         components = new Hashtable<>();
@@ -17,14 +18,14 @@ public class UmlHandler {
 
     public void createNewInterface(Token id) {
         if (idAlreadyExists(id.getText()))
-            System.out.printf("L'id %s esiste già \n", id.getText());
+            Parser.sb.append(String.format("L'id %s esiste già \n", id.getText()));
         else
             components.put(id.getText(), new Component(id.getText(), new InterfaceBehaviour()));
     }
 
     public void createNewClass(Token id) {
         if (idAlreadyExists(id.getText()))
-            System.out.printf("L'id %s esiste già \n", id.getText());
+            Parser.sb.append(String.format("L'id %s esiste già \n", id.getText()));
         else
             components.put(id.getText(), new Component(id.getText(), new ClassBehaviour()));
     }
@@ -94,5 +95,9 @@ public class UmlHandler {
             components.get(id.getText()).getComponentBehaviour().addRelation(pair.getKey().toString(),
                     pair.getValue().toString(), components.get(pair.getKey()));
         }
+    }
+
+    public static List<Component> getComponents() {
+        return components.values().stream().toList();
     }
 }

@@ -50,6 +50,14 @@ import compiler.handlers.*;
                                 new StringReader(input)
                         ))));
     }
+    
+    // Per gestire gli errori da GUI
+    @Override    
+    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
+        String hdr = getErrorHeader(e);
+        String msg = getErrorMessage(e, tokenNames);
+        throw new RuntimeException(hdr + ":" + msg);
+    }
 }
 
 initUml

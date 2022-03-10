@@ -12,15 +12,17 @@ public class Parser {
         sb.delete(0, sb.length());
 
         try {
-            sb.append("Parsing con ANTLR lexer\n");
-            sb.append("-----------------------\n");
             parser = new UmlDesignerParser(input);
             parser.initUml();
-            sb.append("Parsing terminato correttamente\n");
         } catch (Exception e) {
-            sb.append("Parsing con ANTLR abortito\n");
             sb.append(e.getMessage());
             sb.append("\n");
+        }
+
+        if (sb.isEmpty()) {
+            sb.append("Tutto ok! \n");
+        } else {
+            sb.insert(0, "Compilazione terminata con errori: \n");
         }
     }
 }
