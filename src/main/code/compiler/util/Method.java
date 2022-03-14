@@ -47,4 +47,20 @@ public class Method {
     public void setMp(List<MethodParam> mp) {
         this.mp = mp;
     }
+
+    public String toString() {
+        return visibility + id + "(" + getMethodParameters() + "): " + type;
+    }
+
+    public String getMethodParameters() {
+        StringBuilder sb = new StringBuilder();
+
+        for (MethodParam methodParam : mp) {
+            sb.append(String.format("%s: %s,", methodParam.getId(), methodParam.getType()));
+        }
+
+        sb.deleteCharAt(sb.length() - 1);
+
+        return sb.toString();
+    }
 }
