@@ -49,4 +49,12 @@ public class Component {
     public String getName() {
         return name;
     }
+
+    public Hashtable<String, Method> getMethods() {
+        return methods;
+    }
+
+    public Hashtable<String, Param> getParams() {
+        return params;
+    }
 }
