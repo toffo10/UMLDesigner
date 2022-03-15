@@ -49,17 +49,19 @@ public class Method {
     }
 
     public String toString() {
-        return visibility + id + "(" + getMethodParameters() + "): " + type;
+        return " " + visibility + id + "(" + getMethodParameters() + "): " + type;
     }
 
     public String getMethodParameters() {
         StringBuilder sb = new StringBuilder();
 
-        for (MethodParam methodParam : mp) {
-            sb.append(String.format("%s: %s,", methodParam.getId(), methodParam.getType()));
-        }
+        if(mp != null) {
+            for (MethodParam methodParam : mp) {
+                sb.append(String.format("%s: %s,", methodParam.getId(), methodParam.getType()));
+            }
 
-        sb.deleteCharAt(sb.length() - 1);
+            sb.deleteCharAt(sb.length() - 1);
+        }
 
         return sb.toString();
     }

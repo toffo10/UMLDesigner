@@ -2,7 +2,7 @@ class
     id: prova
     implements: mario
     extends: mariod
-    relations: loca 0..1, mario 1
+    relations: loca 0..1
     params:
         +de: String
         +surname: String

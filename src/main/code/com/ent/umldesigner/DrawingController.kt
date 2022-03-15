@@ -42,15 +42,11 @@ class DrawingController {
 
     private fun drawUml() {
         for (component in UmlHandler.getComponents()) {
-            if (component.componentType.equals(ComponentType.CLASS)) {
-                drawClass(component)
-            } else if (component.componentType.equals(ComponentType.INTERFACE)) {
-                drawInterface(component)
-            }
+            drawComponent(component)
         }
     }
 
-    private fun drawInterface(component: Component?) {
+    private fun drawComponent(component: Component?) {
         val umlInterface = Rectangle(10.0, 10.0, 0.0, 0.0)
 
         umlInterface.fill = Color.WHITE
@@ -63,14 +59,19 @@ class DrawingController {
 
         stack.children.add(umlInterface)
 
-        text = Text(String.format("<<Interface>> %s", component!!.name))
+        text = if (component!!.componentType.equals(ComponentType.CLASS)) {
+            Text(String.format(" %s", component.name))
+        } else {
+            Text(String.format(" <<Interface>> %s", component.name))
+        }
+
         box.children.add(text)
         umlInterface.height += text.layoutBounds.height
 
         umlInterface.width = text.layoutBounds.width + 10.0
 
         for (param in component.params) {
-            text = Text(String.format("+%s : %s", param.value.id, param.value.type))
+            text = Text(String.format(" +%s : %s", param.value.id, param.value.type))
 
             box.children.add(text)
 
@@ -105,15 +106,6 @@ class DrawingController {
 
         stack.children.add(box)
         drawingArea.children.add(stack)
-    }
-
-    private fun drawClass(component: Component) {
-        val umlClass = Rectangle(10.0, 10.0, 50.0, 50.0)
-        umlClass.cursor = Cursor.HAND
-        //setEventHandler(umlClass)
-        //setMouseDraggedEvent(umlClass)
-
-        drawingArea.children.add(umlClass)
     }
 
     private fun setMouseDraggedEvent(umlElement: StackPane) {
