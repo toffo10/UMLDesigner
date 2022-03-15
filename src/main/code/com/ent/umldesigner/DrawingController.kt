@@ -4,6 +4,7 @@ import compiler.Parser
 import compiler.handlers.UmlHandler
 import compiler.util.Component
 import compiler.util.ComponentType
+import javafx.beans.value.ObservableNumberValue
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
@@ -30,6 +31,7 @@ class DrawingController {
 
     private var orgSceneX = 0.0
     private var orgSceneY = 0.0
+    private var components: HashMap<String, StackPane> = HashMap()
 
     @FXML
     private fun convertUml() {
@@ -43,6 +45,12 @@ class DrawingController {
     private fun drawUml() {
         for (component in UmlHandler.getComponents()) {
             drawComponent(component)
+        }
+
+        for (component in UmlHandler.getComponents()) {
+            for (implementedComponent in component.componentBehaviour.implementedComponents) {
+                connect(component.name, implementedComponent.name)
+            }
         }
     }
 
@@ -105,6 +113,9 @@ class DrawingController {
         setMouseDraggedEvent(stack)
 
         stack.children.add(box)
+
+        components[component.name] = stack
+
         drawingArea.children.add(stack)
     }
 
@@ -131,5 +142,48 @@ class DrawingController {
             val c = t.source as StackPane
             c.toFront()
         }
+    }
+
+    private fun connect(name1: String, name2: String) {
+        val v1: StackPane = components[name1]!!
+        val v2: StackPane = components[name2]!!
+
+        val arrow = Arrow()
+
+        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
+        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
+        arrow.endXProperty().bind(v2.layoutXProperty().add(v2.widthProperty().divide(2)))
+        arrow.endYProperty().bind(v2.layoutYProperty().add(v2.heightProperty()))
+
+        arrow.onMousePressed = EventHandler { t: MouseEvent ->
+            val offsetX = t.sceneX - orgSceneX
+            val offsetY = t.sceneY - orgSceneY
+            val c = t.source as Arrow
+
+            arrow.endXProperty().bind(v2.layoutXProperty().add(v2.widthProperty().add(1)))
+            arrow.endYProperty().bind(v2.layoutYProperty().add(v2.heightProperty().add(1)))
+/*
+            if (c.layoutX + offsetX >= 0 && c.layoutX + offsetX <= drawingArea.width - c.width)
+                c.layoutX = c.layoutX + offsetX
+
+            if (c.layoutY + offsetY >= 0 && c.layoutY + offsetY <= drawingArea.height - c.height)
+                c.layoutY = c.layoutY + offsetY*/
+            orgSceneX = t.sceneX
+            orgSceneY = t.sceneY
+        }
+
+        /*
+        arrow.strokeWidth = 1.0
+        arrow.strokeLineCap = StrokeLineCap.ROUND
+        arrow.strokeDashArray.setAll(1.0, 4.0)
+        */
+
+        drawingArea.children.add(arrow)
+        arrow.toBack()
+    }
+
+    enum class ArrowStyle() {
+        START,
+        END
     }
 }

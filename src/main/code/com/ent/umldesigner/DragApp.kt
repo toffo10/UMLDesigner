@@ -7,43 +7,47 @@ import javafx.scene.Cursor
 import javafx.scene.Group
 import javafx.scene.Scene
 import javafx.scene.input.MouseEvent
+import javafx.scene.layout.Pane
+import javafx.scene.layout.StackPane
 import javafx.scene.paint.Color
-import javafx.scene.shape.Circle
+import javafx.scene.shape.Rectangle
 import javafx.scene.shape.Line
 import javafx.scene.shape.StrokeLineCap
 import javafx.stage.Stage
+import java.util.Stack
 
 //from  w w  w. j av a2 s. c o  m
 class DragApp : Application() {
     var orgSceneX = 0.0
     var orgSceneY = 0.0
-    private fun createCircle(x: Double, y: Double, r: Double, color: Color): Circle {
-        val circle = Circle(x, y, r, color)
-        circle.cursor = Cursor.HAND
-        circle.onMousePressed = EventHandler { t: MouseEvent ->
+    private fun createRectangle(x: Double, y: Double, r: Double, color: Color): Rectangle {
+        val Rectangle = Rectangle(x, y)
+        Rectangle.fill = color
+        Rectangle.cursor = Cursor.HAND
+        Rectangle.onMousePressed = EventHandler { t: MouseEvent ->
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
-            val c = t.source as Circle
+            val c = t.source as Rectangle
             c.toFront()
         }
-        circle.onMouseDragged = EventHandler { t: MouseEvent ->
+        Rectangle.onMouseDragged = EventHandler { t: MouseEvent ->
             val offsetX = t.sceneX - orgSceneX
             val offsetY = t.sceneY - orgSceneY
-            val c = t.source as Circle
-            c.centerX = c.centerX + offsetX
-            c.centerY = c.centerY + offsetY
+            val c = t.source as Rectangle
+            c.x = c.x + offsetX
+            c.y = c.y + offsetY
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
         }
-        return circle
+        return Rectangle
     }
 
-    private fun connect(c1: Circle, c2: Circle): Line {
+    private fun connect(c1: Rectangle, c2: Rectangle): Line {
         val line = Line()
-        line.startXProperty().bind(c1.centerXProperty())
-        line.startYProperty().bind(c1.centerYProperty())
-        line.endXProperty().bind(c2.centerXProperty())
-        line.endYProperty().bind(c2.centerYProperty())
+        line.startXProperty().bind(c1.xProperty().add(c1.widthProperty().divide(2)))
+        line.startYProperty().bind(c1.yProperty().add(c1.heightProperty().divide(2)))
+        line.endXProperty().bind(c2.xProperty().add(c2.widthProperty().divide(2)))
+        line.endYProperty().bind(c2.yProperty().add(c2.heightProperty().divide(2)))
         line.strokeWidth = 1.0
         line.strokeLineCap = StrokeLineCap.BUTT
         line.strokeDashArray.setAll(1.0, 4.0)
@@ -54,28 +58,33 @@ class DragApp : Application() {
         val root = Group()
         val scene = Scene(root, 500.0, 260.0)
 
-        // circles
-        val redCircle = createCircle(100.0, 50.0, 30.0, Color.RED)
-        val blueCircle = createCircle(20.0, 150.0, 20.0, Color.BLUE)
-        val greenCircle = createCircle(40.0, 100.0, 40.0, Color.GREEN)
-        val line1 = connect(redCircle, blueCircle)
-        val line2 = connect(redCircle, greenCircle)
-        val line3 = connect(greenCircle, blueCircle)
+        val stackPane = Pane()
 
-        // add the circles
-        root.children.add(redCircle)
-        root.children.add(blueCircle)
-        root.children.add(greenCircle)
+        // Rectangles
+        val redRectangle = createRectangle(100.0, 50.0, 30.0, Color.RED)
+        val blueRectangle = createRectangle(20.0, 150.0, 20.0, Color.BLUE)
+        val greenRectangle = createRectangle(40.0, 100.0, 40.0, Color.GREEN)
+        val line1 = connect(redRectangle, blueRectangle)
+        val line2 = connect(redRectangle, greenRectangle)
+        val line3 = connect(greenRectangle, blueRectangle)
+
+        // add the Rectangles
+        stackPane.children.add(redRectangle)
+        stackPane.children.add(blueRectangle)
+        stackPane.children.add(greenRectangle)
 
         // add the lines
-        root.children.add(line1)
-        root.children.add(line2)
-        root.children.add(line3)
+        stackPane.children.add(line1)
+        stackPane.children.add(line2)
+        stackPane.children.add(line3)
 
-        // bring the circles to the front of the lines
-        redCircle.toFront()
-        blueCircle.toFront()
-        greenCircle.toFront()
+        root.children.add(stackPane)
+
+        // bring the Rectangles to the front of the lines
+        redRectangle.toFront()
+        blueRectangle.toFront()
+        greenRectangle.toFront()
+
         primaryStage.scene = scene
         primaryStage.show()
     }
