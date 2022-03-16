@@ -158,21 +158,59 @@ class DrawingController {
 
         arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
         arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
-        arrow.endXProperty().bind(v2.layoutXProperty().add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty())).add(20))
 
         v2.layoutYProperty().addListener { obs, _, _ ->
-            if(arrow.startY <= obs.value.toDouble()) {
+            var bound = true
+
+            if (arrow.startY <= obs.value.toDouble()) {
                 arrow.endY = obs.value.toDouble()
+            } else if (arrow.startY < obs.value.toDouble() + v2.height) {
+                bound = false
+
+                arrow.endXProperty().unbind()
+
+                if (arrow.endX <= v1.layoutX)
+                    arrow.endX = v2.layoutX + v2.width
+                else
+                    arrow.endX = v2.layoutX
             } else {
                 arrow.endY = obs.value.toDouble() + v2.height
+            }
+
+            if(!arrow.endXProperty().isBound && bound) {
+                arrow.endXProperty().bind(
+                    v2.layoutXProperty()
+                        .add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty()))
+                        .add(20)
+                )
             }
         }
 
         v1.layoutYProperty().addListener { obs, _, _ ->
-            if(arrow.endY >= obs.value.toDouble()) {
+            var bound = true
+
+            if (obs.value.toDouble() + v1.height <= v2.layoutY) {
                 arrow.endY = v2.layoutY
-            } else {
+            } else if (obs.value.toDouble() + v1.height <= v2.layoutY + v2.height) {
+                bound = false
+
+                arrow.endXProperty().unbind()
+
+                arrow.endY = (obs.value.toDouble() + v1.height)
+                if (arrow.endX <= v1.layoutX)
+                    arrow.endX = v2.layoutX + v2.width
+                else
+                    arrow.endX = v2.layoutX
+            } else if (obs.value.toDouble() >= v2.layoutY + v2.height) {
                 arrow.endY = v2.layoutY + v2.height
+            }
+
+            if(!arrow.endXProperty().isBound && bound) {
+                arrow.endXProperty().bind(
+                    v2.layoutXProperty()
+                        .add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty()))
+                        .add(20)
+                )
             }
         }
 
