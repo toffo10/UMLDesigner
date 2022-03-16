@@ -4,7 +4,8 @@ import compiler.Parser
 import compiler.handlers.UmlHandler
 import compiler.util.Component
 import compiler.util.ComponentType
-import javafx.beans.value.ObservableNumberValue
+import javafx.beans.value.ChangeListener
+import javafx.beans.value.ObservableValue
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
@@ -130,6 +131,7 @@ class DrawingController {
 
             if (c.layoutY + offsetY >= 0 && c.layoutY + offsetY <= drawingArea.height - c.height)
                 c.layoutY = c.layoutY + offsetY
+
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
         }
@@ -149,27 +151,29 @@ class DrawingController {
         val v2: StackPane = components[name2]!!
 
         val arrow = Arrow()
+        arrow.startX = v1.scene.x
+        arrow.startY = v1.scene.y
+        arrow.endX = v2.scene.x
+        arrow.endY = v2.scene.y
 
         arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
         arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
-        arrow.endXProperty().bind(v2.layoutXProperty().add(v2.widthProperty().divide(2)))
-        arrow.endYProperty().bind(v2.layoutYProperty().add(v2.heightProperty()))
+        arrow.endXProperty().bind(v2.layoutXProperty().add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty())).add(20))
 
-        arrow.onMousePressed = EventHandler { t: MouseEvent ->
-            val offsetX = t.sceneX - orgSceneX
-            val offsetY = t.sceneY - orgSceneY
-            val c = t.source as Arrow
+        v2.layoutYProperty().addListener { obs, _, _ ->
+            if(arrow.startY <= obs.value.toDouble()) {
+                arrow.endY = obs.value.toDouble()
+            } else {
+                arrow.endY = obs.value.toDouble() + v2.height
+            }
+        }
 
-            arrow.endXProperty().bind(v2.layoutXProperty().add(v2.widthProperty().add(1)))
-            arrow.endYProperty().bind(v2.layoutYProperty().add(v2.heightProperty().add(1)))
-/*
-            if (c.layoutX + offsetX >= 0 && c.layoutX + offsetX <= drawingArea.width - c.width)
-                c.layoutX = c.layoutX + offsetX
-
-            if (c.layoutY + offsetY >= 0 && c.layoutY + offsetY <= drawingArea.height - c.height)
-                c.layoutY = c.layoutY + offsetY*/
-            orgSceneX = t.sceneX
-            orgSceneY = t.sceneY
+        v1.layoutYProperty().addListener { obs, _, _ ->
+            if(arrow.endY >= obs.value.toDouble()) {
+                arrow.endY = v2.layoutY
+            } else {
+                arrow.endY = v2.layoutY + v2.height
+            }
         }
 
         /*
@@ -180,10 +184,5 @@ class DrawingController {
 
         drawingArea.children.add(arrow)
         arrow.toBack()
-    }
-
-    enum class ArrowStyle() {
-        START,
-        END
     }
 }
