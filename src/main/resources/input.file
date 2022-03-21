@@ -1,37 +1,66 @@
-class
-    id: prova
-    implements: mario
-    extends: mariod
-    relations: loca 0..1
+interface
+    id: Utente
     params:
-        +de: String
-        +surname: String
-        -age: int
+        +idUtente: String
+        +email: String
+        +password: String
+        +ultimoAccesso: Date
     methods:
-        +born(name: String, age: int)
+        +getSession()
+endInterface
+
+class
+    id: Cliente
+    implements: Utente
+    params:
+        -name: String
+        -indirizzoFatturazione: String
+        -indirizzoSpezione: String
+    methods:
+        +registrazione()
+        +login()
 endClass
 
 class
-    id: loca
-    implements: mario
+    id: Carrello
+    relations:
+        Cliente 0..1
+    params:
+        -idCarrello: Int
+        -idProdotto: Int
+    methods:
+        +aggiungiProdotto()
+        +rimuoviProdotto()
+        +checkOut()
 endClass
 
-abstractClass
-    id: mariod
-endAbstractClass
-
-interface
-    id: mario
+class
+    id: Ordine
+    relations:
+        Cliente 0..1
     params:
-        +sugo: Shish
+        -idOrdine: Int
+        -idCliente: Int
+        -dataOrdine: Date
+        -stato: Int
+        -prezzo: Int
     methods:
-        +doSugo(a: Int)
-endInterface
+        +aggiornaStato()
+        +effettuaOrdine()
+endClass
 
-interface
-    id: marsio
+class
+    id: DettaglioOrdine
+    relations:
+        Ordine 1
     params:
-        +sugo: Shish
+        -idDettaglio: Int
+        -idOrdine: Int
+        -indirizzoSpedizione: String
+        -tipoSpedizione: String
+        -costoSpedizione: String
+        -indirizzoFatturazione: String
+        -dataCreazione: Date
     methods:
-        +doSugo()
-endInterface
+        +cancellaOrdine()
+endClass

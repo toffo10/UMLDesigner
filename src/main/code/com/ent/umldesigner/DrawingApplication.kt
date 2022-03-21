@@ -12,7 +12,7 @@ class DrawingApplication : Application() {
         val scene = Scene(fxmlLoader.load(), 320.0, 240.0)
         stage.title = "UMLDesigner"
         stage.scene = scene
-        stage.icons.add(Image("file:./src/main/resources/com/ent/umldesigner/UML_Icon.png"));
+        stage.icons.add(Image("file:./src/main/resources/com/ent/umldesigner/UML_Icon.png"))
         stage.show()
 
         stage.x = 0.0

@@ -2,10 +2,10 @@ package com.ent.umldesigner
 
 import compiler.Parser
 import compiler.handlers.UmlHandler
+import compiler.util.Arrow
 import compiler.util.Component
 import compiler.util.ComponentType
-import javafx.beans.value.ChangeListener
-import javafx.beans.value.ObservableValue
+import compiler.util.ConnectionType
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
@@ -50,7 +50,18 @@ class DrawingController {
 
         for (component in UmlHandler.getComponents()) {
             for (implementedComponent in component.componentBehaviour.implementedComponents) {
-                connect(component.name, implementedComponent.name)
+                connect(component.name, implementedComponent.name, ConnectionType.IMPLEMENTATION)
+            }
+            for (extendedComponent in component.componentBehaviour.extendedComponents) {
+                connect(component.name, extendedComponent.name, ConnectionType.EXTENSION)
+            }
+            for (relationComponent in component.componentBehaviour.relatedComponents) {
+                connect(
+                    component.name,
+                    (relationComponent.key as Component).name,
+                    relationComponent.value.toString(),
+                    ConnectionType.RELATION
+                )
             }
         }
     }
@@ -146,11 +157,15 @@ class DrawingController {
         }
     }
 
-    private fun connect(name1: String, name2: String) {
+    private fun connect(name1: String, name2: String, connectionType: ConnectionType) {
+        connect(name1, name2, "", connectionType)
+    }
+
+    private fun connect(name1: String, name2: String, cardinality: String, connectionType: ConnectionType) {
         val v1: StackPane = components[name1]!!
         val v2: StackPane = components[name2]!!
 
-        val arrow = Arrow()
+        val arrow = Arrow(connectionType)
         arrow.startX = v1.scene.x
         arrow.startY = v1.scene.y
         arrow.endX = v2.scene.x
@@ -177,11 +192,9 @@ class DrawingController {
                 arrow.endY = obs.value.toDouble() + v2.height
             }
 
-            if(!arrow.endXProperty().isBound && bound) {
+            if (!arrow.endXProperty().isBound && bound) {
                 arrow.endXProperty().bind(
-                    v2.layoutXProperty()
-                        .add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty()))
-                        .add(20)
+                    v2.layoutXProperty().add(v2.widthProperty().divide(2))
                 )
             }
         }
@@ -191,34 +204,33 @@ class DrawingController {
 
             if (obs.value.toDouble() + v1.height <= v2.layoutY) {
                 arrow.endY = v2.layoutY
-            } else if (obs.value.toDouble() + v1.height <= v2.layoutY + v2.height) {
+            } else if (obs.value.toDouble() <= v2.layoutY + v2.height) {
                 bound = false
 
                 arrow.endXProperty().unbind()
 
-                arrow.endY = (obs.value.toDouble() + v1.height)
+                arrow.endY = v2.layoutY + (v2.height / 2)
                 if (arrow.endX <= v1.layoutX)
                     arrow.endX = v2.layoutX + v2.width
                 else
                     arrow.endX = v2.layoutX
-            } else if (obs.value.toDouble() >= v2.layoutY + v2.height) {
+            } else { //if (obs.value.toDouble() >= v2.layoutY + v2.height) {
                 arrow.endY = v2.layoutY + v2.height
             }
 
-            if(!arrow.endXProperty().isBound && bound) {
+            if (!arrow.endXProperty().isBound && bound) {
                 arrow.endXProperty().bind(
-                    v2.layoutXProperty()
+                    /*v2.layoutXProperty()
                         .add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty()))
-                        .add(20)
+                        .add(v1.widthProperty())*/
+                    v2.layoutXProperty().add(v2.widthProperty().divide(2))
                 )
             }
         }
 
-        /*
-        arrow.strokeWidth = 1.0
-        arrow.strokeLineCap = StrokeLineCap.ROUND
-        arrow.strokeDashArray.setAll(1.0, 4.0)
-        */
+        if (cardinality.isNotEmpty()) {
+            arrow.cardinality = cardinality
+        }
 
         drawingArea.children.add(arrow)
         arrow.toBack()
