@@ -11,8 +11,8 @@
     </padding>
     <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
         <items>
-            <TextArea fx:id="umlTextArea" />
-            <Pane fx:id="drawingArea"/>
+            <TextArea fx:id="umlTextArea" minWidth="250.0" SplitPane.resizableWithParent="false" />
+            <Pane fx:id="drawingArea" />
         </items>
     </SplitPane>
     <TextArea fx:id="resultArea" editable="false" />
