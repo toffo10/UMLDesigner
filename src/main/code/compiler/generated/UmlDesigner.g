@@ -107,8 +107,8 @@ interfaceDefinition
 
 classRelations returns [List<Pair> classList]
 @init { classList = new ArrayList<>(); }
-    :  i = ID c = cardinality 	      { classList.add(new Pair<>($i.getText(),  c.getText())) ; }
-      (COMMA i1 = ID c1 = cardinality { classList.add(new Pair<>($i1.getText(), c1.getText())) ; })*
+    :  i = ID c1 = cardinality '/' c2 = cardinality	        { classList.add(new Pair<>($i.getText(),  c1.getText() + '/' + c2.getText())); }
+      (COMMA i1 = ID c3 = cardinality '/' c4 = cardinality 	{ classList.add(new Pair<>($i.getText(),  c3.getText() + '/' + c4.getText())); })*
     ;
 
 interfaceParams returns [Param ip]

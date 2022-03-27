@@ -72,7 +72,7 @@ class DrawingController {
         umlInterface.fill = Color.WHITE
         umlInterface.stroke = Color.BLACK
 
-        var paramIndex: Int
+        val paramIndex: Int
         val stack = StackPane()
         val box = VBox()
         var text: Text
@@ -184,6 +184,7 @@ class DrawingController {
 
                 arrow.endXProperty().unbind()
 
+                arrow.endY = v2.layoutY + (v2.height / 2)
                 if (arrow.endX <= v1.layoutX)
                     arrow.endX = v2.layoutX + v2.width
                 else

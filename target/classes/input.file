@@ -24,7 +24,7 @@ endClass
 class
     id: Carrello
     relations:
-        Cliente 0..1
+        Cliente 0..1/1
     params:
         -idCarrello: Int
         -idProdotto: Int
@@ -37,7 +37,7 @@ endClass
 class
     id: Ordine
     relations:
-        Cliente 0..1
+        Cliente 0..1/1
     params:
         -idOrdine: Int
         -idCliente: Int
@@ -52,7 +52,7 @@ endClass
 class
     id: DettaglioOrdine
     relations:
-        Ordine 1
+        Ordine 1/1
     params:
         -idDettaglio: Int
         -idOrdine: Int

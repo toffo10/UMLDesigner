@@ -9,19 +9,26 @@ import javafx.scene.text.Text
 import kotlin.math.hypot
 
 
-class Arrow private constructor(connectionType: ConnectionType, line: Line, arrow1: Line, arrow2: Line, text: Text) :
-    Group(line, arrow1, arrow2, text) {
+class Arrow private constructor(
+    connectionType: ConnectionType,
+    line: Line,
+    arrow1: Line,
+    arrow2: Line,
+    relText1: Text,
+    relText2: Text
+) :
+    Group(line, arrow1, arrow2, relText1, relText2) {
     private val line: Line
     var cardinality = ""
 
-    constructor(connectionType: ConnectionType) : this(connectionType, Line(), Line(), Line(), Text())
+    constructor(connectionType: ConnectionType) : this(connectionType, Line(), Line(), Line(), Text(), Text())
 
     init {
         this.line = line
         val updater = when (connectionType) {
             ConnectionType.IMPLEMENTATION -> returnImplArrow(arrow1, arrow2)
             ConnectionType.EXTENSION -> returnImplArrow(arrow1, arrow2)
-            ConnectionType.RELATION -> returnRelArrow(text, arrow1, arrow2)
+            ConnectionType.RELATION -> returnRelArrow(relText1, relText2)
         }
 
         // add updater to properties
@@ -32,11 +39,18 @@ class Arrow private constructor(connectionType: ConnectionType, line: Line, arro
         updater.invalidated(null)
     }
 
-    private fun returnRelArrow(text: Text, arrow1: Line, arrow2: Line): InvalidationListener {
+    private fun returnRelArrow(text1: Text, text2: Text): InvalidationListener {
         return InvalidationListener { _: Observable? ->
-            text.text = cardinality
-            text.x = if (startX > endX) endX + 20 else endX - 20
-            text.y = if (startY > endY) endY + 20 else endY - 20
+            val textSplitted = cardinality.split("/")
+            if (textSplitted.size == 2) {
+                text1.text = cardinality.split("/")[0]
+                text1.x = if (startX > endX) endX + 20 else endX - 20
+                text1.y = if (startY > endY) endY + 20 else endY - 20
+
+                text2.text = cardinality.split("/")[1]
+                text2.x = if (startX > endX) startX + 50 else startX - 50
+                text2.y = if (startY > endY) startY + 50 else startY - 50
+            }
         }
     }
 
