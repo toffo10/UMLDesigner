@@ -64,3 +64,51 @@ class
     methods:
         +cancellaOrdine()
 endClass
+
+class
+    id: DettaglioOrdine2
+    relations:
+        Ordine 1/1
+    params:
+        -idDettaglio: Int
+        -idOrdine: Int
+        -indirizzoSpedizione: String
+        -tipoSpedizione: String
+        -costoSpedizione: String
+        -indirizzoFatturazione: String
+        -dataCreazione: Date
+    methods:
+        +cancellaOrdine()
+endClass
+
+class
+    id: DettaglioOrdine3
+    relations:
+        Ordine 1/1
+    params:
+        -idDettaglio: Int
+        -idOrdine: Int
+        -indirizzoSpedizione: String
+        -tipoSpedizione: String
+        -costoSpedizione: String
+        -indirizzoFatturazione: String
+        -dataCreazione: Date
+    methods:
+        +cancellaOrdine()
+endClass
+
+class
+    id: DettaglioOrdine4
+    relations:
+        Ordine 1/1
+    params:
+        -idDettaglio: Int
+        -idOrdine: Int
+        -indirizzoSpedizione: String
+        -tipoSpedizione: String
+        -costoSpedizione: String
+        -indirizzoFatturazione: String
+        -dataCreazione: Date
+    methods:
+        +cancellaOrdine()
+endClass

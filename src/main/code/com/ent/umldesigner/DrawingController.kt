@@ -2,7 +2,7 @@ package com.ent.umldesigner
 
 import compiler.Parser
 import compiler.handlers.UmlHandler
-import compiler.util.Arrow
+import compiler.drawingutil.Arrow
 import compiler.util.Component
 import compiler.util.ComponentType
 import compiler.util.ConnectionType
@@ -12,12 +12,12 @@ import javafx.scene.Cursor
 import javafx.scene.control.TextArea
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.Pane
-import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import javafx.scene.shape.Line
 import javafx.scene.shape.Rectangle
 import javafx.scene.text.Text
+import kotlin.math.max
 
 
 class DrawingController {
@@ -32,15 +32,24 @@ class DrawingController {
 
     private var orgSceneX = 0.0
     private var orgSceneY = 0.0
-    private var components: HashMap<String, StackPane> = HashMap()
+
+    private var x = 0.0
+    private var y = 0.0
+    private var maxY = 0.0
+
+    private var components: HashMap<String, Pane> = HashMap()
 
     @FXML
     private fun convertUml() {
+        x = 0.0
+        y = 0.0
+        maxY = 0.0
+
         Parser.doParsing(umlTextArea.text)
         resultArea.text = Parser.sb.toString()
 
         drawingArea.children.clear()
-        drawUml();
+        drawUml()
     }
 
     private fun drawUml() {
@@ -67,13 +76,13 @@ class DrawingController {
     }
 
     private fun drawComponent(component: Component?) {
-        val umlInterface = Rectangle(10.0, 10.0, 0.0, 0.0)
+        val umlInterface = Rectangle(0.0, 0.0, 0.0, 0.0)
 
         umlInterface.fill = Color.WHITE
         umlInterface.stroke = Color.BLACK
 
         val paramIndex: Int
-        val stack = StackPane()
+        val stack = Pane()
         val box = VBox()
         var text: Text
 
@@ -86,7 +95,7 @@ class DrawingController {
         }
 
         box.children.add(text)
-        umlInterface.height += text.layoutBounds.height
+        umlInterface.height += text.layoutBounds.height + 10.0
 
         umlInterface.width = text.layoutBounds.width + 10.0
 
@@ -126,16 +135,32 @@ class DrawingController {
 
         stack.children.add(box)
 
+        stack.layoutX = x
+        stack.layoutY = y
+
+        maxY = if (umlInterface.height + y > maxY) umlInterface.height + y else maxY
+
+        x += umlInterface.layoutX + umlInterface.width + 10
+
+        // TODO Capire perché Ordine renderizza sotto
+        if (x > drawingArea.width) {
+            x = 0.0
+            y = maxY + 10.0
+
+            stack.layoutX = x
+            stack.layoutY = y
+        }
+
         components[component.name] = stack
 
         drawingArea.children.add(stack)
     }
 
-    private fun setMouseDraggedEvent(umlElement: StackPane) {
+    private fun setMouseDraggedEvent(umlElement: Pane) {
         umlElement.onMouseDragged = EventHandler { t: MouseEvent ->
             val offsetX = t.sceneX - orgSceneX
             val offsetY = t.sceneY - orgSceneY
-            val c = t.source as StackPane
+            val c = t.source as Pane
 
             if (c.layoutX + offsetX >= 0 && c.layoutX + offsetX <= drawingArea.width - c.width)
                 c.layoutX = c.layoutX + offsetX
@@ -148,11 +173,11 @@ class DrawingController {
         }
     }
 
-    private fun setEventHandler(umlElement: StackPane) {
+    private fun setEventHandler(umlElement: Pane) {
         umlElement.onMousePressed = EventHandler { t: MouseEvent ->
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
-            val c = t.source as StackPane
+            val c = t.source as Pane
             c.toFront()
         }
     }
@@ -162,8 +187,8 @@ class DrawingController {
     }
 
     private fun connect(name1: String, name2: String, cardinality: String, connectionType: ConnectionType) {
-        val v1: StackPane = components[name1]!!
-        val v2: StackPane = components[name2]!!
+        val v1: Pane = components[name1]!!
+        val v2: Pane = components[name2]!!
 
         val arrow = Arrow(connectionType)
         arrow.startX = v1.scene.x

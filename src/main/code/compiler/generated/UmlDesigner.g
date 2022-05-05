@@ -128,7 +128,7 @@ methodParams returns [List<MethodParam> imp]
 interfaces returns [List<String> ifList]
 @init { ifList = new ArrayList<String>(); }
     :   i = ID 		{ ifList.add($i.getText());  }
-        (COMMA i1 = ID  { ifList.add($i1.getText()); })* 
+        (COMMA i1 = ID  { ifList.add($i1.getText()); })*
     ;
 
 classes returns [List<String> classList]
@@ -164,6 +164,7 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     
 COMMENT
     :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     ;
     
 PLUS 
