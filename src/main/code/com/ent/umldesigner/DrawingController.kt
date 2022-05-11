@@ -192,13 +192,14 @@ class DrawingController {
         val v2: Pane = components[name2]!!
 
         val arrow = Arrow(connectionType)
-        arrow.startX = v1.scene.x
-        arrow.startY = v1.scene.y
-        arrow.endX = v2.scene.x
-        arrow.endY = v2.scene.y
+        arrow.startX = v1.layoutX
+        arrow.startY = v1.layoutY
+        arrow.endX = v2.layoutX
+        arrow.endY = v2.layoutY
 
-        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
-        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
+        // TODO
+//        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
+//        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
 
         v2.layoutYProperty().addListener { obs, _, _ ->
             var bound = true

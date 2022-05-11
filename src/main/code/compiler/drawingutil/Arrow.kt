@@ -49,8 +49,8 @@ class Arrow private constructor(
                 text1.y = if (startY > endY) endY + 20 else endY - 20
 
                 text2.text = cardinality.split("/")[1]
-                text2.x = if (startX > endX) startX + 50 else startX - 50
-                text2.y = if (startY > endY) startY + 50 else startY - 50
+                text2.x = if (startX > endX) startX - 0.2 * endX else startX + 0.2 * endX
+                text2.y = if (startY > endY) startY + 0.2 * endY else startY - 0.2 * endY
             }
         }
     }
