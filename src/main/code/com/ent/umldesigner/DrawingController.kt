@@ -142,13 +142,14 @@ class DrawingController {
 
         x += umlInterface.layoutX + umlInterface.width + 10
 
-        // TODO Capire perché Ordine renderizza sotto
         if (x > drawingArea.width) {
             x = 0.0
             y = maxY + 10.0
 
             stack.layoutX = x
             stack.layoutY = y
+
+            x += umlInterface.layoutX + umlInterface.width + 10
         }
 
         components[component.name] = stack
