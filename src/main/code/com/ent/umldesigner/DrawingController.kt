@@ -191,15 +191,14 @@ class DrawingController {
         val v1: Pane = components[name1]!!
         val v2: Pane = components[name2]!!
 
-        val arrow = Arrow(connectionType)
+        val arrow = Arrow(connectionType, v1, v2)
         arrow.startX = v1.layoutX
         arrow.startY = v1.layoutY
         arrow.endX = v2.layoutX
         arrow.endY = v2.layoutY
 
-        // TODO
-//        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
-//        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
+        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
+        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
 
         v2.layoutYProperty().addListener { obs, _, _ ->
             var bound = true
@@ -242,15 +241,12 @@ class DrawingController {
                     arrow.endX = v2.layoutX + v2.width
                 else
                     arrow.endX = v2.layoutX
-            } else { //if (obs.value.toDouble() >= v2.layoutY + v2.height) {
+            } else {
                 arrow.endY = v2.layoutY + v2.height
             }
 
             if (!arrow.endXProperty().isBound && bound) {
                 arrow.endXProperty().bind(
-                    /*v2.layoutXProperty()
-                        .add((v1.layoutXProperty().divide(drawingArea.widthProperty())).multiply(v2.widthProperty()))
-                        .add(v1.widthProperty())*/
                     v2.layoutXProperty().add(v2.widthProperty().divide(2))
                 )
             }
