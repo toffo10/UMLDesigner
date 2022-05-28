@@ -1,12 +1,17 @@
 package com.ent.umldesigner
 
 import javafx.application.Application
+import javafx.fxml.FXML
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
+import javafx.scene.control.ContextMenu
 import javafx.scene.image.Image
 import javafx.stage.Stage
+import org.fxmisc.richtext.CodeArea
+import org.fxmisc.richtext.LineNumberFactory
 
 class DrawingApplication : Application() {
+
     override fun start(stage: Stage) {
         val fxmlLoader = FXMLLoader(DrawingApplication::class.java.getResource("designer-view.fxml"))
         val scene = Scene(fxmlLoader.load(), 320.0, 240.0)
@@ -19,6 +24,10 @@ class DrawingApplication : Application() {
         stage.y = 0.0
         stage.width = 1024.0
         stage.height = 1024.0
+
+        val umlTextArea : CodeArea = scene.lookup("#umlTextArea") as CodeArea
+        umlTextArea.paragraphGraphicFactory = LineNumberFactory.get(umlTextArea)
+        umlTextArea.contextMenu = ContextMenu()
     }
 }
 

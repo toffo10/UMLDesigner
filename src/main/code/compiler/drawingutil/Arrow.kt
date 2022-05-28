@@ -56,20 +56,30 @@ class Arrow private constructor(
         return InvalidationListener { _: Observable? ->
             val textSplitted = cardinality.split("/")
             if (textSplitted.size == 2) {
+
                 text1.text = cardinality.split("/")[0]
                 text1.x = if (startX > endX) endX + 20 else endX - 20
                 text1.y = if (startY > endY) endY + 20 else endY - 20
 
-                text2.text = cardinality.split("/")[1]
-                text2.x = (startX + endX) / 2
+                /*
+                text1.x = (startX + endX) / 2
+                if (text1.x > (pane2.layoutX + pane2.width * 3 / 4)) text1.x = pane2.layoutX + pane2.width * 3 / 4
+                if (text1.x < pane2.layoutX + pane2.width / 4) text1.x = pane2.layoutX + pane2.width / 4
 
-                if(text2.x > (pane1.layoutX + pane1.width)) text2.x = pane1.layoutX + pane1.width
-                if(text2.x < pane1.layoutX - 20) text2.x = pane1.layoutX - 20
+                text1.y = (startY + endY) / 2
+                if (text1.y > (pane2.layoutY + pane2.height * 3 / 4)) text1.y = pane2.layoutY + pane2.height * 3 / 4
+                if (text1.y < pane2.layoutY + pane2.height / 4) text1.y = pane2.layoutY + pane2.height / 4
+                */
+
+                text2.text = cardinality.split("/")[1]
+
+                text2.x = (startX + endX) / 2
+                if (text2.x > (pane1.layoutX + pane1.width)) text2.x = pane1.layoutX + pane1.width
+                if (text2.x < pane1.layoutX - 20) text2.x = pane1.layoutX - 20
 
                 text2.y = (startY + endY) / 2
-
-                if(text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
-                if(text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10
+                if (text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
+                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10
             }
         }
     }

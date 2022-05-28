@@ -1,8 +1,8 @@
 package com.ent.umldesigner
 
 import compiler.Parser
-import compiler.handlers.UmlHandler
 import compiler.drawingutil.Arrow
+import compiler.handlers.UmlHandler
 import compiler.util.Component
 import compiler.util.ComponentType
 import compiler.util.ConnectionType
@@ -17,12 +17,12 @@ import javafx.scene.paint.Color
 import javafx.scene.shape.Line
 import javafx.scene.shape.Rectangle
 import javafx.scene.text.Text
-import kotlin.math.max
+import org.fxmisc.richtext.CodeArea
 
 
 class DrawingController {
     @FXML
-    private lateinit var umlTextArea: TextArea
+    private lateinit var umlTextArea: CodeArea
 
     @FXML
     private lateinit var resultArea: TextArea
