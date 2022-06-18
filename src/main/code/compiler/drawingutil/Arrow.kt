@@ -5,6 +5,7 @@ import javafx.beans.InvalidationListener
 import javafx.beans.Observable
 import javafx.beans.property.DoubleProperty
 import javafx.scene.Group
+import javafx.scene.layout.Pane
 import javafx.scene.shape.Line
 import javafx.scene.text.Text
 import kotlin.math.hypot
@@ -16,20 +17,31 @@ class Arrow private constructor(
     arrow1: Line,
     arrow2: Line,
     relText1: Text,
-    relText2: Text
+    relText2: Text,
+    pane1: Pane,
+    pane2: Pane
 ) :
     Group(line, arrow1, arrow2, relText1, relText2) {
     private val line: Line
     var cardinality = ""
 
-    constructor(connectionType: ConnectionType) : this(connectionType, Line(), Line(), Line(), Text(), Text())
+    constructor(connectionType: ConnectionType, pane1: Pane, pane2: Pane) : this(
+        connectionType,
+        Line(),
+        Line(),
+        Line(),
+        Text(),
+        Text(),
+        pane1,
+        pane2
+    )
 
     init {
         this.line = line
         val updater = when (connectionType) {
             ConnectionType.IMPLEMENTATION -> returnImplArrow(arrow1, arrow2)
             ConnectionType.EXTENSION -> returnImplArrow(arrow1, arrow2)
-            ConnectionType.RELATION -> returnRelArrow(relText1, relText2)
+            ConnectionType.RELATION -> returnRelArrow(relText1, relText2, pane1, pane2)
         }
 
         // add updater to properties
@@ -40,17 +52,34 @@ class Arrow private constructor(
         updater.invalidated(null)
     }
 
-    private fun returnRelArrow(text1: Text, text2: Text): InvalidationListener {
+    private fun returnRelArrow(text1: Text, text2: Text, pane1: Pane, pane2: Pane): InvalidationListener {
         return InvalidationListener { _: Observable? ->
             val textSplitted = cardinality.split("/")
             if (textSplitted.size == 2) {
+
                 text1.text = cardinality.split("/")[0]
                 text1.x = if (startX > endX) endX + 20 else endX - 20
                 text1.y = if (startY > endY) endY + 20 else endY - 20
 
+                /*
+                text1.x = (startX + endX) / 2
+                if (text1.x > (pane2.layoutX + pane2.width * 3 / 4)) text1.x = pane2.layoutX + pane2.width * 3 / 4
+                if (text1.x < pane2.layoutX + pane2.width / 4) text1.x = pane2.layoutX + pane2.width / 4
+
+                text1.y = (startY + endY) / 2
+                if (text1.y > (pane2.layoutY + pane2.height * 3 / 4)) text1.y = pane2.layoutY + pane2.height * 3 / 4
+                if (text1.y < pane2.layoutY + pane2.height / 4) text1.y = pane2.layoutY + pane2.height / 4
+                */
+
                 text2.text = cardinality.split("/")[1]
-                text2.x = if (startX > endX) startX - 0.2 * endX else startX + 0.2 * endX
-                text2.y = if (startY > endY) startY + 0.2 * endY else startY - 0.2 * endY
+
+                text2.x = (startX + endX) / 2
+                if (text2.x > (pane1.layoutX + pane1.width)) text2.x = pane1.layoutX + pane1.width
+                if (text2.x < pane1.layoutX - 20) text2.x = pane1.layoutX - 20
+
+                text2.y = (startY + endY) / 2
+                if (text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
+                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10
             }
         }
     }

@@ -6,6 +6,7 @@ module com.ent.umldesigner {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires antlr;
+    requires org.fxmisc.richtext;
 
     opens com.ent.umldesigner to javafx.fxml;
     exports com.ent.umldesigner;
