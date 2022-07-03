@@ -1,28 +1,49 @@
 package compiler;
 
+import compiler.error.ERROR_TYPE;
+import compiler.error.Error;
 import compiler.generated.UmlDesignerParser;
-import org.antlr.runtime.CommonTokenStream;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Parser {
     static UmlDesignerParser parser;
 
-    public static StringBuffer sb = new StringBuffer();
+    public static List<Error> errorList = new ArrayList<>();
 
-    public static void doParsing(String input) {
-        sb.delete(0, sb.length());
+    public static void addError(String errorMessage, ERROR_TYPE type) {
+        Error e = new Error();
+        e.setMessage(errorMessage);
+        e.setType(type);
+
+        errorList.add(e);
+    }
+
+    public static StringBuffer doParsing(String input) {
+        StringBuffer errorMessage = new StringBuffer();
+        errorList.clear();
 
         try {
             parser = new UmlDesignerParser(input);
             parser.initUml();
         } catch (Exception e) {
-            sb.append(e.getMessage());
-            sb.append("\n");
         }
 
-        if (sb.isEmpty()) {
-            sb.append("Tutto ok! \n");
+        if (parser.getErrorList().isEmpty()) {
+            errorMessage.append("Everything ok! \n");
         } else {
-            sb.insert(0, "Compilazione terminata con errori: \n");
+            errorMessage.insert(0, "Compilation ended with errors: \n");
+
+            parser.getErrorList().forEach(error -> {
+                errorList.add(error);
+            });
         }
+
+        errorList.forEach(error -> {
+            errorMessage.append(error.getMessage() + "\n");
+        });
+
+        return errorMessage;
     }
 }

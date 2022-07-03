@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-03-27 16:25:20
+// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-07-03 17:35:40
 
 package compiler.generated;
 
@@ -6,9 +6,12 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
+
+import compiler.error.Error;
 import javafx.util.Pair;
 import compiler.util.*;
 import compiler.handlers.*;
+import compiler.error.*;
 
 
 import org.antlr.runtime.*;
@@ -80,7 +83,7 @@ public class UmlDesignerParser extends Parser {
 	}
 
 	@Override public String[] getTokenNames() { return UmlDesignerParser.tokenNames; }
-	@Override public String getGrammarFileName() { return "D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g"; }
+	@Override public String getGrammarFileName() { return "D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g"; }
 
 
 	    UmlHandler h;
@@ -110,22 +113,27 @@ public class UmlDesignerParser extends Parser {
 	    // Per gestire gli errori da GUI
 	    @Override    
 	    public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-	        String hdr = getErrorHeader(e);
-	        String msg = getErrorMessage(e, tokenNames);
-	        throw new RuntimeException(hdr + ":" + msg);
+	        String hdr = " * " + getErrorHeader(e);
+	        String msg = " - " + getErrorMessage(e, tokenNames);
+	        Token tk = input.LT(1);
+	        h.handleError(tokenNames, e, hdr, msg);
+	    }
+	    
+	    public List<Error> getErrorList () {
+	    	return h.getErrorList();
 	    }
 
 
 
 	// $ANTLR start "initUml"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:63:1: initUml : ( abstractClassDefinition | classDefinition | interfaceDefinition )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:69:1: initUml : ( abstractClassDefinition | classDefinition | interfaceDefinition )* ;
 	public final void initUml() throws RecognitionException {
 		 setUp(); 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:5: ( ( abstractClassDefinition | classDefinition | interfaceDefinition )* )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:5: ( ( abstractClassDefinition | classDefinition | interfaceDefinition )* )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
 			{
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
 			loop1:
 			while (true) {
 				int alt1=4;
@@ -148,7 +156,7 @@ public class UmlDesignerParser extends Parser {
 				}
 				switch (alt1) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:8: abstractClassDefinition
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:8: abstractClassDefinition
 					{
 					pushFollow(FOLLOW_abstractClassDefinition_in_initUml73);
 					abstractClassDefinition();
@@ -157,7 +165,7 @@ public class UmlDesignerParser extends Parser {
 					}
 					break;
 				case 2 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:34: classDefinition
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:34: classDefinition
 					{
 					pushFollow(FOLLOW_classDefinition_in_initUml77);
 					classDefinition();
@@ -166,7 +174,7 @@ public class UmlDesignerParser extends Parser {
 					}
 					break;
 				case 3 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:65:52: interfaceDefinition
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:52: interfaceDefinition
 					{
 					pushFollow(FOLLOW_interfaceDefinition_in_initUml81);
 					interfaceDefinition();
@@ -197,13 +205,13 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classDefinition"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:68:1: classDefinition : 'class' 'id' COLON i= ID classValues[$i] 'endClass' ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:74:1: classDefinition : 'class' 'id' COLON i= ID classValues[$i] 'endClass' ;
 	public final void classDefinition() throws RecognitionException {
 		Token i=null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:69:5: ( 'class' 'id' COLON i= ID classValues[$i] 'endClass' )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:69:8: 'class' 'id' COLON i= ID classValues[$i] 'endClass'
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:75:5: ( 'class' 'id' COLON i= ID classValues[$i] 'endClass' )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:75:8: 'class' 'id' COLON i= ID classValues[$i] 'endClass'
 			{
 			match(input,27,FOLLOW_27_in_classDefinition107); 
 			match(input,33,FOLLOW_33_in_classDefinition117); 
@@ -231,13 +239,13 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "abstractClassDefinition"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:75:1: abstractClassDefinition : 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass' ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:81:1: abstractClassDefinition : 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass' ;
 	public final void abstractClassDefinition() throws RecognitionException {
 		Token i=null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:77:5: ( 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass' )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:77:8: 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass'
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:83:5: ( 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass' )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:83:8: 'abstractClass' 'id' COLON i= ID classValues[$i] 'endAbstractClass'
 			{
 			match(input,24,FOLLOW_24_in_abstractClassDefinition167); 
 			match(input,33,FOLLOW_33_in_abstractClassDefinition176); 
@@ -265,7 +273,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classValues"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:83:1: classValues[Token i] : ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:1: classValues[Token i] : ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? ;
 	public final void classValues(Token i) throws RecognitionException {
 		List<String> ifs =null;
 		List<String> c =null;
@@ -274,10 +282,10 @@ public class UmlDesignerParser extends Parser {
 		Method m =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:84:5: ( ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:85:8: ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:90:5: ( ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:8: ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )?
 			{
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:85:8: ( 'implements' COLON (ifs= interfaces )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:8: ( 'implements' COLON (ifs= interfaces )+ )?
 			int alt3=2;
 			int LA3_0 = input.LA(1);
 			if ( (LA3_0==34) ) {
@@ -285,11 +293,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt3) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:85:9: 'implements' COLON (ifs= interfaces )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:9: 'implements' COLON (ifs= interfaces )+
 					{
 					match(input,34,FOLLOW_34_in_classValues234); 
 					match(input,COLON,FOLLOW_COLON_in_classValues236); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:85:28: (ifs= interfaces )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:28: (ifs= interfaces )+
 					int cnt2=0;
 					loop2:
 					while (true) {
@@ -301,7 +309,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt2) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:85:29: ifs= interfaces
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:29: ifs= interfaces
 							{
 							pushFollow(FOLLOW_interfaces_in_classValues243);
 							ifs=interfaces();
@@ -324,7 +332,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:86:8: ( 'extends' COLON (c= classes )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:92:8: ( 'extends' COLON (c= classes )+ )?
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==32) ) {
@@ -332,11 +340,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt5) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:86:9: 'extends' COLON (c= classes )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:92:9: 'extends' COLON (c= classes )+
 					{
 					match(input,32,FOLLOW_32_in_classValues260); 
 					match(input,COLON,FOLLOW_COLON_in_classValues262); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:86:25: (c= classes )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:92:25: (c= classes )+
 					int cnt4=0;
 					loop4:
 					while (true) {
@@ -348,7 +356,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt4) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:86:26: c= classes
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:92:26: c= classes
 							{
 							pushFollow(FOLLOW_classes_in_classValues269);
 							c=classes();
@@ -371,7 +379,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:87:8: ( 'relations' COLON (cr= classRelations )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:8: ( 'relations' COLON (cr= classRelations )+ )?
 			int alt7=2;
 			int LA7_0 = input.LA(1);
 			if ( (LA7_0==39) ) {
@@ -379,11 +387,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt7) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:87:9: 'relations' COLON (cr= classRelations )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:9: 'relations' COLON (cr= classRelations )+
 					{
 					match(input,39,FOLLOW_39_in_classValues286); 
 					match(input,COLON,FOLLOW_COLON_in_classValues288); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:87:27: (cr= classRelations )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:27: (cr= classRelations )+
 					int cnt6=0;
 					loop6:
 					while (true) {
@@ -395,7 +403,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt6) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:87:28: cr= classRelations
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:28: cr= classRelations
 							{
 							pushFollow(FOLLOW_classRelations_in_classValues295);
 							cr=classRelations();
@@ -418,7 +426,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:88:8: ( 'params' COLON (p= classParameters )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:8: ( 'params' COLON (p= classParameters )+ )?
 			int alt9=2;
 			int LA9_0 = input.LA(1);
 			if ( (LA9_0==38) ) {
@@ -426,11 +434,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt9) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:88:9: 'params' COLON (p= classParameters )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:9: 'params' COLON (p= classParameters )+
 					{
 					match(input,38,FOLLOW_38_in_classValues311); 
 					match(input,COLON,FOLLOW_COLON_in_classValues313); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:88:25: (p= classParameters )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:25: (p= classParameters )+
 					int cnt8=0;
 					loop8:
 					while (true) {
@@ -442,7 +450,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt8) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:88:26: p= classParameters
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:26: p= classParameters
 							{
 							pushFollow(FOLLOW_classParameters_in_classValues321);
 							p=classParameters();
@@ -465,7 +473,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:8: ( 'methods' COLON (m= classMethods )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:8: ( 'methods' COLON (m= classMethods )+ )?
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==37) ) {
@@ -473,11 +481,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt11) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:9: 'methods' COLON (m= classMethods )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:9: 'methods' COLON (m= classMethods )+
 					{
 					match(input,37,FOLLOW_37_in_classValues337); 
 					match(input,COLON,FOLLOW_COLON_in_classValues339); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:25: (m= classMethods )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:25: (m= classMethods )+
 					int cnt10=0;
 					loop10:
 					while (true) {
@@ -489,7 +497,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt10) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:26: m= classMethods
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:26: m= classMethods
 							{
 							pushFollow(FOLLOW_classMethods_in_classValues346);
 							m=classMethods();
@@ -528,7 +536,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classParameters"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:92:1: classParameters returns [Param ip] : visibility i= ID ( COLON t= type ) ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:98:1: classParameters returns [Param ip] : visibility i= ID ( COLON t= type ) ;
 	public final Param classParameters() throws RecognitionException {
 		Param ip = null;
 
@@ -537,16 +545,16 @@ public class UmlDesignerParser extends Parser {
 		Token t =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:5: ( visibility i= ID ( COLON t= type ) )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:7: visibility i= ID ( COLON t= type )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:5: ( visibility i= ID ( COLON t= type ) )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:7: visibility i= ID ( COLON t= type )
 			{
 			pushFollow(FOLLOW_visibility_in_classParameters380);
 			visibility();
 			state._fsp--;
 
 			i=(Token)match(input,ID,FOLLOW_ID_in_classParameters386); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:25: ( COLON t= type )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:93:26: COLON t= type
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:25: ( COLON t= type )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:26: COLON t= type
 			{
 			match(input,COLON,FOLLOW_COLON_in_classParameters389); 
 			pushFollow(FOLLOW_type_in_classParameters395);
@@ -573,7 +581,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classMethods"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:96:1: classMethods returns [Method im] : v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )? ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:102:1: classMethods returns [Method im] : v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )? ;
 	public final Method classMethods() throws RecognitionException {
 		Method im = null;
 
@@ -584,8 +592,8 @@ public class UmlDesignerParser extends Parser {
 		Token t =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:5: (v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )? )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:7: v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:5: (v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )? )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:7: v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )?
 			{
 			pushFollow(FOLLOW_visibility_in_classMethods423);
 			v=visibility();
@@ -593,7 +601,7 @@ public class UmlDesignerParser extends Parser {
 
 			i=(Token)match(input,ID,FOLLOW_ID_in_classMethods429); 
 			match(input,LP,FOLLOW_LP_in_classMethods431); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:34: (p= methodParams )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:34: (p= methodParams )?
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==ID) ) {
@@ -601,7 +609,7 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt12) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:34: p= methodParams
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:34: p= methodParams
 					{
 					pushFollow(FOLLOW_methodParams_in_classMethods437);
 					p=methodParams();
@@ -613,7 +621,7 @@ public class UmlDesignerParser extends Parser {
 			}
 
 			match(input,RP,FOLLOW_RP_in_classMethods440); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:53: ( COLON t= type )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:53: ( COLON t= type )?
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0==COLON) ) {
@@ -621,7 +629,7 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt13) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:97:54: COLON t= type
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:54: COLON t= type
 					{
 					match(input,COLON,FOLLOW_COLON_in_classMethods443); 
 					pushFollow(FOLLOW_type_in_classMethods449);
@@ -651,22 +659,22 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "interfaceDefinition"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:100:1: interfaceDefinition : 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface' ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:106:1: interfaceDefinition : 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface' ;
 	public final void interfaceDefinition() throws RecognitionException {
 		Token i=null;
 		Param p =null;
 		Method m =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:101:5: ( 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface' )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:101:8: 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface'
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:107:5: ( 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface' )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:107:8: 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface'
 			{
 			match(input,36,FOLLOW_36_in_interfaceDefinition471); 
 			match(input,33,FOLLOW_33_in_interfaceDefinition480); 
 			match(input,COLON,FOLLOW_COLON_in_interfaceDefinition482); 
 			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceDefinition488); 
 			 h.createNewInterface(i); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:8: ( 'params' COLON (p= interfaceParams )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:8: ( 'params' COLON (p= interfaceParams )+ )?
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0==38) ) {
@@ -674,11 +682,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt15) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:9: 'params' COLON (p= interfaceParams )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:9: 'params' COLON (p= interfaceParams )+
 					{
 					match(input,38,FOLLOW_38_in_interfaceDefinition500); 
 					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition502); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:25: (p= interfaceParams )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:25: (p= interfaceParams )+
 					int cnt14=0;
 					loop14:
 					while (true) {
@@ -690,7 +698,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt14) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:26: p= interfaceParams
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:26: p= interfaceParams
 							{
 							pushFollow(FOLLOW_interfaceParams_in_interfaceDefinition510);
 							p=interfaceParams();
@@ -713,7 +721,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:104:8: ( 'methods' COLON (m= interfaceMethods )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:8: ( 'methods' COLON (m= interfaceMethods )+ )?
 			int alt17=2;
 			int LA17_0 = input.LA(1);
 			if ( (LA17_0==37) ) {
@@ -721,11 +729,11 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt17) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:104:9: 'methods' COLON (m= interfaceMethods )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:9: 'methods' COLON (m= interfaceMethods )+
 					{
 					match(input,37,FOLLOW_37_in_interfaceDefinition529); 
 					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition531); 
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:104:25: (m= interfaceMethods )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:25: (m= interfaceMethods )+
 					int cnt16=0;
 					loop16:
 					while (true) {
@@ -737,7 +745,7 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt16) {
 						case 1 :
-							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:104:26: m= interfaceMethods
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:26: m= interfaceMethods
 							{
 							pushFollow(FOLLOW_interfaceMethods_in_interfaceDefinition538);
 							m=interfaceMethods();
@@ -777,7 +785,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classRelations"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:108:1: classRelations returns [List<Pair> classList] : i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:114:1: classRelations returns [List<Pair> classList] : i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )* ;
 	public final List<Pair> classRelations() throws RecognitionException {
 		List<Pair> classList = null;
 
@@ -791,8 +799,8 @@ public class UmlDesignerParser extends Parser {
 
 		 classList = new ArrayList<>(); 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:5: (i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )* )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:8: i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:116:5: (i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )* )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:116:8: i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
 			{
 			i=(Token)match(input,ID,FOLLOW_ID_in_classRelations590); 
 			pushFollow(FOLLOW_cardinality_in_classRelations596);
@@ -805,7 +813,7 @@ public class UmlDesignerParser extends Parser {
 			state._fsp--;
 
 			 classList.add(new Pair<>(i.getText(),  c1.getText() + '/' + c2.getText())); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:111:7: ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:117:7: ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
 			loop18:
 			while (true) {
 				int alt18=2;
@@ -816,7 +824,7 @@ public class UmlDesignerParser extends Parser {
 
 				switch (alt18) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:111:8: COMMA i1= ID c3= cardinality '/' c4= cardinality
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:117:8: COMMA i1= ID c3= cardinality '/' c4= cardinality
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_classRelations623); 
 					i1=(Token)match(input,ID,FOLLOW_ID_in_classRelations629); 
@@ -855,7 +863,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "interfaceParams"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:114:1: interfaceParams returns [Param ip] : PLUS i= ID COLON t= type ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:120:1: interfaceParams returns [Param ip] : PLUS i= ID COLON t= type ;
 	public final Param interfaceParams() throws RecognitionException {
 		Param ip = null;
 
@@ -864,8 +872,8 @@ public class UmlDesignerParser extends Parser {
 		Token t =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:115:5: ( PLUS i= ID COLON t= type )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:115:8: PLUS i= ID COLON t= type
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:121:5: ( PLUS i= ID COLON t= type )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:121:8: PLUS i= ID COLON t= type
 			{
 			match(input,PLUS,FOLLOW_PLUS_in_interfaceParams670); 
 			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceParams676); 
@@ -892,7 +900,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "interfaceMethods"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:118:1: interfaceMethods returns [Method im] : v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )? ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:124:1: interfaceMethods returns [Method im] : v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )? ;
 	public final Method interfaceMethods() throws RecognitionException {
 		Method im = null;
 
@@ -903,13 +911,13 @@ public class UmlDesignerParser extends Parser {
 		Token t =null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:5: (v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )? )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:8: v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:5: (v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )? )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:8: v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )?
 			{
 			v=(Token)match(input,PLUS,FOLLOW_PLUS_in_interfaceMethods716); 
 			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceMethods722); 
 			match(input,LP,FOLLOW_LP_in_interfaceMethods724); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:29: (p= methodParams )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:29: (p= methodParams )?
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0==ID) ) {
@@ -917,7 +925,7 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt19) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:29: p= methodParams
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:29: p= methodParams
 					{
 					pushFollow(FOLLOW_methodParams_in_interfaceMethods730);
 					p=methodParams();
@@ -929,7 +937,7 @@ public class UmlDesignerParser extends Parser {
 			}
 
 			match(input,RP,FOLLOW_RP_in_interfaceMethods733); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:48: ( COLON t= type )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:48: ( COLON t= type )?
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( (LA20_0==COLON) ) {
@@ -937,7 +945,7 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt20) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:119:49: COLON t= type
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:49: COLON t= type
 					{
 					match(input,COLON,FOLLOW_COLON_in_interfaceMethods736); 
 					pushFollow(FOLLOW_type_in_interfaceMethods742);
@@ -967,7 +975,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "methodParams"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:122:1: methodParams returns [List<MethodParam> imp] : i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:128:1: methodParams returns [List<MethodParam> imp] : i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )* ;
 	public final List<MethodParam> methodParams() throws RecognitionException {
 		List<MethodParam> imp = null;
 
@@ -979,8 +987,8 @@ public class UmlDesignerParser extends Parser {
 
 		 imp = new ArrayList<MethodParam>(); 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:124:5: (i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )* )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:124:9: i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:5: (i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )* )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:9: i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )*
 			{
 			i1=(Token)match(input,ID,FOLLOW_ID_in_methodParams778); 
 			match(input,COLON,FOLLOW_COLON_in_methodParams780); 
@@ -989,7 +997,7 @@ public class UmlDesignerParser extends Parser {
 			state._fsp--;
 
 			 h.addMethodParam(imp, i1, t1); 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:8: ( COMMA i2= ID COLON t2= type )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:8: ( COMMA i2= ID COLON t2= type )*
 			loop21:
 			while (true) {
 				int alt21=2;
@@ -1000,7 +1008,7 @@ public class UmlDesignerParser extends Parser {
 
 				switch (alt21) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:9: COMMA i2= ID COLON t2= type
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:9: COMMA i2= ID COLON t2= type
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_methodParams804); 
 					i2=(Token)match(input,ID,FOLLOW_ID_in_methodParams810); 
@@ -1035,7 +1043,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "interfaces"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:128:1: interfaces returns [List<String> ifList] : i= ID ( COMMA i1= ID )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:134:1: interfaces returns [List<String> ifList] : i= ID ( COMMA i1= ID )* ;
 	public final List<String> interfaces() throws RecognitionException {
 		List<String> ifList = null;
 
@@ -1045,12 +1053,12 @@ public class UmlDesignerParser extends Parser {
 
 		 ifList = new ArrayList<String>(); 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:5: (i= ID ( COMMA i1= ID )* )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:9: i= ID ( COMMA i1= ID )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:5: (i= ID ( COMMA i1= ID )* )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:9: i= ID ( COMMA i1= ID )*
 			{
 			i=(Token)match(input,ID,FOLLOW_ID_in_interfaces860); 
 			 ifList.add(i.getText());  
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:9: ( COMMA i1= ID )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:9: ( COMMA i1= ID )*
 			loop22:
 			while (true) {
 				int alt22=2;
@@ -1061,7 +1069,7 @@ public class UmlDesignerParser extends Parser {
 
 				switch (alt22) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:10: COMMA i1= ID
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:10: COMMA i1= ID
 					{
 					match(input,COMMA,FOLLOW_COMMA_in_interfaces875); 
 					i1=(Token)match(input,ID,FOLLOW_ID_in_interfaces881); 
@@ -1091,7 +1099,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classes"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:134:1: classes returns [List<String> classList] : i= ID ( COMMA i1= ID )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:140:1: classes returns [List<String> classList] : i= ID ( COMMA i1= ID )* ;
 	public final List<String> classes() throws RecognitionException {
 		List<String> classList = null;
 
@@ -1101,12 +1109,12 @@ public class UmlDesignerParser extends Parser {
 
 		 classList = new ArrayList<String>(); 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:5: (i= ID ( COMMA i1= ID )* )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:8: i= ID ( COMMA i1= ID )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:142:5: (i= ID ( COMMA i1= ID )* )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:142:8: i= ID ( COMMA i1= ID )*
 			{
-			i=(Token)match(input,ID,FOLLOW_ID_in_classes918); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_classes917); 
 			 classList.add(i.getText()) ; 
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:7: ( COMMA i1= ID )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:143:7: ( COMMA i1= ID )*
 			loop23:
 			while (true) {
 				int alt23=2;
@@ -1117,10 +1125,10 @@ public class UmlDesignerParser extends Parser {
 
 				switch (alt23) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:8: COMMA i1= ID
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:143:8: COMMA i1= ID
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_classes931); 
-					i1=(Token)match(input,ID,FOLLOW_ID_in_classes937); 
+					match(input,COMMA,FOLLOW_COMMA_in_classes930); 
+					i1=(Token)match(input,ID,FOLLOW_ID_in_classes936); 
 					 classList.add(i1.getText()); 
 					}
 					break;
@@ -1147,7 +1155,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "visibility"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:140:1: visibility returns [Token t] : (x= PLUS |x= MINUS |x= HASHTAG ) ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:146:1: visibility returns [Token t] : (x= PLUS |x= MINUS |x= HASHTAG ) ;
 	public final Token visibility() throws RecognitionException {
 		Token t = null;
 
@@ -1155,10 +1163,10 @@ public class UmlDesignerParser extends Parser {
 		Token x=null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:5: ( (x= PLUS |x= MINUS |x= HASHTAG ) )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:7: (x= PLUS |x= MINUS |x= HASHTAG )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:5: ( (x= PLUS |x= MINUS |x= HASHTAG ) )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:7: (x= PLUS |x= MINUS |x= HASHTAG )
 			{
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:7: (x= PLUS |x= MINUS |x= HASHTAG )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:7: (x= PLUS |x= MINUS |x= HASHTAG )
 			int alt24=3;
 			switch ( input.LA(1) ) {
 			case PLUS:
@@ -1183,21 +1191,21 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt24) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:8: x= PLUS
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:8: x= PLUS
 					{
-					x=(Token)match(input,PLUS,FOLLOW_PLUS_in_visibility976); 
+					x=(Token)match(input,PLUS,FOLLOW_PLUS_in_visibility975); 
 					}
 					break;
 				case 2 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:19: x= MINUS
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:19: x= MINUS
 					{
-					x=(Token)match(input,MINUS,FOLLOW_MINUS_in_visibility984); 
+					x=(Token)match(input,MINUS,FOLLOW_MINUS_in_visibility983); 
 					}
 					break;
 				case 3 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:141:31: x= HASHTAG
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:31: x= HASHTAG
 					{
-					x=(Token)match(input,HASHTAG,FOLLOW_HASHTAG_in_visibility992); 
+					x=(Token)match(input,HASHTAG,FOLLOW_HASHTAG_in_visibility991); 
 					}
 					break;
 
@@ -1221,7 +1229,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "cardinality"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:144:1: cardinality returns [Token t] : (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' ) ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:150:1: cardinality returns [Token t] : (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' ) ;
 	public final Token cardinality() throws RecognitionException {
 		Token t = null;
 
@@ -1229,10 +1237,10 @@ public class UmlDesignerParser extends Parser {
 		Token x=null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:145:5: ( (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' ) )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:145:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:5: ( (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' ) )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
 			{
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:145:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
 			int alt25=4;
 			switch ( input.LA(1) ) {
 			case 20:
@@ -1262,27 +1270,27 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt25) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:145:8: x= '0..1'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:8: x= '0..1'
 					{
-					x=(Token)match(input,20,FOLLOW_20_in_cardinality1025); 
+					x=(Token)match(input,20,FOLLOW_20_in_cardinality1024); 
 					}
 					break;
 				case 2 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:146:7: x= '1'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:152:7: x= '1'
 					{
-					x=(Token)match(input,21,FOLLOW_21_in_cardinality1038); 
+					x=(Token)match(input,21,FOLLOW_21_in_cardinality1037); 
 					}
 					break;
 				case 3 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:7: x= '0..*'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:7: x= '0..*'
 					{
-					x=(Token)match(input,19,FOLLOW_19_in_cardinality1051); 
+					x=(Token)match(input,19,FOLLOW_19_in_cardinality1050); 
 					}
 					break;
 				case 4 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:148:7: x= '1..*'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:154:7: x= '1..*'
 					{
-					x=(Token)match(input,22,FOLLOW_22_in_cardinality1064); 
+					x=(Token)match(input,22,FOLLOW_22_in_cardinality1063); 
 					}
 					break;
 
@@ -1306,7 +1314,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "type"
-	// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:152:1: type returns [Token t] : (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID ) ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:158:1: type returns [Token t] : (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID ) ;
 	public final Token type() throws RecognitionException {
 		Token t = null;
 
@@ -1314,10 +1322,10 @@ public class UmlDesignerParser extends Parser {
 		Token x=null;
 
 		try {
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:3: ( (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID ) )
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:3: ( (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID ) )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
 			{
-			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
 			int alt26=6;
 			switch ( input.LA(1) ) {
 			case 35:
@@ -1357,39 +1365,39 @@ public class UmlDesignerParser extends Parser {
 			}
 			switch (alt26) {
 				case 1 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:6: x= 'int'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:6: x= 'int'
 					{
-					x=(Token)match(input,35,FOLLOW_35_in_type1099); 
+					x=(Token)match(input,35,FOLLOW_35_in_type1098); 
 					}
 					break;
 				case 2 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:154:5: x= 'double'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:160:5: x= 'double'
 					{
-					x=(Token)match(input,28,FOLLOW_28_in_type1111); 
+					x=(Token)match(input,28,FOLLOW_28_in_type1110); 
 					}
 					break;
 				case 3 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:155:5: x= 'char'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:161:5: x= 'char'
 					{
-					x=(Token)match(input,26,FOLLOW_26_in_type1122); 
+					x=(Token)match(input,26,FOLLOW_26_in_type1121); 
 					}
 					break;
 				case 4 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:156:5: x= 'boolean'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:162:5: x= 'boolean'
 					{
-					x=(Token)match(input,25,FOLLOW_25_in_type1133); 
+					x=(Token)match(input,25,FOLLOW_25_in_type1132); 
 					}
 					break;
 				case 5 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:157:5: x= 'String'
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:163:5: x= 'String'
 					{
-					x=(Token)match(input,23,FOLLOW_23_in_type1144); 
+					x=(Token)match(input,23,FOLLOW_23_in_type1143); 
 					}
 					break;
 				case 6 :
-					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:158:5: x= ID
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:164:5: x= ID
 					{
-					x=(Token)match(input,ID,FOLLOW_ID_in_type1155); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_type1154); 
 					}
 					break;
 
@@ -1496,20 +1504,20 @@ public class UmlDesignerParser extends Parser {
 	public static final BitSet FOLLOW_ID_in_interfaces860 = new BitSet(new long[]{0x0000000000000042L});
 	public static final BitSet FOLLOW_COMMA_in_interfaces875 = new BitSet(new long[]{0x0000000000000800L});
 	public static final BitSet FOLLOW_ID_in_interfaces881 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_ID_in_classes918 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_COMMA_in_classes931 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classes937 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_PLUS_in_visibility976 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MINUS_in_visibility984 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HASHTAG_in_visibility992 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_20_in_cardinality1025 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_21_in_cardinality1038 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_19_in_cardinality1051 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_22_in_cardinality1064 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_35_in_type1099 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_28_in_type1111 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_26_in_type1122 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_25_in_type1133 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_23_in_type1144 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_type1155 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_classes917 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_COMMA_in_classes930 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_classes936 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_PLUS_in_visibility975 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MINUS_in_visibility983 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HASHTAG_in_visibility991 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_20_in_cardinality1024 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_21_in_cardinality1037 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_19_in_cardinality1050 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_22_in_cardinality1063 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_35_in_type1098 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_28_in_type1110 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_26_in_type1121 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_25_in_type1132 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_23_in_type1143 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_type1154 = new BitSet(new long[]{0x0000000000000002L});
 }

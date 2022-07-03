@@ -45,11 +45,11 @@ class DrawingController {
         y = 0.0
         maxY = 0.0
 
-        Parser.doParsing(umlTextArea.text)
-        resultArea.text = Parser.sb.toString()
+        resultArea.text = Parser.doParsing(umlTextArea.text).toString()
 
         drawingArea.children.clear()
-        drawUml()
+        if (Parser.errorList.size == 0)
+            drawUml()
     }
 
     private fun drawUml() {

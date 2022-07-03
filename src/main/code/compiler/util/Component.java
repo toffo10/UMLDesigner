@@ -1,12 +1,14 @@
 package compiler.util;
 
 import compiler.Parser;
+import compiler.error.ERROR_TYPE;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 public class Component {
-    private final Hashtable<String, Method> methods;
-    private final Hashtable<String, Param> params;
+    private final Map<String, Method> methods;
+    private final Map<String, Param> params;
     private final ComponentBehaviour componentBehaviour;
     private final String name;
 
@@ -19,7 +21,7 @@ public class Component {
 
     public void addParam(Param param) {
         if (params.containsKey(param.getId())) {
-            Parser.sb.append(String.format("Il parametro %s è già stato dichiarato \n", param.getId()));
+            Parser.addError(String.format("Parameter %s already declared \n", param.getId()), ERROR_TYPE.SEMANTICS);
         } else {
             params.put(param.getId(), param);
         }
@@ -27,7 +29,7 @@ public class Component {
 
     public void addMethod(Method method) {
         if (params.containsKey(method.getId())) {
-            Parser.sb.append(String.format("Il metodo %s è già stato dichiarato \n", method.getId()));
+            Parser.addError(String.format("Method %s already declared \n", method.getId()), ERROR_TYPE.SEMANTICS);
         } else {
             methods.put(method.getId(), method);
         }
@@ -50,11 +52,11 @@ public class Component {
         return name;
     }
 
-    public Hashtable<String, Method> getMethods() {
+    public Map<String, Method> getMethods() {
         return methods;
     }
 
-    public Hashtable<String, Param> getParams() {
+    public Map<String, Param> getParams() {
         return params;
     }
 }

@@ -1,31 +1,43 @@
 package compiler.handlers;
 
 import compiler.Parser;
+import compiler.error.ERROR_TYPE;
+import compiler.error.Error;
+import compiler.generated.UmlDesignerLexer;
 import compiler.util.*;
 import compiler.util.ClassBehaviour;
 import javafx.util.Pair;
+import org.antlr.runtime.MissingTokenException;
 import org.antlr.runtime.Token;
+import org.antlr.runtime.RecognitionException;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
 public class UmlHandler {
     private static Hashtable<String, Component> components;
+    private List<Error> errorList;
+    public static final int TOKEN_ERROR = 0;
+    public static final int ERR_ON_SYNTAX = 1;
 
     public UmlHandler() {
+        errorList = new ArrayList<>();
         components = new Hashtable<>();
     }
 
     public void createNewInterface(Token id) {
-        if (idAlreadyExists(id.getText()))
-            Parser.sb.append(String.format("L'id %s esiste già \n", id.getText()));
+        if (idAlreadyExists(id.getText())) {
+            Parser.addError(String.format("ID already existing: %s \n", id.getText()), ERROR_TYPE.SEMANTICS);
+        }
         else
             components.put(id.getText(), new Component(id.getText(), new InterfaceBehaviour()));
     }
 
     public void createNewClass(Token id) {
-        if (idAlreadyExists(id.getText()))
-            Parser.sb.append(String.format("L'id %s esiste già \n", id.getText()));
+        if (idAlreadyExists(id.getText())) {
+            Parser.addError(String.format("ID already existing: %s \n", id.getText()), ERROR_TYPE.SEMANTICS);
+        }
         else
             components.put(id.getText(), new Component(id.getText(), new ClassBehaviour()));
     }
@@ -99,5 +111,35 @@ public class UmlHandler {
 
     public static List<Component> getComponents() {
         return components.values().stream().toList();
+    }
+
+    public void handleError(String[] tokenNames, RecognitionException e, String hdr, String m) {
+        String type = "";
+        String msg = "";
+        Error error = new Error();
+        if (e.token.getType() >= 0)
+            type = tokenNames[e.token.getType()];
+        if (e.token.getType() == UmlDesignerLexer.SCAN_ERROR) {
+            error.setType(ERROR_TYPE.LEXICAL);
+            msg = "Lexical Error at ";
+        } else {
+            error.setType(ERROR_TYPE.SYNTAX);
+            msg = "Syntax Error at ";
+        }
+
+        msg += "[" + e.token.getLine() + ", " + (e.token.getCharPositionInLine() + 1) + "]: " +
+                "Found ";
+        msg += type;
+        msg += " ('" + e.token.getText() + "')" + m;
+
+        if (e instanceof MissingTokenException)
+            msg = msg + m;
+
+        error.setMessage(msg);
+        errorList.add(error);
+    }
+
+    public List<Error> getErrorList() {
+        return errorList;
     }
 }

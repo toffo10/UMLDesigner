@@ -24,6 +24,7 @@ import java.io.StringReader;
 import javafx.util.Pair;
 import compiler.util.*;
 import compiler.handlers.*;
+import compiler.error.Error;
 }
 
 @members {
@@ -54,9 +55,14 @@ import compiler.handlers.*;
     // Per gestire gli errori da GUI
     @Override    
     public void displayRecognitionError(String[] tokenNames, RecognitionException e) {
-        String hdr = getErrorHeader(e);
-        String msg = getErrorMessage(e, tokenNames);
-        throw new RuntimeException(hdr + ":" + msg);
+        String hdr = " * " + getErrorHeader(e);
+        String msg = " - " + getErrorMessage(e, tokenNames);
+        Token tk = input.LT(1);
+        h.handleError(tokenNames, e, hdr, msg);
+    }
+    
+    public List<Error> getErrorList () {
+    	return h.getErrorList();
     }
 }
 

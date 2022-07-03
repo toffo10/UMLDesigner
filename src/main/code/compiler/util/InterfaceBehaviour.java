@@ -1,7 +1,7 @@
 package compiler.util;
 
 import compiler.Parser;
-import compiler.generated.UmlDesignerParser;
+import compiler.error.ERROR_TYPE;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -13,17 +13,17 @@ public class InterfaceBehaviour implements ComponentBehaviour {
 
     @Override
     public void addImplementation(String name, Component component) {
-        Parser.sb.append("Non è possibile effettuare l'implements su una interfaccia");
+        Parser.addError("Can't implement an interface", ERROR_TYPE.SEMANTICS);
     }
 
     @Override
     public void addRelation(String name, String cardinality, Component component) {
-        Parser.sb.append("Non è possibile aggiungere relazioni su una interfaccia");
+        Parser.addError("Can't add relations to an interface", ERROR_TYPE.SEMANTICS);
     }
 
     @Override
     public void addExtension(String name, Component component) {
-        Parser.sb.append("Non è possibile estendere una interfaccia");
+        Parser.addError("Can't extend an interface", ERROR_TYPE.SEMANTICS);
     }
 
     @Override
