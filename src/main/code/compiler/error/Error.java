@@ -1,5 +1,7 @@
 package compiler.error;
 
+import compiler.enums.ERROR_TYPE;
+
 import java.io.Serializable;
 
 public class Error implements Serializable {

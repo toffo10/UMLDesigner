@@ -1,7 +1,9 @@
-package compiler.util;
+package compiler.objects.behaviour;
 
 import compiler.Parser;
-import compiler.error.ERROR_TYPE;
+import compiler.enums.ComponentType;
+import compiler.enums.ERROR_TYPE;
+import compiler.objects.Component;
 import javafx.util.Pair;
 
 import java.util.HashMap;

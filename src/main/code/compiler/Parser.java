@@ -1,6 +1,6 @@
 package compiler;
 
-import compiler.error.ERROR_TYPE;
+import compiler.enums.ERROR_TYPE;
 import compiler.error.Error;
 import compiler.generated.UmlDesignerParser;
 

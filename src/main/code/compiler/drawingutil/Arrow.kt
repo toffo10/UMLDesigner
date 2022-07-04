@@ -1,6 +1,6 @@
 package compiler.drawingutil
 
-import compiler.util.ConnectionType
+import compiler.enums.ConnectionType
 import javafx.beans.InvalidationListener
 import javafx.beans.Observable
 import javafx.beans.property.DoubleProperty

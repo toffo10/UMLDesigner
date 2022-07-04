@@ -22,7 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import javafx.util.Pair;
-import compiler.util.*;
+import compiler.objects.*;
 import compiler.handlers.*;
 import compiler.error.Error;
 }

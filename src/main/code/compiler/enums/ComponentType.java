@@ -1,4 +1,4 @@
-package compiler.util;
+package compiler.enums;
 
 public enum ComponentType {
     CLASS, INTERFACE;

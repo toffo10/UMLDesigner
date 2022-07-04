@@ -1,4 +1,4 @@
-package compiler.util;
+package compiler.objects;
 
 public class Param {
     private String id;

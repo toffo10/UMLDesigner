@@ -1,5 +1,6 @@
-package compiler.util;
+package compiler.objects.behaviour;
 
+import compiler.objects.Component;
 import javafx.util.Pair;
 
 import java.util.List;

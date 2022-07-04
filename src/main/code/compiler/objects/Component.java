@@ -1,7 +1,11 @@
-package compiler.util;
+package compiler.objects;
 
 import compiler.Parser;
-import compiler.error.ERROR_TYPE;
+import compiler.enums.ComponentType;
+import compiler.enums.ERROR_TYPE;
+import compiler.objects.behaviour.ClassBehaviour;
+import compiler.objects.behaviour.ComponentBehaviour;
+import compiler.objects.behaviour.InterfaceBehaviour;
 
 import java.util.Hashtable;
 import java.util.Map;

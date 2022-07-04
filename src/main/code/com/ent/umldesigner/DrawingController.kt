@@ -3,9 +3,9 @@ package com.ent.umldesigner
 import compiler.Parser
 import compiler.drawingutil.Arrow
 import compiler.handlers.UmlHandler
-import compiler.util.Component
-import compiler.util.ComponentType
-import compiler.util.ConnectionType
+import compiler.objects.Component
+import compiler.enums.ComponentType
+import compiler.enums.ConnectionType
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor

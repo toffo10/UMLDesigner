@@ -9,13 +9,12 @@ import java.io.StringReader;
 
 import compiler.error.Error;
 import javafx.util.Pair;
-import compiler.util.*;
+import compiler.objects.*;
 import compiler.handlers.*;
-import compiler.error.*;
 
 
 import org.antlr.runtime.*;
-import java.util.Stack;
+
 import java.util.List;
 import java.util.ArrayList;
 

@@ -1,11 +1,12 @@
 package compiler.handlers;
 
 import compiler.Parser;
-import compiler.error.ERROR_TYPE;
+import compiler.enums.ERROR_TYPE;
 import compiler.error.Error;
 import compiler.generated.UmlDesignerLexer;
-import compiler.util.*;
-import compiler.util.ClassBehaviour;
+import compiler.objects.*;
+import compiler.objects.behaviour.ClassBehaviour;
+import compiler.objects.behaviour.InterfaceBehaviour;
 import javafx.util.Pair;
 import org.antlr.runtime.MissingTokenException;
 import org.antlr.runtime.Token;
