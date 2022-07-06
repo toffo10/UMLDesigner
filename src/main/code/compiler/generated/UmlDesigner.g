@@ -68,7 +68,7 @@ import compiler.error.Error;
 
 initUml
 @init { setUp(); }
-    : (abstractClassDefinition | classDefinition | interfaceDefinition)* { h.setUpRelations(); }
+    : (abstractClassDefinition | classDefinition | interfaceDefinition)+ { h.setUpRelations(); }
     ;
     
 classDefinition

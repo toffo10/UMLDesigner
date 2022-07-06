@@ -6,6 +6,7 @@ import compiler.enums.ERROR_TYPE;
 import compiler.objects.behaviour.ClassBehaviour;
 import compiler.objects.behaviour.ComponentBehaviour;
 import compiler.objects.behaviour.InterfaceBehaviour;
+import org.antlr.runtime.Token;
 
 import java.util.Hashtable;
 import java.util.Map;
@@ -15,25 +16,27 @@ public class Component {
     private final Map<String, Param> params;
     private final ComponentBehaviour componentBehaviour;
     private final String name;
+    private Token token;
 
-    public Component(String name, ComponentBehaviour componentBehaviour) {
+    public Component(Token token, String name, ComponentBehaviour componentBehaviour) {
         this.name = name;
         this.componentBehaviour = componentBehaviour;
+        this.token = token;
         methods = new Hashtable<>();
         params = new Hashtable<>();
     }
 
-    public void addParam(Param param) {
+    public void addParam(Token id, Param param) {
         if (params.containsKey(param.getId())) {
-            Parser.addError(String.format("Parameter %s already declared \n", param.getId()), ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("Parameter %s already declared \n", param.getId()), id, ERROR_TYPE.SEMANTICS);
         } else {
             params.put(param.getId(), param);
         }
     }
 
-    public void addMethod(Method method) {
+    public void addMethod(Token id, Method method) {
         if (params.containsKey(method.getId())) {
-            Parser.addError(String.format("Method %s already declared \n", method.getId()), ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("Method %s already declared \n", method.getId()), id, ERROR_TYPE.SEMANTICS);
         } else {
             methods.put(method.getId(), method);
         }
@@ -62,5 +65,9 @@ public class Component {
 
     public Map<String, Param> getParams() {
         return params;
+    }
+
+    public Token getToken() {
+        return token;
     }
 }

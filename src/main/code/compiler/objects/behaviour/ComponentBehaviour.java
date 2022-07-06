@@ -2,15 +2,16 @@ package compiler.objects.behaviour;
 
 import compiler.objects.Component;
 import javafx.util.Pair;
+import org.antlr.runtime.Token;
 
 import java.util.List;
 
 public interface ComponentBehaviour {
-    void addImplementation(String name, Component component);
+    void addImplementation(Token id, String name, Component component);
 
-    void addRelation(String name, String cardinality, Component component);
+    void addRelation(Token id, String name, String cardinality, Component component);
 
-    void addExtension(String name, Component component);
+    void addExtension(Token id, String name, Component component);
 
     List<Component> getImplementedComponents();
 
@@ -20,5 +21,5 @@ public interface ComponentBehaviour {
 
     void setUpRelations(Component component);
 
-    void checkClassesExistence();
+    void checkClassesExistence(Token token);
 }

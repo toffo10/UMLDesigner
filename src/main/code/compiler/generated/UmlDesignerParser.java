@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-07-03 17:35:40
+// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-07-04 15:13:04
 
 package compiler.generated;
 
@@ -6,15 +6,14 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
-
-import compiler.error.Error;
 import javafx.util.Pair;
 import compiler.objects.*;
 import compiler.handlers.*;
+import compiler.error.Error;
 
 
 import org.antlr.runtime.*;
-
+import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -125,14 +124,15 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "initUml"
-	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:69:1: initUml : ( abstractClassDefinition | classDefinition | interfaceDefinition )* ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:69:1: initUml : ( abstractClassDefinition | classDefinition | interfaceDefinition )+ ;
 	public final void initUml() throws RecognitionException {
 		 setUp(); 
 		try {
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:5: ( ( abstractClassDefinition | classDefinition | interfaceDefinition )* )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:5: ( ( abstractClassDefinition | classDefinition | interfaceDefinition )+ )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )+
 			{
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )*
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:71:7: ( abstractClassDefinition | classDefinition | interfaceDefinition )+
+			int cnt1=0;
 			loop1:
 			while (true) {
 				int alt1=4;
@@ -183,8 +183,11 @@ public class UmlDesignerParser extends Parser {
 					break;
 
 				default :
-					break loop1;
+					if ( cnt1 >= 1 ) break loop1;
+					EarlyExitException eee = new EarlyExitException(1, input);
+					throw eee;
 				}
+				cnt1++;
 			}
 
 			 h.setUpRelations(); 

@@ -29,26 +29,26 @@ public class UmlHandler {
 
     public void createNewInterface(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s \n", id.getText()), ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("ID already existing: %s \n", id.getText()), id, ERROR_TYPE.SEMANTICS);
         }
         else
-            components.put(id.getText(), new Component(id.getText(), new InterfaceBehaviour()));
+            components.put(id.getText(), new Component(id, id.getText(), new InterfaceBehaviour()));
     }
 
     public void createNewClass(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s \n", id.getText()), ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("ID already existing: %s \n", id.getText()), id, ERROR_TYPE.SEMANTICS);
         }
         else
-            components.put(id.getText(), new Component(id.getText(), new ClassBehaviour()));
+            components.put(id.getText(), new Component(id, id.getText(), new ClassBehaviour()));
     }
 
     public void addParams(Token id, Param p) {
-        components.get(id.getText()).addParam(p);
+        components.get(id.getText()).addParam(id, p);
     }
 
     public void addMethod(Token id, Method method) {
-        components.get(id.getText()).addMethod(method);
+        components.get(id.getText()).addMethod(id, method);
     }
 
     public void addMethodParam(List<MethodParam> list, Token id, Token type) {
@@ -57,7 +57,7 @@ public class UmlHandler {
 
     public void addImplementation(Token id, List<String> interfaces) {
         for (String ifs : interfaces) {
-            components.get(id.getText()).getComponentBehaviour().addImplementation(ifs, components.get(ifs));
+            components.get(id.getText()).getComponentBehaviour().addImplementation(id, ifs, components.get(ifs));
         }
     }
 
@@ -77,7 +77,7 @@ public class UmlHandler {
 
     private void checkClassExistence() {
         for (Component component : components.values()) {
-            component.getComponentBehaviour().checkClassesExistence();
+            component.getComponentBehaviour().checkClassesExistence(component.getToken());
         }
     }
 
@@ -99,13 +99,13 @@ public class UmlHandler {
 
     public void addExtension(Token id, List<String> classList) {
         for (String ifs : classList) {
-            components.get(id.getText()).getComponentBehaviour().addExtension(ifs, components.get(ifs));
+            components.get(id.getText()).getComponentBehaviour().addExtension(id, ifs, components.get(ifs));
         }
     }
 
     public void addRelations(Token id, List<Pair> classList) {
         for (Pair pair : classList) {
-            components.get(id.getText()).getComponentBehaviour().addRelation(pair.getKey().toString(),
+            components.get(id.getText()).getComponentBehaviour().addRelation(id, pair.getKey().toString(),
                     pair.getValue().toString(), components.get(pair.getKey()));
         }
     }
