@@ -48,7 +48,7 @@ class DrawingController {
         resultArea.text = Parser.doParsing(umlTextArea.text).toString()
 
         drawingArea.children.clear()
-        if (Parser.errorList.size == 0)
+        if (Parser.getErrorList().size == 0)
             drawUml()
     }
 

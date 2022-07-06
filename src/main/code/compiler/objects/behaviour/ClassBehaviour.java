@@ -2,7 +2,6 @@ package compiler.objects.behaviour;
 
 import compiler.Parser;
 import compiler.enums.ComponentType;
-import compiler.enums.ERROR_TYPE;
 import compiler.objects.Component;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
@@ -68,17 +67,17 @@ public class ClassBehaviour implements ComponentBehaviour {
     public void checkClassesExistence(Token token) {
         for (String key : implementedComponent.keySet()) {
             if (implementedComponent.get(key) == null) {
-                Parser.addError(String.format("Interface %s doesn't exist \n", key), token, ERROR_TYPE.SEMANTICS);
+                Parser.addError(String.format("Interface %s doesn't exist", key), token);
             }
         }
         for (String key : relatedComponent.keySet()) {
             if (relatedComponent.get(key).getKey() == null) {
-                Parser.addError(String.format("Class %s doesn't exist \n", key), token, ERROR_TYPE.SEMANTICS);
+                Parser.addError(String.format("Class %s doesn't exist", key), token);
             }
         }
         for (String key : extendedComponent.keySet()) {
             if (extendedComponent.get(key) == null) {
-                Parser.addError(String.format("Class %s doesn't exist \n", key), token, ERROR_TYPE.SEMANTICS);
+                Parser.addError(String.format("Class %s doesn't exist", key), token);
             }
         }
     }

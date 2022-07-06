@@ -29,7 +29,7 @@ public class UmlHandler {
 
     public void createNewInterface(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s \n", id.getText()), id, ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("ID already existing: %s", id.getText()), id);
         }
         else
             components.put(id.getText(), new Component(id, id.getText(), new InterfaceBehaviour()));
@@ -37,7 +37,7 @@ public class UmlHandler {
 
     public void createNewClass(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s \n", id.getText()), id, ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("ID already existing: %s", id.getText()), id);
         }
         else
             components.put(id.getText(), new Component(id, id.getText(), new ClassBehaviour()));

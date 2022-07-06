@@ -91,8 +91,8 @@ classValues [Token i]
        ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
        ('extends' COLON (c = classes { h.addExtension($i, c); })+ )?
        ('relations' COLON (cr = classRelations { h.addRelations($i, cr); })+)?
-       ('params' COLON  (p = classParameters { h.addParams($i, p); })+)?
-       ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)?
+       ('params' COLON  (p = classParameters { h.addParams($i, p); })+)
+       ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)
     ;
     
 classParameters returns [Param ip]

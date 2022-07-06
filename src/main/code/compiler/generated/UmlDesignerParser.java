@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-07-04 15:13:04
+// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-07-06 10:52:41
 
 package compiler.generated;
 
@@ -275,7 +275,7 @@ public class UmlDesignerParser extends Parser {
 
 
 	// $ANTLR start "classValues"
-	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:1: classValues[Token i] : ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? ;
+	// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:89:1: classValues[Token i] : ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ ) ( 'methods' COLON (m= classMethods )+ ) ;
 	public final void classValues(Token i) throws RecognitionException {
 		List<String> ifs =null;
 		List<String> c =null;
@@ -284,8 +284,8 @@ public class UmlDesignerParser extends Parser {
 		Method m =null;
 
 		try {
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:90:5: ( ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )? )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:8: ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ )? ( 'methods' COLON (m= classMethods )+ )?
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:90:5: ( ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ ) ( 'methods' COLON (m= classMethods )+ ) )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:8: ( 'implements' COLON (ifs= interfaces )+ )? ( 'extends' COLON (c= classes )+ )? ( 'relations' COLON (cr= classRelations )+ )? ( 'params' COLON (p= classParameters )+ ) ( 'methods' COLON (m= classMethods )+ )
 			{
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:91:8: ( 'implements' COLON (ifs= interfaces )+ )?
 			int alt3=2;
@@ -428,97 +428,77 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:8: ( 'params' COLON (p= classParameters )+ )?
-			int alt9=2;
-			int LA9_0 = input.LA(1);
-			if ( (LA9_0==38) ) {
-				alt9=1;
-			}
-			switch (alt9) {
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:8: ( 'params' COLON (p= classParameters )+ )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:9: 'params' COLON (p= classParameters )+
+			{
+			match(input,38,FOLLOW_38_in_classValues311); 
+			match(input,COLON,FOLLOW_COLON_in_classValues313); 
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:25: (p= classParameters )+
+			int cnt8=0;
+			loop8:
+			while (true) {
+				int alt8=2;
+				int LA8_0 = input.LA(1);
+				if ( (LA8_0==HASHTAG||(LA8_0 >= MINUS && LA8_0 <= PLUS)) ) {
+					alt8=1;
+				}
+
+				switch (alt8) {
 				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:9: 'params' COLON (p= classParameters )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:26: p= classParameters
 					{
-					match(input,38,FOLLOW_38_in_classValues311); 
-					match(input,COLON,FOLLOW_COLON_in_classValues313); 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:25: (p= classParameters )+
-					int cnt8=0;
-					loop8:
-					while (true) {
-						int alt8=2;
-						int LA8_0 = input.LA(1);
-						if ( (LA8_0==HASHTAG||(LA8_0 >= MINUS && LA8_0 <= PLUS)) ) {
-							alt8=1;
-						}
+					pushFollow(FOLLOW_classParameters_in_classValues321);
+					p=classParameters();
+					state._fsp--;
 
-						switch (alt8) {
-						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:94:26: p= classParameters
-							{
-							pushFollow(FOLLOW_classParameters_in_classValues321);
-							p=classParameters();
-							state._fsp--;
-
-							 h.addParams(i, p); 
-							}
-							break;
-
-						default :
-							if ( cnt8 >= 1 ) break loop8;
-							EarlyExitException eee = new EarlyExitException(8, input);
-							throw eee;
-						}
-						cnt8++;
-					}
-
+					 h.addParams(i, p); 
 					}
 					break;
 
+				default :
+					if ( cnt8 >= 1 ) break loop8;
+					EarlyExitException eee = new EarlyExitException(8, input);
+					throw eee;
+				}
+				cnt8++;
 			}
 
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:8: ( 'methods' COLON (m= classMethods )+ )?
-			int alt11=2;
-			int LA11_0 = input.LA(1);
-			if ( (LA11_0==37) ) {
-				alt11=1;
 			}
-			switch (alt11) {
+
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:8: ( 'methods' COLON (m= classMethods )+ )
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:9: 'methods' COLON (m= classMethods )+
+			{
+			match(input,37,FOLLOW_37_in_classValues336); 
+			match(input,COLON,FOLLOW_COLON_in_classValues338); 
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:25: (m= classMethods )+
+			int cnt9=0;
+			loop9:
+			while (true) {
+				int alt9=2;
+				int LA9_0 = input.LA(1);
+				if ( (LA9_0==HASHTAG||(LA9_0 >= MINUS && LA9_0 <= PLUS)) ) {
+					alt9=1;
+				}
+
+				switch (alt9) {
 				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:9: 'methods' COLON (m= classMethods )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:26: m= classMethods
 					{
-					match(input,37,FOLLOW_37_in_classValues337); 
-					match(input,COLON,FOLLOW_COLON_in_classValues339); 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:25: (m= classMethods )+
-					int cnt10=0;
-					loop10:
-					while (true) {
-						int alt10=2;
-						int LA10_0 = input.LA(1);
-						if ( (LA10_0==HASHTAG||(LA10_0 >= MINUS && LA10_0 <= PLUS)) ) {
-							alt10=1;
-						}
+					pushFollow(FOLLOW_classMethods_in_classValues345);
+					m=classMethods();
+					state._fsp--;
 
-						switch (alt10) {
-						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:95:26: m= classMethods
-							{
-							pushFollow(FOLLOW_classMethods_in_classValues346);
-							m=classMethods();
-							state._fsp--;
-
-							 h.addMethod(i, m); 
-							}
-							break;
-
-						default :
-							if ( cnt10 >= 1 ) break loop10;
-							EarlyExitException eee = new EarlyExitException(10, input);
-							throw eee;
-						}
-						cnt10++;
-					}
-
+					 h.addMethod(i, m); 
 					}
 					break;
+
+				default :
+					if ( cnt9 >= 1 ) break loop9;
+					EarlyExitException eee = new EarlyExitException(9, input);
+					throw eee;
+				}
+				cnt9++;
+			}
 
 			}
 
@@ -550,16 +530,16 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:5: ( visibility i= ID ( COLON t= type ) )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:7: visibility i= ID ( COLON t= type )
 			{
-			pushFollow(FOLLOW_visibility_in_classParameters380);
+			pushFollow(FOLLOW_visibility_in_classParameters378);
 			visibility();
 			state._fsp--;
 
-			i=(Token)match(input,ID,FOLLOW_ID_in_classParameters386); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_classParameters384); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:25: ( COLON t= type )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:99:26: COLON t= type
 			{
-			match(input,COLON,FOLLOW_COLON_in_classParameters389); 
-			pushFollow(FOLLOW_type_in_classParameters395);
+			match(input,COLON,FOLLOW_COLON_in_classParameters387); 
+			pushFollow(FOLLOW_type_in_classParameters393);
 			t=type();
 			state._fsp--;
 
@@ -597,23 +577,23 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:5: (v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )? )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:7: v= visibility i= ID LP (p= methodParams )? RP ( COLON t= type )?
 			{
-			pushFollow(FOLLOW_visibility_in_classMethods423);
+			pushFollow(FOLLOW_visibility_in_classMethods421);
 			v=visibility();
 			state._fsp--;
 
-			i=(Token)match(input,ID,FOLLOW_ID_in_classMethods429); 
-			match(input,LP,FOLLOW_LP_in_classMethods431); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_classMethods427); 
+			match(input,LP,FOLLOW_LP_in_classMethods429); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:34: (p= methodParams )?
-			int alt12=2;
-			int LA12_0 = input.LA(1);
-			if ( (LA12_0==ID) ) {
-				alt12=1;
+			int alt10=2;
+			int LA10_0 = input.LA(1);
+			if ( (LA10_0==ID) ) {
+				alt10=1;
 			}
-			switch (alt12) {
+			switch (alt10) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:34: p= methodParams
 					{
-					pushFollow(FOLLOW_methodParams_in_classMethods437);
+					pushFollow(FOLLOW_methodParams_in_classMethods435);
 					p=methodParams();
 					state._fsp--;
 
@@ -622,19 +602,19 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			match(input,RP,FOLLOW_RP_in_classMethods440); 
+			match(input,RP,FOLLOW_RP_in_classMethods438); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:53: ( COLON t= type )?
-			int alt13=2;
-			int LA13_0 = input.LA(1);
-			if ( (LA13_0==COLON) ) {
-				alt13=1;
+			int alt11=2;
+			int LA11_0 = input.LA(1);
+			if ( (LA11_0==COLON) ) {
+				alt11=1;
 			}
-			switch (alt13) {
+			switch (alt11) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:103:54: COLON t= type
 					{
-					match(input,COLON,FOLLOW_COLON_in_classMethods443); 
-					pushFollow(FOLLOW_type_in_classMethods449);
+					match(input,COLON,FOLLOW_COLON_in_classMethods441); 
+					pushFollow(FOLLOW_type_in_classMethods447);
 					t=type();
 					state._fsp--;
 
@@ -671,24 +651,71 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:107:5: ( 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface' )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:107:8: 'interface' 'id' COLON i= ID ( 'params' COLON (p= interfaceParams )+ )? ( 'methods' COLON (m= interfaceMethods )+ )? 'endInterface'
 			{
-			match(input,36,FOLLOW_36_in_interfaceDefinition471); 
-			match(input,33,FOLLOW_33_in_interfaceDefinition480); 
-			match(input,COLON,FOLLOW_COLON_in_interfaceDefinition482); 
-			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceDefinition488); 
+			match(input,36,FOLLOW_36_in_interfaceDefinition469); 
+			match(input,33,FOLLOW_33_in_interfaceDefinition478); 
+			match(input,COLON,FOLLOW_COLON_in_interfaceDefinition480); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceDefinition486); 
 			 h.createNewInterface(i); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:8: ( 'params' COLON (p= interfaceParams )+ )?
+			int alt13=2;
+			int LA13_0 = input.LA(1);
+			if ( (LA13_0==38) ) {
+				alt13=1;
+			}
+			switch (alt13) {
+				case 1 :
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:9: 'params' COLON (p= interfaceParams )+
+					{
+					match(input,38,FOLLOW_38_in_interfaceDefinition498); 
+					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition500); 
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:25: (p= interfaceParams )+
+					int cnt12=0;
+					loop12:
+					while (true) {
+						int alt12=2;
+						int LA12_0 = input.LA(1);
+						if ( (LA12_0==PLUS) ) {
+							alt12=1;
+						}
+
+						switch (alt12) {
+						case 1 :
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:26: p= interfaceParams
+							{
+							pushFollow(FOLLOW_interfaceParams_in_interfaceDefinition508);
+							p=interfaceParams();
+							state._fsp--;
+
+							 h.addParams(i, p); 
+							}
+							break;
+
+						default :
+							if ( cnt12 >= 1 ) break loop12;
+							EarlyExitException eee = new EarlyExitException(12, input);
+							throw eee;
+						}
+						cnt12++;
+					}
+
+					}
+					break;
+
+			}
+
+			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:8: ( 'methods' COLON (m= interfaceMethods )+ )?
 			int alt15=2;
 			int LA15_0 = input.LA(1);
-			if ( (LA15_0==38) ) {
+			if ( (LA15_0==37) ) {
 				alt15=1;
 			}
 			switch (alt15) {
 				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:9: 'params' COLON (p= interfaceParams )+
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:9: 'methods' COLON (m= interfaceMethods )+
 					{
-					match(input,38,FOLLOW_38_in_interfaceDefinition500); 
-					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition502); 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:25: (p= interfaceParams )+
+					match(input,37,FOLLOW_37_in_interfaceDefinition527); 
+					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition529); 
+					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:25: (m= interfaceMethods )+
 					int cnt14=0;
 					loop14:
 					while (true) {
@@ -700,13 +727,13 @@ public class UmlDesignerParser extends Parser {
 
 						switch (alt14) {
 						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:109:26: p= interfaceParams
+							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:26: m= interfaceMethods
 							{
-							pushFollow(FOLLOW_interfaceParams_in_interfaceDefinition510);
-							p=interfaceParams();
+							pushFollow(FOLLOW_interfaceMethods_in_interfaceDefinition536);
+							m=interfaceMethods();
 							state._fsp--;
 
-							 h.addParams(i, p); 
+							 h.addMethod(i, m); 
 							}
 							break;
 
@@ -723,54 +750,7 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:8: ( 'methods' COLON (m= interfaceMethods )+ )?
-			int alt17=2;
-			int LA17_0 = input.LA(1);
-			if ( (LA17_0==37) ) {
-				alt17=1;
-			}
-			switch (alt17) {
-				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:9: 'methods' COLON (m= interfaceMethods )+
-					{
-					match(input,37,FOLLOW_37_in_interfaceDefinition529); 
-					match(input,COLON,FOLLOW_COLON_in_interfaceDefinition531); 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:25: (m= interfaceMethods )+
-					int cnt16=0;
-					loop16:
-					while (true) {
-						int alt16=2;
-						int LA16_0 = input.LA(1);
-						if ( (LA16_0==PLUS) ) {
-							alt16=1;
-						}
-
-						switch (alt16) {
-						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:110:26: m= interfaceMethods
-							{
-							pushFollow(FOLLOW_interfaceMethods_in_interfaceDefinition538);
-							m=interfaceMethods();
-							state._fsp--;
-
-							 h.addMethod(i, m); 
-							}
-							break;
-
-						default :
-							if ( cnt16 >= 1 ) break loop16;
-							EarlyExitException eee = new EarlyExitException(16, input);
-							throw eee;
-						}
-						cnt16++;
-					}
-
-					}
-					break;
-
-			}
-
-			match(input,31,FOLLOW_31_in_interfaceDefinition555); 
+			match(input,31,FOLLOW_31_in_interfaceDefinition553); 
 			}
 
 		}
@@ -804,38 +784,38 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:116:5: (i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )* )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:116:8: i= ID c1= cardinality '/' c2= cardinality ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
 			{
-			i=(Token)match(input,ID,FOLLOW_ID_in_classRelations590); 
-			pushFollow(FOLLOW_cardinality_in_classRelations596);
+			i=(Token)match(input,ID,FOLLOW_ID_in_classRelations588); 
+			pushFollow(FOLLOW_cardinality_in_classRelations594);
 			c1=cardinality();
 			state._fsp--;
 
-			match(input,18,FOLLOW_18_in_classRelations598); 
-			pushFollow(FOLLOW_cardinality_in_classRelations604);
+			match(input,18,FOLLOW_18_in_classRelations596); 
+			pushFollow(FOLLOW_cardinality_in_classRelations602);
 			c2=cardinality();
 			state._fsp--;
 
 			 classList.add(new Pair<>(i.getText(),  c1.getText() + '/' + c2.getText())); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:117:7: ( COMMA i1= ID c3= cardinality '/' c4= cardinality )*
-			loop18:
+			loop16:
 			while (true) {
-				int alt18=2;
-				int LA18_0 = input.LA(1);
-				if ( (LA18_0==COMMA) ) {
-					alt18=1;
+				int alt16=2;
+				int LA16_0 = input.LA(1);
+				if ( (LA16_0==COMMA) ) {
+					alt16=1;
 				}
 
-				switch (alt18) {
+				switch (alt16) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:117:8: COMMA i1= ID c3= cardinality '/' c4= cardinality
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_classRelations623); 
-					i1=(Token)match(input,ID,FOLLOW_ID_in_classRelations629); 
-					pushFollow(FOLLOW_cardinality_in_classRelations635);
+					match(input,COMMA,FOLLOW_COMMA_in_classRelations621); 
+					i1=(Token)match(input,ID,FOLLOW_ID_in_classRelations627); 
+					pushFollow(FOLLOW_cardinality_in_classRelations633);
 					c3=cardinality();
 					state._fsp--;
 
-					match(input,18,FOLLOW_18_in_classRelations637); 
-					pushFollow(FOLLOW_cardinality_in_classRelations643);
+					match(input,18,FOLLOW_18_in_classRelations635); 
+					pushFollow(FOLLOW_cardinality_in_classRelations641);
 					c4=cardinality();
 					state._fsp--;
 
@@ -844,7 +824,7 @@ public class UmlDesignerParser extends Parser {
 					break;
 
 				default :
-					break loop18;
+					break loop16;
 				}
 			}
 
@@ -877,10 +857,10 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:121:5: ( PLUS i= ID COLON t= type )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:121:8: PLUS i= ID COLON t= type
 			{
-			match(input,PLUS,FOLLOW_PLUS_in_interfaceParams670); 
-			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceParams676); 
-			match(input,COLON,FOLLOW_COLON_in_interfaceParams678); 
-			pushFollow(FOLLOW_type_in_interfaceParams684);
+			match(input,PLUS,FOLLOW_PLUS_in_interfaceParams668); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceParams674); 
+			match(input,COLON,FOLLOW_COLON_in_interfaceParams676); 
+			pushFollow(FOLLOW_type_in_interfaceParams682);
 			t=type();
 			state._fsp--;
 
@@ -916,20 +896,20 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:5: (v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )? )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:8: v= PLUS i= ID LP (p= methodParams )? RP ( COLON t= type )?
 			{
-			v=(Token)match(input,PLUS,FOLLOW_PLUS_in_interfaceMethods716); 
-			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceMethods722); 
-			match(input,LP,FOLLOW_LP_in_interfaceMethods724); 
+			v=(Token)match(input,PLUS,FOLLOW_PLUS_in_interfaceMethods714); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_interfaceMethods720); 
+			match(input,LP,FOLLOW_LP_in_interfaceMethods722); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:29: (p= methodParams )?
-			int alt19=2;
-			int LA19_0 = input.LA(1);
-			if ( (LA19_0==ID) ) {
-				alt19=1;
+			int alt17=2;
+			int LA17_0 = input.LA(1);
+			if ( (LA17_0==ID) ) {
+				alt17=1;
 			}
-			switch (alt19) {
+			switch (alt17) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:29: p= methodParams
 					{
-					pushFollow(FOLLOW_methodParams_in_interfaceMethods730);
+					pushFollow(FOLLOW_methodParams_in_interfaceMethods728);
 					p=methodParams();
 					state._fsp--;
 
@@ -938,19 +918,19 @@ public class UmlDesignerParser extends Parser {
 
 			}
 
-			match(input,RP,FOLLOW_RP_in_interfaceMethods733); 
+			match(input,RP,FOLLOW_RP_in_interfaceMethods731); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:48: ( COLON t= type )?
-			int alt20=2;
-			int LA20_0 = input.LA(1);
-			if ( (LA20_0==COLON) ) {
-				alt20=1;
+			int alt18=2;
+			int LA18_0 = input.LA(1);
+			if ( (LA18_0==COLON) ) {
+				alt18=1;
 			}
-			switch (alt20) {
+			switch (alt18) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:125:49: COLON t= type
 					{
-					match(input,COLON,FOLLOW_COLON_in_interfaceMethods736); 
-					pushFollow(FOLLOW_type_in_interfaceMethods742);
+					match(input,COLON,FOLLOW_COLON_in_interfaceMethods734); 
+					pushFollow(FOLLOW_type_in_interfaceMethods740);
 					t=type();
 					state._fsp--;
 
@@ -992,30 +972,30 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:5: (i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )* )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:130:9: i1= ID COLON t1= type ( COMMA i2= ID COLON t2= type )*
 			{
-			i1=(Token)match(input,ID,FOLLOW_ID_in_methodParams778); 
-			match(input,COLON,FOLLOW_COLON_in_methodParams780); 
-			pushFollow(FOLLOW_type_in_methodParams786);
+			i1=(Token)match(input,ID,FOLLOW_ID_in_methodParams776); 
+			match(input,COLON,FOLLOW_COLON_in_methodParams778); 
+			pushFollow(FOLLOW_type_in_methodParams784);
 			t1=type();
 			state._fsp--;
 
 			 h.addMethodParam(imp, i1, t1); 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:8: ( COMMA i2= ID COLON t2= type )*
-			loop21:
+			loop19:
 			while (true) {
-				int alt21=2;
-				int LA21_0 = input.LA(1);
-				if ( (LA21_0==COMMA) ) {
-					alt21=1;
+				int alt19=2;
+				int LA19_0 = input.LA(1);
+				if ( (LA19_0==COMMA) ) {
+					alt19=1;
 				}
 
-				switch (alt21) {
+				switch (alt19) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:131:9: COMMA i2= ID COLON t2= type
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_methodParams804); 
-					i2=(Token)match(input,ID,FOLLOW_ID_in_methodParams810); 
-					match(input,COLON,FOLLOW_COLON_in_methodParams812); 
-					pushFollow(FOLLOW_type_in_methodParams818);
+					match(input,COMMA,FOLLOW_COMMA_in_methodParams802); 
+					i2=(Token)match(input,ID,FOLLOW_ID_in_methodParams808); 
+					match(input,COLON,FOLLOW_COLON_in_methodParams810); 
+					pushFollow(FOLLOW_type_in_methodParams816);
 					t2=type();
 					state._fsp--;
 
@@ -1024,7 +1004,7 @@ public class UmlDesignerParser extends Parser {
 					break;
 
 				default :
-					break loop21;
+					break loop19;
 				}
 			}
 
@@ -1058,29 +1038,29 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:5: (i= ID ( COMMA i1= ID )* )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:136:9: i= ID ( COMMA i1= ID )*
 			{
-			i=(Token)match(input,ID,FOLLOW_ID_in_interfaces860); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_interfaces858); 
 			 ifList.add(i.getText());  
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:9: ( COMMA i1= ID )*
-			loop22:
+			loop20:
 			while (true) {
-				int alt22=2;
-				int LA22_0 = input.LA(1);
-				if ( (LA22_0==COMMA) ) {
-					alt22=1;
+				int alt20=2;
+				int LA20_0 = input.LA(1);
+				if ( (LA20_0==COMMA) ) {
+					alt20=1;
 				}
 
-				switch (alt22) {
+				switch (alt20) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:137:10: COMMA i1= ID
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_interfaces875); 
-					i1=(Token)match(input,ID,FOLLOW_ID_in_interfaces881); 
+					match(input,COMMA,FOLLOW_COMMA_in_interfaces873); 
+					i1=(Token)match(input,ID,FOLLOW_ID_in_interfaces879); 
 					 ifList.add(i1.getText()); 
 					}
 					break;
 
 				default :
-					break loop22;
+					break loop20;
 				}
 			}
 
@@ -1114,29 +1094,29 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:142:5: (i= ID ( COMMA i1= ID )* )
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:142:8: i= ID ( COMMA i1= ID )*
 			{
-			i=(Token)match(input,ID,FOLLOW_ID_in_classes917); 
+			i=(Token)match(input,ID,FOLLOW_ID_in_classes915); 
 			 classList.add(i.getText()) ; 
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:143:7: ( COMMA i1= ID )*
-			loop23:
+			loop21:
 			while (true) {
-				int alt23=2;
-				int LA23_0 = input.LA(1);
-				if ( (LA23_0==COMMA) ) {
-					alt23=1;
+				int alt21=2;
+				int LA21_0 = input.LA(1);
+				if ( (LA21_0==COMMA) ) {
+					alt21=1;
 				}
 
-				switch (alt23) {
+				switch (alt21) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:143:8: COMMA i1= ID
 					{
-					match(input,COMMA,FOLLOW_COMMA_in_classes930); 
-					i1=(Token)match(input,ID,FOLLOW_ID_in_classes936); 
+					match(input,COMMA,FOLLOW_COMMA_in_classes928); 
+					i1=(Token)match(input,ID,FOLLOW_ID_in_classes934); 
 					 classList.add(i1.getText()); 
 					}
 					break;
 
 				default :
-					break loop23;
+					break loop21;
 				}
 			}
 
@@ -1169,45 +1149,45 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:7: (x= PLUS |x= MINUS |x= HASHTAG )
 			{
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:7: (x= PLUS |x= MINUS |x= HASHTAG )
-			int alt24=3;
+			int alt22=3;
 			switch ( input.LA(1) ) {
 			case PLUS:
 				{
-				alt24=1;
+				alt22=1;
 				}
 				break;
 			case MINUS:
 				{
-				alt24=2;
+				alt22=2;
 				}
 				break;
 			case HASHTAG:
 				{
-				alt24=3;
+				alt22=3;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 24, 0, input);
+					new NoViableAltException("", 22, 0, input);
 				throw nvae;
 			}
-			switch (alt24) {
+			switch (alt22) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:8: x= PLUS
 					{
-					x=(Token)match(input,PLUS,FOLLOW_PLUS_in_visibility975); 
+					x=(Token)match(input,PLUS,FOLLOW_PLUS_in_visibility973); 
 					}
 					break;
 				case 2 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:19: x= MINUS
 					{
-					x=(Token)match(input,MINUS,FOLLOW_MINUS_in_visibility983); 
+					x=(Token)match(input,MINUS,FOLLOW_MINUS_in_visibility981); 
 					}
 					break;
 				case 3 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:147:31: x= HASHTAG
 					{
-					x=(Token)match(input,HASHTAG,FOLLOW_HASHTAG_in_visibility991); 
+					x=(Token)match(input,HASHTAG,FOLLOW_HASHTAG_in_visibility989); 
 					}
 					break;
 
@@ -1243,56 +1223,56 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
 			{
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:7: (x= '0..1' |x= '1' |x= '0..*' |x= '1..*' )
-			int alt25=4;
+			int alt23=4;
 			switch ( input.LA(1) ) {
 			case 20:
 				{
-				alt25=1;
+				alt23=1;
 				}
 				break;
 			case 21:
 				{
-				alt25=2;
+				alt23=2;
 				}
 				break;
 			case 19:
 				{
-				alt25=3;
+				alt23=3;
 				}
 				break;
 			case 22:
 				{
-				alt25=4;
+				alt23=4;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 25, 0, input);
+					new NoViableAltException("", 23, 0, input);
 				throw nvae;
 			}
-			switch (alt25) {
+			switch (alt23) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:151:8: x= '0..1'
 					{
-					x=(Token)match(input,20,FOLLOW_20_in_cardinality1024); 
+					x=(Token)match(input,20,FOLLOW_20_in_cardinality1022); 
 					}
 					break;
 				case 2 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:152:7: x= '1'
 					{
-					x=(Token)match(input,21,FOLLOW_21_in_cardinality1037); 
+					x=(Token)match(input,21,FOLLOW_21_in_cardinality1035); 
 					}
 					break;
 				case 3 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:153:7: x= '0..*'
 					{
-					x=(Token)match(input,19,FOLLOW_19_in_cardinality1050); 
+					x=(Token)match(input,19,FOLLOW_19_in_cardinality1048); 
 					}
 					break;
 				case 4 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:154:7: x= '1..*'
 					{
-					x=(Token)match(input,22,FOLLOW_22_in_cardinality1063); 
+					x=(Token)match(input,22,FOLLOW_22_in_cardinality1061); 
 					}
 					break;
 
@@ -1328,78 +1308,78 @@ public class UmlDesignerParser extends Parser {
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
 			{
 			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:4: (x= 'int' |x= 'double' |x= 'char' |x= 'boolean' |x= 'String' |x= ID )
-			int alt26=6;
+			int alt24=6;
 			switch ( input.LA(1) ) {
 			case 35:
 				{
-				alt26=1;
+				alt24=1;
 				}
 				break;
 			case 28:
 				{
-				alt26=2;
+				alt24=2;
 				}
 				break;
 			case 26:
 				{
-				alt26=3;
+				alt24=3;
 				}
 				break;
 			case 25:
 				{
-				alt26=4;
+				alt24=4;
 				}
 				break;
 			case 23:
 				{
-				alt26=5;
+				alt24=5;
 				}
 				break;
 			case ID:
 				{
-				alt26=6;
+				alt24=6;
 				}
 				break;
 			default:
 				NoViableAltException nvae =
-					new NoViableAltException("", 26, 0, input);
+					new NoViableAltException("", 24, 0, input);
 				throw nvae;
 			}
-			switch (alt26) {
+			switch (alt24) {
 				case 1 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:159:6: x= 'int'
 					{
-					x=(Token)match(input,35,FOLLOW_35_in_type1098); 
+					x=(Token)match(input,35,FOLLOW_35_in_type1096); 
 					}
 					break;
 				case 2 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:160:5: x= 'double'
 					{
-					x=(Token)match(input,28,FOLLOW_28_in_type1110); 
+					x=(Token)match(input,28,FOLLOW_28_in_type1108); 
 					}
 					break;
 				case 3 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:161:5: x= 'char'
 					{
-					x=(Token)match(input,26,FOLLOW_26_in_type1121); 
+					x=(Token)match(input,26,FOLLOW_26_in_type1119); 
 					}
 					break;
 				case 4 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:162:5: x= 'boolean'
 					{
-					x=(Token)match(input,25,FOLLOW_25_in_type1132); 
+					x=(Token)match(input,25,FOLLOW_25_in_type1130); 
 					}
 					break;
 				case 5 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:163:5: x= 'String'
 					{
-					x=(Token)match(input,23,FOLLOW_23_in_type1143); 
+					x=(Token)match(input,23,FOLLOW_23_in_type1141); 
 					}
 					break;
 				case 6 :
 					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:164:5: x= ID
 					{
-					x=(Token)match(input,ID,FOLLOW_ID_in_type1154); 
+					x=(Token)match(input,ID,FOLLOW_ID_in_type1152); 
 					}
 					break;
 
@@ -1430,96 +1410,96 @@ public class UmlDesignerParser extends Parser {
 	public static final BitSet FOLLOW_27_in_classDefinition107 = new BitSet(new long[]{0x0000000200000000L});
 	public static final BitSet FOLLOW_33_in_classDefinition117 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_classDefinition119 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classDefinition125 = new BitSet(new long[]{0x000000E540000000L});
+	public static final BitSet FOLLOW_ID_in_classDefinition125 = new BitSet(new long[]{0x000000C500000000L});
 	public static final BitSet FOLLOW_classValues_in_classDefinition134 = new BitSet(new long[]{0x0000000040000000L});
 	public static final BitSet FOLLOW_30_in_classDefinition144 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_24_in_abstractClassDefinition167 = new BitSet(new long[]{0x0000000200000000L});
 	public static final BitSet FOLLOW_33_in_abstractClassDefinition176 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_abstractClassDefinition178 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_abstractClassDefinition184 = new BitSet(new long[]{0x000000E520000000L});
+	public static final BitSet FOLLOW_ID_in_abstractClassDefinition184 = new BitSet(new long[]{0x000000C500000000L});
 	public static final BitSet FOLLOW_classValues_in_abstractClassDefinition193 = new BitSet(new long[]{0x0000000020000000L});
 	public static final BitSet FOLLOW_29_in_abstractClassDefinition203 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_34_in_classValues234 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_classValues236 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_interfaces_in_classValues243 = new BitSet(new long[]{0x000000E100000802L});
+	public static final BitSet FOLLOW_interfaces_in_classValues243 = new BitSet(new long[]{0x000000C100000800L});
 	public static final BitSet FOLLOW_32_in_classValues260 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_classValues262 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_classes_in_classValues269 = new BitSet(new long[]{0x000000E000000802L});
+	public static final BitSet FOLLOW_classes_in_classValues269 = new BitSet(new long[]{0x000000C000000800L});
 	public static final BitSet FOLLOW_39_in_classValues286 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_classValues288 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_classRelations_in_classValues295 = new BitSet(new long[]{0x0000006000000802L});
+	public static final BitSet FOLLOW_classRelations_in_classValues295 = new BitSet(new long[]{0x0000004000000800L});
 	public static final BitSet FOLLOW_38_in_classValues311 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_COLON_in_classValues313 = new BitSet(new long[]{0x0000000000006400L});
-	public static final BitSet FOLLOW_classParameters_in_classValues321 = new BitSet(new long[]{0x0000002000006402L});
-	public static final BitSet FOLLOW_37_in_classValues337 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_classValues339 = new BitSet(new long[]{0x0000000000006400L});
-	public static final BitSet FOLLOW_classMethods_in_classValues346 = new BitSet(new long[]{0x0000000000006402L});
-	public static final BitSet FOLLOW_visibility_in_classParameters380 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classParameters386 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_classParameters389 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_classParameters395 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_visibility_in_classMethods423 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classMethods429 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_LP_in_classMethods431 = new BitSet(new long[]{0x0000000000008800L});
-	public static final BitSet FOLLOW_methodParams_in_classMethods437 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_RP_in_classMethods440 = new BitSet(new long[]{0x0000000000000022L});
-	public static final BitSet FOLLOW_COLON_in_classMethods443 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_classMethods449 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_36_in_interfaceDefinition471 = new BitSet(new long[]{0x0000000200000000L});
-	public static final BitSet FOLLOW_33_in_interfaceDefinition480 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_interfaceDefinition482 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_interfaceDefinition488 = new BitSet(new long[]{0x0000006080000000L});
-	public static final BitSet FOLLOW_38_in_interfaceDefinition500 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_interfaceDefinition502 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_interfaceParams_in_interfaceDefinition510 = new BitSet(new long[]{0x0000002080004000L});
-	public static final BitSet FOLLOW_37_in_interfaceDefinition529 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_interfaceDefinition531 = new BitSet(new long[]{0x0000000000004000L});
-	public static final BitSet FOLLOW_interfaceMethods_in_interfaceDefinition538 = new BitSet(new long[]{0x0000000080004000L});
-	public static final BitSet FOLLOW_31_in_interfaceDefinition555 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_classRelations590 = new BitSet(new long[]{0x0000000000780000L});
-	public static final BitSet FOLLOW_cardinality_in_classRelations596 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_18_in_classRelations598 = new BitSet(new long[]{0x0000000000780000L});
-	public static final BitSet FOLLOW_cardinality_in_classRelations604 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_COMMA_in_classRelations623 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classRelations629 = new BitSet(new long[]{0x0000000000780000L});
-	public static final BitSet FOLLOW_cardinality_in_classRelations635 = new BitSet(new long[]{0x0000000000040000L});
-	public static final BitSet FOLLOW_18_in_classRelations637 = new BitSet(new long[]{0x0000000000780000L});
-	public static final BitSet FOLLOW_cardinality_in_classRelations643 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_PLUS_in_interfaceParams670 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_interfaceParams676 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_interfaceParams678 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_interfaceParams684 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PLUS_in_interfaceMethods716 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_interfaceMethods722 = new BitSet(new long[]{0x0000000000001000L});
-	public static final BitSet FOLLOW_LP_in_interfaceMethods724 = new BitSet(new long[]{0x0000000000008800L});
-	public static final BitSet FOLLOW_methodParams_in_interfaceMethods730 = new BitSet(new long[]{0x0000000000008000L});
-	public static final BitSet FOLLOW_RP_in_interfaceMethods733 = new BitSet(new long[]{0x0000000000000022L});
-	public static final BitSet FOLLOW_COLON_in_interfaceMethods736 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_interfaceMethods742 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_methodParams778 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_methodParams780 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_methodParams786 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_COMMA_in_methodParams804 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_methodParams810 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_COLON_in_methodParams812 = new BitSet(new long[]{0x0000000816800800L});
-	public static final BitSet FOLLOW_type_in_methodParams818 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_ID_in_interfaces860 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_COMMA_in_interfaces875 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_interfaces881 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_ID_in_classes917 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_COMMA_in_classes930 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ID_in_classes936 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_PLUS_in_visibility975 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MINUS_in_visibility983 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_HASHTAG_in_visibility991 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_20_in_cardinality1024 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_21_in_cardinality1037 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_19_in_cardinality1050 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_22_in_cardinality1063 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_35_in_type1098 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_28_in_type1110 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_26_in_type1121 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_25_in_type1132 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_23_in_type1143 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_type1154 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classParameters_in_classValues321 = new BitSet(new long[]{0x0000002000006400L});
+	public static final BitSet FOLLOW_37_in_classValues336 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_classValues338 = new BitSet(new long[]{0x0000000000006400L});
+	public static final BitSet FOLLOW_classMethods_in_classValues345 = new BitSet(new long[]{0x0000000000006402L});
+	public static final BitSet FOLLOW_visibility_in_classParameters378 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_classParameters384 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_classParameters387 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_classParameters393 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_visibility_in_classMethods421 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_classMethods427 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_LP_in_classMethods429 = new BitSet(new long[]{0x0000000000008800L});
+	public static final BitSet FOLLOW_methodParams_in_classMethods435 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_RP_in_classMethods438 = new BitSet(new long[]{0x0000000000000022L});
+	public static final BitSet FOLLOW_COLON_in_classMethods441 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_classMethods447 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_36_in_interfaceDefinition469 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_33_in_interfaceDefinition478 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_interfaceDefinition480 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_interfaceDefinition486 = new BitSet(new long[]{0x0000006080000000L});
+	public static final BitSet FOLLOW_38_in_interfaceDefinition498 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_interfaceDefinition500 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_interfaceParams_in_interfaceDefinition508 = new BitSet(new long[]{0x0000002080004000L});
+	public static final BitSet FOLLOW_37_in_interfaceDefinition527 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_interfaceDefinition529 = new BitSet(new long[]{0x0000000000004000L});
+	public static final BitSet FOLLOW_interfaceMethods_in_interfaceDefinition536 = new BitSet(new long[]{0x0000000080004000L});
+	public static final BitSet FOLLOW_31_in_interfaceDefinition553 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_classRelations588 = new BitSet(new long[]{0x0000000000780000L});
+	public static final BitSet FOLLOW_cardinality_in_classRelations594 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_18_in_classRelations596 = new BitSet(new long[]{0x0000000000780000L});
+	public static final BitSet FOLLOW_cardinality_in_classRelations602 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_COMMA_in_classRelations621 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_classRelations627 = new BitSet(new long[]{0x0000000000780000L});
+	public static final BitSet FOLLOW_cardinality_in_classRelations633 = new BitSet(new long[]{0x0000000000040000L});
+	public static final BitSet FOLLOW_18_in_classRelations635 = new BitSet(new long[]{0x0000000000780000L});
+	public static final BitSet FOLLOW_cardinality_in_classRelations641 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_PLUS_in_interfaceParams668 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_interfaceParams674 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_interfaceParams676 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_interfaceParams682 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PLUS_in_interfaceMethods714 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_interfaceMethods720 = new BitSet(new long[]{0x0000000000001000L});
+	public static final BitSet FOLLOW_LP_in_interfaceMethods722 = new BitSet(new long[]{0x0000000000008800L});
+	public static final BitSet FOLLOW_methodParams_in_interfaceMethods728 = new BitSet(new long[]{0x0000000000008000L});
+	public static final BitSet FOLLOW_RP_in_interfaceMethods731 = new BitSet(new long[]{0x0000000000000022L});
+	public static final BitSet FOLLOW_COLON_in_interfaceMethods734 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_interfaceMethods740 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_methodParams776 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_methodParams778 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_methodParams784 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_COMMA_in_methodParams802 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_methodParams808 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_COLON_in_methodParams810 = new BitSet(new long[]{0x0000000816800800L});
+	public static final BitSet FOLLOW_type_in_methodParams816 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_ID_in_interfaces858 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_COMMA_in_interfaces873 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_interfaces879 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_ID_in_classes915 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_COMMA_in_classes928 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ID_in_classes934 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_PLUS_in_visibility973 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_MINUS_in_visibility981 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_HASHTAG_in_visibility989 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_20_in_cardinality1022 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_21_in_cardinality1035 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_19_in_cardinality1048 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_22_in_cardinality1061 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_35_in_type1096 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_28_in_type1108 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_26_in_type1119 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_25_in_type1130 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_23_in_type1141 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_type1152 = new BitSet(new long[]{0x0000000000000002L});
 }

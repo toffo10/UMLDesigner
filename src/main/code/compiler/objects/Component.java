@@ -2,7 +2,6 @@ package compiler.objects;
 
 import compiler.Parser;
 import compiler.enums.ComponentType;
-import compiler.enums.ERROR_TYPE;
 import compiler.objects.behaviour.ClassBehaviour;
 import compiler.objects.behaviour.ComponentBehaviour;
 import compiler.objects.behaviour.InterfaceBehaviour;
@@ -28,7 +27,7 @@ public class Component {
 
     public void addParam(Token id, Param param) {
         if (params.containsKey(param.getId())) {
-            Parser.addError(String.format("Parameter %s already declared \n", param.getId()), id, ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("Parameter %s already declared", param.getId()), id);
         } else {
             params.put(param.getId(), param);
         }
@@ -36,7 +35,7 @@ public class Component {
 
     public void addMethod(Token id, Method method) {
         if (params.containsKey(method.getId())) {
-            Parser.addError(String.format("Method %s already declared \n", method.getId()), id, ERROR_TYPE.SEMANTICS);
+            Parser.addError(String.format("Method %s already declared", method.getId()), id);
         } else {
             methods.put(method.getId(), method);
         }

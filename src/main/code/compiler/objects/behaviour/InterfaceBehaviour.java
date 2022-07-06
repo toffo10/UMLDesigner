@@ -1,7 +1,6 @@
 package compiler.objects.behaviour;
 
 import compiler.Parser;
-import compiler.enums.ERROR_TYPE;
 import compiler.objects.Component;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
@@ -15,17 +14,17 @@ public class InterfaceBehaviour implements ComponentBehaviour {
 
     @Override
     public void addImplementation(Token id, String name, Component component) {
-        Parser.addError("Can't implement an interface", id, ERROR_TYPE.SEMANTICS);
+        Parser.addError("Can't implement an interface", id);
     }
 
     @Override
     public void addRelation(Token id, String name, String cardinality, Component component) {
-        Parser.addError("Can't add relations to an interface", id, ERROR_TYPE.SEMANTICS);
+        Parser.addError("Can't add relations to an interface", id);
     }
 
     @Override
     public void addExtension(Token id, String name, Component component) {
-        Parser.addError("Can't extend an interface", id, ERROR_TYPE.SEMANTICS);
+        Parser.addError("Can't extend an interface", id);
     }
 
     @Override
