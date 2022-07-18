@@ -1,7 +1,7 @@
 package com.ent.umldesigner
 
 import compiler.Parser
-import compiler.drawingutil.Arrow
+import com.ent.umldesigner.drawingutil.Arrow
 import compiler.handlers.UmlHandler
 import compiler.objects.Component
 import compiler.enums.ComponentType

@@ -1,4 +1,4 @@
-package compiler.drawingutil
+package com.ent.umldesigner.drawingutil
 
 import compiler.enums.ConnectionType
 import javafx.beans.InvalidationListener
