@@ -8,10 +8,11 @@ import javafx.scene.Group
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Line
 import javafx.scene.text.Text
+import java.util.Random
 import kotlin.math.hypot
 
 
-class Arrow private constructor(
+class Connector private constructor(
     connectionType: ConnectionType,
     line: Line,
     arrow1: Line,
@@ -58,18 +59,9 @@ class Arrow private constructor(
             if (textSplitted.size == 2) {
 
                 text1.text = cardinality.split("/")[0]
+
                 text1.x = if (startX > endX) endX + 20 else endX - 20
                 text1.y = if (startY > endY) endY + 20 else endY - 20
-
-                /*
-                text1.x = (startX + endX) / 2
-                if (text1.x > (pane2.layoutX + pane2.width * 3 / 4)) text1.x = pane2.layoutX + pane2.width * 3 / 4
-                if (text1.x < pane2.layoutX + pane2.width / 4) text1.x = pane2.layoutX + pane2.width / 4
-
-                text1.y = (startY + endY) / 2
-                if (text1.y > (pane2.layoutY + pane2.height * 3 / 4)) text1.y = pane2.layoutY + pane2.height * 3 / 4
-                if (text1.y < pane2.layoutY + pane2.height / 4) text1.y = pane2.layoutY + pane2.height / 4
-                */
 
                 text2.text = cardinality.split("/")[1]
 

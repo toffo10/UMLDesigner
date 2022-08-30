@@ -1,7 +1,7 @@
 package com.ent.umldesigner
 
 import compiler.Parser
-import com.ent.umldesigner.drawingutil.Arrow
+import com.ent.umldesigner.drawingutil.Connector
 import compiler.handlers.UmlHandler
 import compiler.objects.Component
 import compiler.enums.ComponentType
@@ -191,36 +191,36 @@ class DrawingController {
         val v1: Pane = components[name1]!!
         val v2: Pane = components[name2]!!
 
-        val arrow = Arrow(connectionType, v1, v2)
-        arrow.startX = v1.layoutX
-        arrow.startY = v1.layoutY
-        arrow.endX = v2.layoutX
-        arrow.endY = v2.layoutY
+        val connector = Connector(connectionType, v1, v2)
+        connector.startX = v1.layoutX
+        connector.startY = v1.layoutY
+        connector.endX = v2.layoutX
+        connector.endY = v2.layoutY
 
-        arrow.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
-        arrow.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
+        connector.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
+        connector.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
 
         v2.layoutYProperty().addListener { obs, _, _ ->
             var bound = true
 
-            if (arrow.startY <= obs.value.toDouble()) {
-                arrow.endY = obs.value.toDouble()
-            } else if (arrow.startY < obs.value.toDouble() + v2.height) {
+            if (connector.startY <= obs.value.toDouble()) {
+                connector.endY = obs.value.toDouble()
+            } else if (connector.startY < obs.value.toDouble() + v2.height) {
                 bound = false
 
-                arrow.endXProperty().unbind()
+                connector.endXProperty().unbind()
 
-                arrow.endY = v2.layoutY + (v2.height / 2)
-                if (arrow.endX <= v1.layoutX)
-                    arrow.endX = v2.layoutX + v2.width
+                connector.endY = v2.layoutY + (v2.height / 2)
+                if (connector.endX <= v1.layoutX)
+                    connector.endX = v2.layoutX + v2.width
                 else
-                    arrow.endX = v2.layoutX
+                    connector.endX = v2.layoutX
             } else {
-                arrow.endY = obs.value.toDouble() + v2.height
+                connector.endY = obs.value.toDouble() + v2.height
             }
 
-            if (!arrow.endXProperty().isBound && bound) {
-                arrow.endXProperty().bind(
+            if (!connector.endXProperty().isBound && bound) {
+                connector.endXProperty().bind(
                     v2.layoutXProperty().add(v2.widthProperty().divide(2))
                 )
             }
@@ -230,33 +230,33 @@ class DrawingController {
             var bound = true
 
             if (obs.value.toDouble() + v1.height <= v2.layoutY) {
-                arrow.endY = v2.layoutY
+                connector.endY = v2.layoutY
             } else if (obs.value.toDouble() <= v2.layoutY + v2.height) {
                 bound = false
 
-                arrow.endXProperty().unbind()
+                connector.endXProperty().unbind()
 
-                arrow.endY = v2.layoutY + (v2.height / 2)
-                if (arrow.endX <= v1.layoutX)
-                    arrow.endX = v2.layoutX + v2.width
+                connector.endY = v2.layoutY + (v2.height / 2)
+                if (connector.endX <= v1.layoutX)
+                    connector.endX = v2.layoutX + v2.width
                 else
-                    arrow.endX = v2.layoutX
+                    connector.endX = v2.layoutX
             } else {
-                arrow.endY = v2.layoutY + v2.height
+                connector.endY = v2.layoutY + v2.height
             }
 
-            if (!arrow.endXProperty().isBound && bound) {
-                arrow.endXProperty().bind(
+            if (!connector.endXProperty().isBound && bound) {
+                connector.endXProperty().bind(
                     v2.layoutXProperty().add(v2.widthProperty().divide(2))
                 )
             }
         }
 
         if (cardinality.isNotEmpty()) {
-            arrow.cardinality = cardinality
+            connector.cardinality = cardinality
         }
 
-        drawingArea.children.add(arrow)
-        arrow.toBack()
+        drawingArea.children.add(connector)
+        connector.toBack()
     }
 }
