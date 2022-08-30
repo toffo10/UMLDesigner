@@ -9,9 +9,8 @@ interface
         +getSession()
 endInterface
 
-class
+abstractclass
     id: Cliente
-    implements: Utente
     params:
         -name: String
         -indirizzoFatturazione: String

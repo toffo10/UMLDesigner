@@ -17,7 +17,7 @@
         </items>
     </SplitPane>
     <TextArea fx:id="resultArea" editable="false" />
-    <Button onAction="#convertUml" text="Genera UML">
+    <Button onAction="#convertUml" text="Generate UML">
         <font>
             <Font size="27.0" />
         </font>

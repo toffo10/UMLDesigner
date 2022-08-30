@@ -79,7 +79,6 @@ classDefinition
     ;
     
 abstractClassDefinition
-
     :  'abstractClass'
        'id' COLON i = ID { h.createNewClass($i); }
     	classValues[$i]
@@ -91,12 +90,30 @@ classValues [Token i]
        ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
        ('extends' COLON (c = classes { h.addExtension($i, c); })+ )?
        ('relations' COLON (cr = classRelations { h.addRelations($i, cr); })+)?
-       ('params' COLON  (p = classParameters { h.addParams($i, p); })+)
-       ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)
+       ('params' COLON  (p = classParameters { h.addParams($i, p); })+)?
+       ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)?
+    ;
+      
+interfaces returns [List<String> ifList]
+@init { ifList = new ArrayList<String>(); }
+    :   i = ID 		{ ifList.add($i.getText());  }
+        (COMMA i1 = ID  { ifList.add($i1.getText()); })*
+    ;
+
+classes returns [List<String> classList]
+@init { classList = new ArrayList<String>(); }
+    :  i = ID 		{ classList.add($i.getText()) ; }
+      (COMMA i1 = ID    { classList.add($i1.getText()); })*
+    ;
+    
+classRelations returns [List<Pair> classList]
+@init { classList = new ArrayList<>(); }
+    :  i = ID c1 = cardinality '/' c2 = cardinality	        { classList.add(new Pair<>($i.getText(),  c1.getText() + '/' + c2.getText())); }
+      (COMMA i1 = ID c3 = cardinality '/' c4 = cardinality 	{ classList.add(new Pair<>($i1.getText(),  c3.getText() + '/' + c4.getText())); })*
     ;
     
 classParameters returns [Param ip]
-    :	visibility i = ID (COLON t = type) { ip = h.returnParam($i, t); }
+    :	visibility i = ID (COLON t = type) { ip = h.returnParam($i.getText(), t); }
     ;
 
 classMethods returns [Method im]
@@ -111,14 +128,8 @@ interfaceDefinition
        'endInterface'
     ;    
 
-classRelations returns [List<Pair> classList]
-@init { classList = new ArrayList<>(); }
-    :  i = ID c1 = cardinality '/' c2 = cardinality	        { classList.add(new Pair<>($i.getText(),  c1.getText() + '/' + c2.getText())); }
-      (COMMA i1 = ID c3 = cardinality '/' c4 = cardinality 	{ classList.add(new Pair<>($i.getText(),  c3.getText() + '/' + c4.getText())); })*
-    ;
-
 interfaceParams returns [Param ip]
-    :  PLUS i = ID COLON t = type { ip = h.returnParam($i, t); }
+    :  PLUS i = ID COLON t = type { ip = h.returnParam($i.getText(), t); }
     ;
     
 interfaceMethods returns [Method im]
@@ -127,24 +138,12 @@ interfaceMethods returns [Method im]
 
 methodParams returns [List<MethodParam> imp]
 @init { imp = new ArrayList<MethodParam>(); }
-    :   i1 = ID COLON t1 = type       { h.addMethodParam(imp, $i1, t1); }
-       (COMMA i2 = ID COLON t2 = type { h.addMethodParam(imp, $i2, t2); } )* 
-    ;
-    
-interfaces returns [List<String> ifList]
-@init { ifList = new ArrayList<String>(); }
-    :   i = ID 		{ ifList.add($i.getText());  }
-        (COMMA i1 = ID  { ifList.add($i1.getText()); })*
-    ;
-
-classes returns [List<String> classList]
-@init { classList = new ArrayList<String>(); }
-    :  i = ID 		{ classList.add($i.getText()) ; }
-      (COMMA i1 = ID    { classList.add($i1.getText()); })*
+    :   i1 = ID COLON t1 = type       { h.addMethodParam(imp, $i1.getText(), t1); }
+       (COMMA i2 = ID COLON t2 = type { h.addMethodParam(imp, $i2.getText(), t2); } )* 
     ;
       
 visibility returns [Token t]
-    : (x = PLUS | x = MINUS | x = HASHTAG) { t = x; }
+    : (x = PLUS | x = MINUS) { t = x; }
     ;
     
 cardinality returns [Token t]
@@ -155,69 +154,70 @@ cardinality returns [Token t]
     { t = x; }
     ;
     
-type returns [Token t]
-  :( x = 'int' 	
+type returns [String t]
+  : ( x = 'int' 	
   | x = 'double' 
   | x = 'char' 
   | x = 'boolean' 
-  | x = 'String' 
-  | x = ID) { t = x; }
+  | x = 'String' ) { t = x.getText(); }
+  | x = ID gen = generics? { t = gen == null ? x.getText() : x.getText() + gen; }
     ;
 
+generics returns [String s]
+@init { String generics = ""; }
+  : LESSER t = type (COMMA t1 = type { generics += "," + t1; })* GREATER { s = "<" + t + generics + ">"; }
+  ;
+
 // Lexer tokens
-ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
-    ;
-    
-COMMENT
-    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
-    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
-    ;
+
+ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')* 
+    ; // Per identificare le variabili e il loro tipo
     
 PLUS 
-    : '+'
+    : '+' // Per specificare la visibilità pubblica
     ;
     
 MINUS
-    : '-'
-    ;
-    
-HASHTAG
-    : '#'
+    : '-' // Per specificare la visibilità privata
     ;
 
 DOUBLE_DOT
-    : '..'
+    : '..' // Per identificare la cardinalità nelle relazioni
     ;
 
-WS  :   ( ' '
-        | '\t'
-        | '\r'
-        | '\n'
-        ) {$channel=HIDDEN;}
-    ;
-    
 COMMA
-    : ','
+    : ',' // Per separare i parametri dei metodi
     ;
 
 COLON
-    : ':'
+    : ':' // Per definire il tipo delle variabili
     ;
     
 LP
-    : '('
-    ;
-    
-RP
-    : ')'
-    ;
-    
-DOLLAR
-    : '$'
+    : '(' // Apertura di un metodo
     ;
 
-ASTERISK
-    : '*'
+GREATER
+    : '>' // Per gestione generics
     ;
     
-SCAN_ERROR : . ;
+LESSER
+    : '<' // Per gestione generics
+    ;		
+    
+RP
+    : ')' // Chiusura di un metodo
+    ;    
+WS  :   ( ' ' // Spazi
+    | '\t'
+    | '\r'
+    | '\n'
+) {$channel=HIDDEN;}
+    ;
+    
+COMMENT // Commenti
+    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+    ;
+     
+SCAN_ERROR : . ; // Per raggruppare i token non accettati

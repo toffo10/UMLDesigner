@@ -51,8 +51,8 @@ public class UmlHandler {
         components.get(id.getText()).addMethod(id, method);
     }
 
-    public void addMethodParam(List<MethodParam> list, Token id, Token type) {
-        list.add(new MethodParam(id.getText(), type.getText()));
+    public void addMethodParam(List<MethodParam> list, String id, String type) {
+        list.add(new MethodParam(id, type));
     }
 
     public void addImplementation(Token id, List<String> interfaces) {
@@ -81,16 +81,16 @@ public class UmlHandler {
         }
     }
 
-    public Param returnParam(Token id, Token type) {
-        return new Param(id.getText(), type.getText());
+    public Param returnParam(String id, String type) {
+        return new Param(id, type);
     }
 
-    public Method returnMethod(Token visibility, Token id, Token type, List<MethodParam> methodParams) {
+    public Method returnMethod(Token visibility, Token id, String type, List<MethodParam> methodParams) {
         String typeString;
         if (type == null)
             typeString = "void";
         else
-            typeString = type.getText();
+            typeString = type;
 
         Method method = new Method(visibility.getText(), id.getText(), typeString);
         method.setMp(methodParams);
