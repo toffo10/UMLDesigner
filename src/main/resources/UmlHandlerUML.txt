@@ -1,0 +1,100 @@
+interface
+	id: ComponentBehaviour
+	methods:
+		+addImplementation(token: Token, name: String, component: Component)
+		+addRelation(token: Token, name: String, cardinality: String, component: Component)
+		+addExtension(token: Token, name: String, component: Component)
+		+getImplementedComponents(): List<Component>
+		+getRelatedComponents(): List<Pair>
+		+getExtendedComponents(): List<Component>
+		+setUpRelations(component: Component)
+		+checkClassesExistence(token: Token)
+endInterface
+
+class	
+	id: ClassBehaviour
+	implements: ComponentBehaviour
+	params: 
+		-implementedComponent: HashMap<String, Component>
+		-extendedComponent: HashMap<String, Component>
+		-relatedComponent: HashMap<String, Pair>
+endClass
+
+class
+	id: InterfaceBehaviour
+	implements: ComponentBehaviour
+endClass
+
+class
+	id: Error
+	params:
+		+message: String
+		+type: ERROR_TYPE
+	methods:
+		+getMessage(): String
+		+setMessage(message:String)
+		+getType(): ERROR_TYPE
+		+setType(type: ERROR_TYPE)
+endClass
+
+class
+	id: Component
+	relations:
+		ComponentBehaviour 1 / 1
+		Method 0..* / 1
+		Param 0..* / 1
+	params:
+		+name: String
+		+token: Token
+	methods:
+		+addParam(token: Token, param: Param)
+		+addMethod(token: Token, method: Method)
+		+getComponentType(): ComponentType
+endClass
+
+class
+	id: Method
+	relations: MethodParam 0..* / 1
+	params:
+		+visibility: String
+    		+name: String
+    		+type: String
+endClass
+
+class
+	id: Param
+	params:
+		+visibility: String
+    		+name: String
+    		+type: String
+endClass
+
+class
+	id: MethodParam
+	params:
+    		+name: String
+    		+type: String
+endClass	
+
+class
+	id: UmlHandler
+	relations:
+		Component 0..* / 1
+		Error 0..* / 1
+	methods:
+		+createNewInterface(token: Token)
+		+createNewClass(token: Token)
+		+addParams(token: Token, p: Param)
+		+addMethod(token: Token, m: Method)
+		+addMethodParam(list: List<MethodParam>, name: String, type: String)
+		+addImplementation(token: Token, interfaces: List<String>)
+		+returnParam(name: String, visibility: String, type: String)
+		+returnMethod(visibility: Token, token: Token, type: String, methodParams: List<MethodParams>)	
+		+addExtension(token: Token, classList: List<String>)
+		+addRelations(token: Token, classList: List<Pair>)
+		+handleError(tokenNames: List<String>, e: RecognitionException, hdr: String, m: String)
+		+setUpRelations()
+		-checkClassExistence()
+		-idAlreadyExists(name: String): boolean
+
+endClass	
