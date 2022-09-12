@@ -100,7 +100,7 @@ class DrawingController {
         umlInterface.width = text.layoutBounds.width + 10.0
 
         for (param in component.params) {
-            text = Text(String.format(" +%s : %s", param.value.id, param.value.type))
+            text = Text(String.format(" %s%s : %s", param.value.visibility, param.value.id, param.value.type))
 
             box.children.add(text)
 

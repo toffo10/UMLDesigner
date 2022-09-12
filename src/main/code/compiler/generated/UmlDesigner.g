@@ -113,7 +113,7 @@ classRelations returns [List<Pair> classList]
     ;
     
 classParameters returns [Param ip]
-    :	visibility i = ID (COLON t = type) { ip = h.returnParam($i.getText(), t); }
+    :	v = visibility i = ID (COLON t = type) { ip = h.returnParam($i.getText(), v.getText(), t); }
     ;
 
 classMethods returns [Method im]
@@ -129,7 +129,7 @@ interfaceDefinition
     ;    
 
 interfaceParams returns [Param ip]
-    :  PLUS i = ID COLON t = type { ip = h.returnParam($i.getText(), t); }
+    :  v = PLUS i = ID COLON t = type { ip = h.returnParam($i.getText(), v.getText(), t); }
     ;
     
 interfaceMethods returns [Method im]

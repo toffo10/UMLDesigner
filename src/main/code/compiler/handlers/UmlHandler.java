@@ -81,8 +81,8 @@ public class UmlHandler {
         }
     }
 
-    public Param returnParam(String id, String type) {
-        return new Param(id, type);
+    public Param returnParam(String id, String visibility, String type) {
+        return new Param(id, visibility, type);
     }
 
     public Method returnMethod(Token visibility, Token id, String type, List<MethodParam> methodParams) {

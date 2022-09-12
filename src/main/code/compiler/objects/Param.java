@@ -4,9 +4,12 @@ public class Param {
     private String id;
     private String type;
 
-    public Param(String id, String type) {
+    private String visibility;
+
+    public Param(String id, String visibility, String type) {
         this.id = id;
         this.type = type;
+        this.visibility = visibility;
     }
 
     public String getId() {
@@ -23,5 +26,13 @@ public class Param {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
     }
 }
