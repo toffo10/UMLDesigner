@@ -86,10 +86,9 @@ abstractClassDefinition
     ;
     
 classValues [Token i]
-    :
-       ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
+    :  ('implements' COLON (ifs = interfaces { h.addImplementation($i, ifs); })+ )?
        ('extends' COLON (c = classes { h.addExtension($i, c); })+ )?
-       ('relations' COLON (cr = classRelations { h.addRelations($i, cr); })+)?
+       ('relations' COLON (cr = componentRelations { h.addRelations($i, cr); })+)?
        ('params' COLON  (p = classParameters { h.addParams($i, p); })+)?
        ('methods' COLON (m = classMethods    { h.addMethod($i, m); })+)?
     ;
@@ -106,7 +105,7 @@ classes returns [List<String> classList]
       (COMMA i1 = ID    { classList.add($i1.getText()); })*
     ;
     
-classRelations returns [List<Pair> classList]
+componentRelations returns [List<Pair> classList]
 @init { classList = new ArrayList<>(); }
     :  i = ID c1 = cardinality '/' c2 = cardinality	        { classList.add(new Pair<>($i.getText(),  c1.getText() + '/' + c2.getText())); }
       (COMMA i1 = ID c3 = cardinality '/' c4 = cardinality 	{ classList.add(new Pair<>($i1.getText(),  c3.getText() + '/' + c4.getText())); })*
@@ -119,10 +118,19 @@ classParameters returns [Param ip]
 classMethods returns [Method im]
     :	v = visibility i = ID LP p = methodParams? RP (COLON t = type)? { im = h.returnMethod(v, $i, t, p); }
     ;
+    
+methodParams returns [List<MethodParam> imp]
+@init { imp = new ArrayList<MethodParam>(); }
+    :   i1 = ID COLON t1 = type       { h.addMethodParam(imp, $i1.getText(), t1); }
+       (COMMA i2 = ID COLON t2 = type { h.addMethodParam(imp, $i2.getText(), t2); } )* 
+    ;
+      
 
 interfaceDefinition
     :  'interface'
        'id' COLON i = ID { h.createNewInterface($i); }
+       ('extends' COLON (i = interfaces { h.addExtension($i, i); })+ )?
+       ('relations' COLON (cr = componentRelations { h.addRelations($i, cr); })+)?
        ('params' COLON  (p = interfaceParams  { h.addParams($i, p); } )+ )?
        ('methods' COLON (m = interfaceMethods { h.addMethod($i, m); } )+ )?
        'endInterface'
@@ -135,13 +143,7 @@ interfaceParams returns [Param ip]
 interfaceMethods returns [Method im]
     :  v = PLUS i = ID LP p = methodParams? RP (COLON t = type)? { im = h.returnMethod($v, $i, t, p); }
     ;
-
-methodParams returns [List<MethodParam> imp]
-@init { imp = new ArrayList<MethodParam>(); }
-    :   i1 = ID COLON t1 = type       { h.addMethodParam(imp, $i1.getText(), t1); }
-       (COMMA i2 = ID COLON t2 = type { h.addMethodParam(imp, $i2.getText(), t2); } )* 
-    ;
-      
+    
 visibility returns [Token t]
     : (x = PLUS | x = MINUS) { t = x; }
     ;
