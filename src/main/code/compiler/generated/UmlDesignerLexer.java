@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-09-12 21:45:05
+// $ANTLR 3.5.1 D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g 2022-09-14 22:09:38
 
 package compiler.generated;
 
@@ -64,15 +64,15 @@ public class UmlDesignerLexer extends Lexer {
 	public UmlDesignerLexer(CharStream input, RecognizerSharedState state) {
 		super(input,state);
 	}
-	@Override public String getGrammarFileName() { return "D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g"; }
+	@Override public String getGrammarFileName() { return "D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g"; }
 
 	// $ANTLR start "T__17"
 	public final void mT__17() throws RecognitionException {
 		try {
 			int _type = T__17;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:15:7: ( '/' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:15:9: '/'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:15:7: ( '/' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:15:9: '/'
 			{
 			match('/'); 
 			}
@@ -91,8 +91,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__18;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:16:7: ( '0..*' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:16:9: '0..*'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:16:7: ( '0..*' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:16:9: '0..*'
 			{
 			match("0..*"); 
 
@@ -112,8 +112,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__19;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:17:7: ( '0..1' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:17:9: '0..1'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:17:7: ( '0..1' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:17:9: '0..1'
 			{
 			match("0..1"); 
 
@@ -133,8 +133,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__20;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:18:7: ( '1' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:18:9: '1'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:18:7: ( '1' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:18:9: '1'
 			{
 			match('1'); 
 			}
@@ -153,8 +153,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__21;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:19:7: ( '1..*' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:19:9: '1..*'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:19:7: ( '1..*' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:19:9: '1..*'
 			{
 			match("1..*"); 
 
@@ -174,8 +174,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__22;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:20:7: ( 'String' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:20:9: 'String'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:20:7: ( 'String' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:20:9: 'String'
 			{
 			match("String"); 
 
@@ -195,8 +195,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__23;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:21:7: ( 'abstractClass' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:21:9: 'abstractClass'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:21:7: ( 'abstractClass' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:21:9: 'abstractClass'
 			{
 			match("abstractClass"); 
 
@@ -216,8 +216,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__24;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:22:7: ( 'boolean' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:22:9: 'boolean'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:22:7: ( 'boolean' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:22:9: 'boolean'
 			{
 			match("boolean"); 
 
@@ -237,8 +237,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__25;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:23:7: ( 'char' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:23:9: 'char'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:23:7: ( 'char' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:23:9: 'char'
 			{
 			match("char"); 
 
@@ -258,8 +258,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__26;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:24:7: ( 'class' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:24:9: 'class'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:24:7: ( 'class' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:24:9: 'class'
 			{
 			match("class"); 
 
@@ -279,8 +279,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__27;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:25:7: ( 'double' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:25:9: 'double'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:25:7: ( 'double' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:25:9: 'double'
 			{
 			match("double"); 
 
@@ -300,8 +300,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__28;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:26:7: ( 'endAbstractClass' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:26:9: 'endAbstractClass'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:26:7: ( 'endAbstractClass' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:26:9: 'endAbstractClass'
 			{
 			match("endAbstractClass"); 
 
@@ -321,8 +321,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__29;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:27:7: ( 'endClass' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:27:9: 'endClass'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:27:7: ( 'endClass' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:27:9: 'endClass'
 			{
 			match("endClass"); 
 
@@ -342,8 +342,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__30;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:28:7: ( 'endInterface' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:28:9: 'endInterface'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:28:7: ( 'endInterface' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:28:9: 'endInterface'
 			{
 			match("endInterface"); 
 
@@ -363,8 +363,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__31;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:29:7: ( 'extends' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:29:9: 'extends'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:29:7: ( 'extends' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:29:9: 'extends'
 			{
 			match("extends"); 
 
@@ -384,8 +384,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__32;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:30:7: ( 'id' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:30:9: 'id'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:30:7: ( 'id' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:30:9: 'id'
 			{
 			match("id"); 
 
@@ -405,8 +405,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__33;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:31:7: ( 'implements' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:31:9: 'implements'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:31:7: ( 'implements' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:31:9: 'implements'
 			{
 			match("implements"); 
 
@@ -426,8 +426,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__34;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:32:7: ( 'int' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:32:9: 'int'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:32:7: ( 'int' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:32:9: 'int'
 			{
 			match("int"); 
 
@@ -447,8 +447,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__35;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:33:7: ( 'interface' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:33:9: 'interface'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:33:7: ( 'interface' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:33:9: 'interface'
 			{
 			match("interface"); 
 
@@ -468,8 +468,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__36;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:34:7: ( 'methods' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:34:9: 'methods'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:34:7: ( 'methods' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:34:9: 'methods'
 			{
 			match("methods"); 
 
@@ -489,8 +489,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__37;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:35:7: ( 'params' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:35:9: 'params'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:35:7: ( 'params' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:35:9: 'params'
 			{
 			match("params"); 
 
@@ -510,8 +510,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = T__38;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:36:7: ( 'relations' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:36:9: 'relations'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:36:7: ( 'relations' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:36:9: 'relations'
 			{
 			match("relations"); 
 
@@ -531,8 +531,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:173:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:173:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:175:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:175:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -542,7 +542,7 @@ public class UmlDesignerLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:173:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:175:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
 			loop1:
 			while (true) {
 				int alt1=2;
@@ -553,7 +553,7 @@ public class UmlDesignerLexer extends Lexer {
 
 				switch (alt1) {
 				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:
 					{
 					if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 						input.consume();
@@ -587,8 +587,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:177:5: ( '+' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:177:7: '+'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:179:5: ( '+' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:179:7: '+'
 			{
 			match('+'); 
 			}
@@ -607,8 +607,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:181:5: ( '-' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:181:7: '-'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:183:5: ( '-' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:183:7: '-'
 			{
 			match('-'); 
 			}
@@ -627,8 +627,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = DOUBLE_DOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:185:5: ( '..' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:185:7: '..'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:187:5: ( '..' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:187:7: '..'
 			{
 			match(".."); 
 
@@ -648,8 +648,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:189:5: ( ',' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:189:7: ','
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:191:5: ( ',' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:191:7: ','
 			{
 			match(','); 
 			}
@@ -668,8 +668,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = COLON;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:193:5: ( ':' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:193:7: ':'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:195:5: ( ':' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:195:7: ':'
 			{
 			match(':'); 
 			}
@@ -688,8 +688,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = LP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:197:5: ( '(' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:197:7: '('
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:199:5: ( '(' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:199:7: '('
 			{
 			match('('); 
 			}
@@ -708,8 +708,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = GREATER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:201:5: ( '>' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:201:7: '>'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:203:5: ( '>' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:203:7: '>'
 			{
 			match('>'); 
 			}
@@ -728,8 +728,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = LESSER;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:205:5: ( '<' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:205:7: '<'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:207:5: ( '<' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:207:7: '<'
 			{
 			match('<'); 
 			}
@@ -748,8 +748,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = RP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:209:5: ( ')' )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:209:7: ')'
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:211:5: ( ')' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:211:7: ')'
 			{
 			match(')'); 
 			}
@@ -768,8 +768,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = WS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:211:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:211:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:213:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:213:9: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -796,7 +796,7 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = COMMENT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:219:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:221:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0=='/') ) {
@@ -830,11 +830,11 @@ public class UmlDesignerLexer extends Lexer {
 
 			switch (alt5) {
 				case 1 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:219:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:221:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); 
 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:219:14: (~ ( '\\n' | '\\r' ) )*
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:221:14: (~ ( '\\n' | '\\r' ) )*
 					loop2:
 					while (true) {
 						int alt2=2;
@@ -845,7 +845,7 @@ public class UmlDesignerLexer extends Lexer {
 
 						switch (alt2) {
 						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:
+							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:
 							{
 							if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
 								input.consume();
@@ -863,7 +863,7 @@ public class UmlDesignerLexer extends Lexer {
 						}
 					}
 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:219:28: ( '\\r' )?
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:221:28: ( '\\r' )?
 					int alt3=2;
 					int LA3_0 = input.LA(1);
 					if ( (LA3_0=='\r') ) {
@@ -871,7 +871,7 @@ public class UmlDesignerLexer extends Lexer {
 					}
 					switch (alt3) {
 						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:219:28: '\\r'
+							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:221:28: '\\r'
 							{
 							match('\r'); 
 							}
@@ -884,11 +884,11 @@ public class UmlDesignerLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:220:9: '/*' ( options {greedy=false; } : . )* '*/'
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:222:9: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); 
 
-					// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:220:14: ( options {greedy=false; } : . )*
+					// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:222:14: ( options {greedy=false; } : . )*
 					loop4:
 					while (true) {
 						int alt4=2;
@@ -909,7 +909,7 @@ public class UmlDesignerLexer extends Lexer {
 
 						switch (alt4) {
 						case 1 :
-							// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:220:42: .
+							// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:222:42: .
 							{
 							matchAny(); 
 							}
@@ -941,8 +941,8 @@ public class UmlDesignerLexer extends Lexer {
 		try {
 			int _type = SCAN_ERROR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:223:12: ( . )
-			// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:223:14: .
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:225:12: ( . )
+			// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:225:14: .
 			{
 			matchAny(); 
 			}
@@ -958,250 +958,250 @@ public class UmlDesignerLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:8: ( T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | ID | PLUS | MINUS | DOUBLE_DOT | COMMA | COLON | LP | GREATER | LESSER | RP | WS | COMMENT | SCAN_ERROR )
+		// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:8: ( T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | ID | PLUS | MINUS | DOUBLE_DOT | COMMA | COLON | LP | GREATER | LESSER | RP | WS | COMMENT | SCAN_ERROR )
 		int alt6=35;
 		alt6 = dfa6.predict(input);
 		switch (alt6) {
 			case 1 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:10: T__17
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:10: T__17
 				{
 				mT__17(); 
 
 				}
 				break;
 			case 2 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:16: T__18
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:16: T__18
 				{
 				mT__18(); 
 
 				}
 				break;
 			case 3 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:22: T__19
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:22: T__19
 				{
 				mT__19(); 
 
 				}
 				break;
 			case 4 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:28: T__20
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:28: T__20
 				{
 				mT__20(); 
 
 				}
 				break;
 			case 5 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:34: T__21
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:34: T__21
 				{
 				mT__21(); 
 
 				}
 				break;
 			case 6 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:40: T__22
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:40: T__22
 				{
 				mT__22(); 
 
 				}
 				break;
 			case 7 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:46: T__23
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:46: T__23
 				{
 				mT__23(); 
 
 				}
 				break;
 			case 8 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:52: T__24
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:52: T__24
 				{
 				mT__24(); 
 
 				}
 				break;
 			case 9 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:58: T__25
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:58: T__25
 				{
 				mT__25(); 
 
 				}
 				break;
 			case 10 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:64: T__26
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:64: T__26
 				{
 				mT__26(); 
 
 				}
 				break;
 			case 11 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:70: T__27
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:70: T__27
 				{
 				mT__27(); 
 
 				}
 				break;
 			case 12 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:76: T__28
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:76: T__28
 				{
 				mT__28(); 
 
 				}
 				break;
 			case 13 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:82: T__29
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:82: T__29
 				{
 				mT__29(); 
 
 				}
 				break;
 			case 14 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:88: T__30
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:88: T__30
 				{
 				mT__30(); 
 
 				}
 				break;
 			case 15 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:94: T__31
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:94: T__31
 				{
 				mT__31(); 
 
 				}
 				break;
 			case 16 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:100: T__32
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:100: T__32
 				{
 				mT__32(); 
 
 				}
 				break;
 			case 17 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:106: T__33
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:106: T__33
 				{
 				mT__33(); 
 
 				}
 				break;
 			case 18 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:112: T__34
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:112: T__34
 				{
 				mT__34(); 
 
 				}
 				break;
 			case 19 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:118: T__35
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:118: T__35
 				{
 				mT__35(); 
 
 				}
 				break;
 			case 20 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:124: T__36
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:124: T__36
 				{
 				mT__36(); 
 
 				}
 				break;
 			case 21 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:130: T__37
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:130: T__37
 				{
 				mT__37(); 
 
 				}
 				break;
 			case 22 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:136: T__38
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:136: T__38
 				{
 				mT__38(); 
 
 				}
 				break;
 			case 23 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:142: ID
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:142: ID
 				{
 				mID(); 
 
 				}
 				break;
 			case 24 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:145: PLUS
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:145: PLUS
 				{
 				mPLUS(); 
 
 				}
 				break;
 			case 25 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:150: MINUS
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:150: MINUS
 				{
 				mMINUS(); 
 
 				}
 				break;
 			case 26 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:156: DOUBLE_DOT
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:156: DOUBLE_DOT
 				{
 				mDOUBLE_DOT(); 
 
 				}
 				break;
 			case 27 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:167: COMMA
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:167: COMMA
 				{
 				mCOMMA(); 
 
 				}
 				break;
 			case 28 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:173: COLON
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:173: COLON
 				{
 				mCOLON(); 
 
 				}
 				break;
 			case 29 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:179: LP
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:179: LP
 				{
 				mLP(); 
 
 				}
 				break;
 			case 30 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:182: GREATER
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:182: GREATER
 				{
 				mGREATER(); 
 
 				}
 				break;
 			case 31 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:190: LESSER
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:190: LESSER
 				{
 				mLESSER(); 
 
 				}
 				break;
 			case 32 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:197: RP
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:197: RP
 				{
 				mRP(); 
 
 				}
 				break;
 			case 33 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:200: WS
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:200: WS
 				{
 				mWS(); 
 
 				}
 				break;
 			case 34 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:203: COMMENT
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:203: COMMENT
 				{
 				mCOMMENT(); 
 
 				}
 				break;
 			case 35 :
-				// D:\\Programming\\Università\\UMLDesigner\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:211: SCAN_ERROR
+				// D:\\Code\\UMLDesigner\\src\\main\\code\\compiler\\generated\\UmlDesigner.g:1:211: SCAN_ERROR
 				{
 				mSCAN_ERROR(); 
 

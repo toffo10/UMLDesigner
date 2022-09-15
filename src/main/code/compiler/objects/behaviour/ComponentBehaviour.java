@@ -1,6 +1,7 @@
 package compiler.objects.behaviour;
 
 import compiler.objects.Component;
+import compiler.objects.Method;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
 
