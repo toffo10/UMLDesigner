@@ -3,7 +3,6 @@ package compiler.objects;
 public class Param {
     private String id;
     private String type;
-
     private String visibility;
 
     public Param(String id, String visibility, String type) {

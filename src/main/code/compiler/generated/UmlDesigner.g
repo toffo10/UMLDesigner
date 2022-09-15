@@ -129,7 +129,7 @@ methodParams returns [List<MethodParam> imp]
 interfaceDefinition
     :  'interface'
        'id' COLON i = ID { h.createNewInterface($i); }
-       ('extends' COLON (i = interfaces { h.addExtension($i, i); })+ )?
+       ('extends' COLON (ifs = interfaces { h.addExtension($i, ifs); })+ )?
        ('relations' COLON (cr = componentRelations { h.addRelations($i, cr); })+)?
        ('params' COLON  (p = interfaceParams  { h.addParams($i, p); } )+ )?
        ('methods' COLON (m = interfaceMethods { h.addMethod($i, m); } )+ )?

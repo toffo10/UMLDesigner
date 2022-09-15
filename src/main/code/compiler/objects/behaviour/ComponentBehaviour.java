@@ -1,7 +1,6 @@
 package compiler.objects.behaviour;
 
 import compiler.objects.Component;
-import compiler.objects.Method;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
 
@@ -20,7 +19,7 @@ public interface ComponentBehaviour {
 
     List<Component> getExtendedComponents();
 
-    void setUpRelations(Component component);
+    void setUpRelations(Token token, Component component);
 
     void checkClassesExistence(Token token);
 }

@@ -68,7 +68,7 @@ public class UmlHandler {
     public void setUpRelations() {
         for (Component component1 : components.values()) {
             for (Component component2 : components.values()) {
-                component1.getComponentBehaviour().setUpRelations(component2);
+                component1.getComponentBehaviour().setUpRelations(component1.getToken(), component2);
             }
         }
 

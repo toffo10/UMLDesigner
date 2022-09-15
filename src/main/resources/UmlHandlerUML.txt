@@ -23,6 +23,9 @@ endClass
 class
 	id: InterfaceBehaviour
 	implements: ComponentBehaviour
+	params:
+		-extendedComponent: HashMap<String, Component>
+		-relatedComponent: HashMap<String, Pair>
 endClass
 
 class

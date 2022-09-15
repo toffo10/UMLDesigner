@@ -51,15 +51,21 @@ public class ClassBehaviour implements ComponentBehaviour {
     }
 
     @Override
-    public void setUpRelations(Component component) {
+    public void setUpRelations(Token token, Component component) {
         if (implementedComponent.containsKey(component.getName())) {
-            if (component.getComponentType().equals(ComponentType.INTERFACE))
+            if (component.getComponentType().equals(ComponentType.INTERFACE)) {
                 implementedComponent.replace(component.getName(), component);
+            } else {
+                Parser.addError("Can't implement a class", token);
+            }
         } else if (relatedComponent.containsKey(component.getName())) {
-                relatedComponent.replace(component.getName(), new Pair<>(component, relatedComponent.get(component.getName()).getValue()));
+            relatedComponent.replace(component.getName(), new Pair<>(component, relatedComponent.get(component.getName()).getValue()));
         } else if (extendedComponent.containsKey(component.getName())) {
-            if (component.getComponentType().equals(ComponentType.CLASS))
+            if (component.getComponentType().equals(ComponentType.CLASS)) {
                 extendedComponent.replace(component.getName(), component);
+            } else {
+                Parser.addError("Can't extend an interface", token);
+            }
         }
     }
 
