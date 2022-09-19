@@ -1,7 +1,7 @@
 package compiler.objects.behaviour;
 
-import compiler.Parser;
 import compiler.enums.ComponentType;
+import compiler.error.SemanticException;
 import compiler.objects.Component;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
@@ -51,12 +51,12 @@ public class ClassBehaviour implements ComponentBehaviour {
     }
 
     @Override
-    public void setUpRelations(Token token, Component component) {
+    public void setUpRelations(Token token, Component component) throws SemanticException {
         if (implementedComponent.containsKey(component.getName())) {
             if (component.getComponentType().equals(ComponentType.INTERFACE)) {
                 implementedComponent.replace(component.getName(), component);
             } else {
-                Parser.addError("Can't implement a class", token);
+                throw new SemanticException("Can't implement a class", token);
             }
         } else if (relatedComponent.containsKey(component.getName())) {
             relatedComponent.replace(component.getName(), new Pair<>(component, relatedComponent.get(component.getName()).getValue()));
@@ -64,26 +64,26 @@ public class ClassBehaviour implements ComponentBehaviour {
             if (component.getComponentType().equals(ComponentType.CLASS)) {
                 extendedComponent.replace(component.getName(), component);
             } else {
-                Parser.addError("Can't extend an interface", token);
+                throw new SemanticException("Can't extend an interface", token);
             }
         }
     }
 
     @Override
-    public void checkClassesExistence(Token token) {
+    public void checkClassesExistence(Token token) throws SemanticException{
         for (String key : implementedComponent.keySet()) {
             if (implementedComponent.get(key) == null) {
-                Parser.addError(String.format("Interface %s doesn't exist", key), token);
+                throw new SemanticException(String.format("Interface %s doesn't exist", key), token);
             }
         }
         for (String key : relatedComponent.keySet()) {
             if (relatedComponent.get(key).getKey() == null) {
-                Parser.addError(String.format("Class %s doesn't exist", key), token);
+                throw new SemanticException(String.format("Class %s doesn't exist", key), token);
             }
         }
         for (String key : extendedComponent.keySet()) {
             if (extendedComponent.get(key) == null) {
-                Parser.addError(String.format("Class %s doesn't exist", key), token);
+                throw new SemanticException(String.format("Class %s doesn't exist", key), token);
             }
         }
     }

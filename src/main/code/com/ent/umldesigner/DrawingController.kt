@@ -1,11 +1,11 @@
 package com.ent.umldesigner
 
-import compiler.Parser
 import com.ent.umldesigner.drawingutil.Connector
-import compiler.handlers.UmlHandler
-import compiler.objects.Component
+import compiler.Parser
 import compiler.enums.ComponentType
 import compiler.enums.ConnectionType
+import compiler.handlers.UmlHandler
+import compiler.objects.Component
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
@@ -45,11 +45,20 @@ class DrawingController {
         y = 0.0
         maxY = 0.0
 
-        resultArea.text = Parser.doParsing(umlTextArea.text).toString()
-
         drawingArea.children.clear()
-        if (Parser.getErrorList().size == 0)
+        resultArea.text = ""
+
+        val parserResponse = Parser.doParsing(umlTextArea.text)
+
+        if (parserResponse.isEmpty()) {
+            resultArea.text = "Everything ok! \n"
             drawUml()
+        } else {
+            resultArea.text += "Compilation ended with errors: \n"
+            for(error in parserResponse) {
+                resultArea.text += error.message.toString() + "\n"
+            }
+        }
     }
 
     private fun drawUml() {

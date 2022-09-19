@@ -1,5 +1,6 @@
 package compiler.objects.behaviour;
 
+import compiler.error.SemanticException;
 import compiler.objects.Component;
 import javafx.util.Pair;
 import org.antlr.runtime.Token;
@@ -7,7 +8,7 @@ import org.antlr.runtime.Token;
 import java.util.List;
 
 public interface ComponentBehaviour {
-    void addImplementation(Token id, String name, Component component);
+    void addImplementation(Token id, String name, Component component) throws SemanticException;
 
     void addRelation(Token id, String name, String cardinality, Component component);
 
@@ -19,7 +20,7 @@ public interface ComponentBehaviour {
 
     List<Component> getExtendedComponents();
 
-    void setUpRelations(Token token, Component component);
+    void setUpRelations(Token token, Component component) throws SemanticException;
 
-    void checkClassesExistence(Token token);
+    void checkClassesExistence(Token token) throws SemanticException;
 }

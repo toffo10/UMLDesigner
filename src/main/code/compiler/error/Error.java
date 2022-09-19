@@ -8,6 +8,19 @@ public class Error implements Serializable {
     private String message;
     private ERROR_TYPE type;
 
+    public Error() {
+    }
+
+    public Error(String message) {
+        this.message = message;
+        type = ERROR_TYPE.GENERIC;
+    }
+
+    public Error(String message, ERROR_TYPE type) {
+        this.message = message;
+        this.type = type;
+    }
+
     public String getMessage() {
         return message;
     }

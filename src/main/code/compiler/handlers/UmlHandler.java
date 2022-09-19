@@ -1,16 +1,19 @@
 package compiler.handlers;
 
-import compiler.Parser;
 import compiler.enums.ERROR_TYPE;
 import compiler.error.Error;
+import compiler.error.SemanticException;
 import compiler.generated.UmlDesignerLexer;
-import compiler.objects.*;
+import compiler.objects.Component;
+import compiler.objects.Method;
+import compiler.objects.MethodParam;
+import compiler.objects.Param;
 import compiler.objects.behaviour.ClassBehaviour;
 import compiler.objects.behaviour.InterfaceBehaviour;
 import javafx.util.Pair;
 import org.antlr.runtime.MissingTokenException;
-import org.antlr.runtime.Token;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.Token;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -19,8 +22,6 @@ import java.util.List;
 public class UmlHandler {
     private static Hashtable<String, Component> components;
     private List<Error> errorList;
-    public static final int TOKEN_ERROR = 0;
-    public static final int ERR_ON_SYNTAX = 1;
 
     public UmlHandler() {
         errorList = new ArrayList<>();
@@ -29,26 +30,32 @@ public class UmlHandler {
 
     public void createNewInterface(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s", id.getText()), id);
-        }
-        else
+            handleError(String.format("ID already existing: %s", id.getText()), id);
+        } else
             components.put(id.getText(), new Component(id, id.getText(), new InterfaceBehaviour()));
     }
 
     public void createNewClass(Token id) {
         if (idAlreadyExists(id.getText())) {
-            Parser.addError(String.format("ID already existing: %s", id.getText()), id);
-        }
-        else
+            handleError(String.format("ID already existing: %s", id.getText()), id);
+        } else
             components.put(id.getText(), new Component(id, id.getText(), new ClassBehaviour()));
     }
 
     public void addParams(Token id, Param p) {
-        components.get(id.getText()).addParam(id, p);
+        try {
+            components.get(id.getText()).addParam(id, p);
+        } catch (SemanticException s) {
+            handleError(s.getMessage(), s.getErrorToken());
+        }
     }
 
     public void addMethod(Token id, Method method) {
-        components.get(id.getText()).addMethod(id, method);
+        try {
+            components.get(id.getText()).addMethod(id, method);
+        } catch (SemanticException s) {
+            handleError(s.getMessage(), s.getErrorToken());
+        }
     }
 
     public void addMethodParam(List<MethodParam> list, String id, String type) {
@@ -57,7 +64,11 @@ public class UmlHandler {
 
     public void addImplementation(Token id, List<String> interfaces) {
         for (String ifs : interfaces) {
-            components.get(id.getText()).getComponentBehaviour().addImplementation(id, ifs, components.get(ifs));
+            try {
+                components.get(id.getText()).getComponentBehaviour().addImplementation(id, ifs, components.get(ifs));
+            } catch (SemanticException s) {
+                handleError(s.getMessage(), s.getErrorToken());
+            }
         }
     }
 
@@ -68,7 +79,11 @@ public class UmlHandler {
     public void setUpRelations() {
         for (Component component1 : components.values()) {
             for (Component component2 : components.values()) {
-                component1.getComponentBehaviour().setUpRelations(component1.getToken(), component2);
+                try {
+                    component1.getComponentBehaviour().setUpRelations(component1.getToken(), component2);
+                } catch (SemanticException s) {
+                    handleError(s.getMessage(), s.getErrorToken());
+                }
             }
         }
 
@@ -77,7 +92,11 @@ public class UmlHandler {
 
     private void checkClassExistence() {
         for (Component component : components.values()) {
-            component.getComponentBehaviour().checkClassesExistence(component.getToken());
+            try {
+                component.getComponentBehaviour().checkClassesExistence(component.getToken());
+            } catch (SemanticException s) {
+                handleError(s.getMessage(), s.getErrorToken());
+            }
         }
     }
 
@@ -112,6 +131,19 @@ public class UmlHandler {
 
     public static List<Component> getComponents() {
         return components.values().stream().toList();
+    }
+
+    public void handleError(String errorMessage, Token e) {
+        String msg = "";
+        Error error = new Error();
+        error.setType(ERROR_TYPE.SEMANTICS);
+        msg = "Semantics error at row " + (e.getLine() + 1) + ": " + errorMessage;
+
+        if (e instanceof MissingTokenException)
+            msg = msg + errorMessage;
+
+        error.setMessage(msg);
+        errorList.add(error);
     }
 
     public void handleError(String[] tokenNames, RecognitionException e, String hdr, String m) {

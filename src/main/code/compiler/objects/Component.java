@@ -1,7 +1,7 @@
 package compiler.objects;
 
-import compiler.Parser;
 import compiler.enums.ComponentType;
+import compiler.error.SemanticException;
 import compiler.objects.behaviour.ClassBehaviour;
 import compiler.objects.behaviour.ComponentBehaviour;
 import compiler.objects.behaviour.InterfaceBehaviour;
@@ -25,17 +25,17 @@ public class Component {
         params = new Hashtable<>();
     }
 
-    public void addParam(Token id, Param param) {
+    public void addParam(Token id, Param param) throws SemanticException {
         if (params.containsKey(param.getId())) {
-            Parser.addError(String.format("Parameter %s already declared", param.getId()), id);
+            throw new SemanticException(String.format("Parameter %s already declared", param.getId()), id);
         } else {
             params.put(param.getId(), param);
         }
     }
 
-    public void addMethod(Token id, Method method) {
+    public void addMethod(Token id, Method method) throws SemanticException {
         if (params.containsKey(method.getId())) {
-            Parser.addError(String.format("Method %s already declared", method.getId()), id);
+            throw new SemanticException(String.format("Method %s already declared", method.getId()), id);
         } else {
             methods.put(method.getId(), method);
         }
