@@ -77,7 +77,8 @@ class
 	params:
     		+name: String
     		+type: String
-endClass	
+		+visibility: String
+endClass
 
 class
 	id: UmlHandler
@@ -92,7 +93,7 @@ class
 		+addMethodParam(list: List<MethodParam>, name: String, type: String)
 		+addImplementation(token: Token, interfaces: List<String>)
 		+returnParam(name: String, visibility: String, type: String)
-		+returnMethod(visibility: Token, token: Token, type: String, methodParams: List<MethodParams>)	
+		+returnMethod(visibility: Token, token: Token, type: String, methodParams: List<MethodParams>)
 		+addExtension(token: Token, classList: List<String>)
 		+addRelations(token: Token, classList: List<Pair>)
 		+handleError(tokenNames: List<String>, e: RecognitionException, hdr: String, m: String)
