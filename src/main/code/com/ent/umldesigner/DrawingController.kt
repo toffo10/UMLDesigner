@@ -209,57 +209,8 @@ class DrawingController {
         connector.startXProperty().bind(v1.layoutXProperty().add(v1.widthProperty().divide(2)))
         connector.startYProperty().bind(v1.layoutYProperty().add(v1.heightProperty().divide(2)))
 
-        v2.layoutYProperty().addListener { obs, _, _ ->
-            var bound = true
-
-            if (connector.startY <= obs.value.toDouble()) {
-                connector.endY = obs.value.toDouble()
-            } else if (connector.startY < obs.value.toDouble() + v2.height) {
-                bound = false
-
-                connector.endXProperty().unbind()
-
-                connector.endY = v2.layoutY + (v2.height / 2)
-                if (connector.endX <= v1.layoutX)
-                    connector.endX = v2.layoutX + v2.width
-                else
-                    connector.endX = v2.layoutX
-            } else {
-                connector.endY = obs.value.toDouble() + v2.height
-            }
-
-            if (!connector.endXProperty().isBound && bound) {
-                connector.endXProperty().bind(
-                    v2.layoutXProperty().add(v2.widthProperty().divide(2))
-                )
-            }
-        }
-
-        v1.layoutYProperty().addListener { obs, _, _ ->
-            var bound = true
-
-            if (obs.value.toDouble() + v1.height <= v2.layoutY) {
-                connector.endY = v2.layoutY
-            } else if (obs.value.toDouble() <= v2.layoutY + v2.height) {
-                bound = false
-
-                connector.endXProperty().unbind()
-
-                connector.endY = v2.layoutY + (v2.height / 2)
-                if (connector.endX <= v1.layoutX)
-                    connector.endX = v2.layoutX + v2.width
-                else
-                    connector.endX = v2.layoutX
-            } else {
-                connector.endY = v2.layoutY + v2.height
-            }
-
-            if (!connector.endXProperty().isBound && bound) {
-                connector.endXProperty().bind(
-                    v2.layoutXProperty().add(v2.widthProperty().divide(2))
-                )
-            }
-        }
+        connector.endXProperty().bind(v2.layoutXProperty().add(v2.widthProperty().divide(2)))
+        connector.endYProperty().bind(v2.layoutYProperty().add(v2.heightProperty().divide(2)))
 
         if (cardinality.isNotEmpty()) {
             connector.cardinality = cardinality

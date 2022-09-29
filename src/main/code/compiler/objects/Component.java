@@ -15,7 +15,7 @@ public class Component {
     private final Map<String, Param> params;
     private final ComponentBehaviour componentBehaviour;
     private final String name;
-    private Token token;
+    private final Token token;
 
     public Component(Token token, String name, ComponentBehaviour componentBehaviour) {
         this.name = name;

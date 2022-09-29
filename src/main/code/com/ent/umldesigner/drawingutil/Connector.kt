@@ -8,8 +8,7 @@ import javafx.scene.Group
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Line
 import javafx.scene.text.Text
-import java.util.Random
-import kotlin.math.hypot
+import kotlin.math.*
 
 
 class Connector private constructor(
@@ -23,7 +22,7 @@ class Connector private constructor(
     pane2: Pane
 ) :
     Group(line, arrow1, arrow2, relText1, relText2) {
-    private val line: Line
+    private var line: Line
     var cardinality = ""
 
     constructor(connectionType: ConnectionType, pane1: Pane, pane2: Pane) : this(
@@ -40,8 +39,8 @@ class Connector private constructor(
     init {
         this.line = line
         val updater = when (connectionType) {
-            ConnectionType.IMPLEMENTATION -> returnImplArrow(arrow1, arrow2)
-            ConnectionType.EXTENSION -> returnImplArrow(arrow1, arrow2)
+            ConnectionType.IMPLEMENTATION -> returnImplArrow(arrow1, arrow2, pane1, pane2)
+            ConnectionType.EXTENSION -> returnImplArrow(arrow1, arrow2, pane1, pane2)
             ConnectionType.RELATION -> returnRelArrow(relText1, relText2, pane1, pane2)
         }
 
@@ -60,8 +59,21 @@ class Connector private constructor(
 
                 text1.text = cardinality.split("/")[0]
 
-                text1.x = if (startX > endX) endX + 20 else endX - 20
-                text1.y = if (startY > endY) endY + 20 else endY - 20
+                /*text1.x = computeEx(startX, startY, endX, endY, pane2)
+                text1.y = computeEy(startX, startY, endX, endY, pane2)
+
+                text2.text = cardinality.split("/")[1]
+
+                text2.x = computeEx(endX, endY, startX, startY, pane1)
+                text2.y = computeEy(endX, endY, startX, startY, pane1)*/
+
+                text1.x = (startX + endX) / 2
+                if (text1.x > (pane2.layoutX + pane2.width)) text1.x = pane2.layoutX + pane2.width
+                if (text1.x < pane2.layoutX - 20) text1.x = pane2.layoutX - 20
+
+                text1.y = (startY + endY) / 2
+                if (text1.y > (pane2.layoutY + pane2.height + 20)) text1.y = pane2.layoutY + pane2.height + 20
+                if (text1.y < pane2.layoutY - 10) text1.y = pane2.layoutY - 10
 
                 text2.text = cardinality.split("/")[1]
 
@@ -71,17 +83,19 @@ class Connector private constructor(
 
                 text2.y = (startY + endY) / 2
                 if (text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
-                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10
+                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10 */
             }
         }
     }
 
-    private fun returnImplArrow(arrow1: Line, arrow2: Line): InvalidationListener {
+    private fun returnImplArrow(arrow1: Line, arrow2: Line, pane1: Pane, pane2: Pane): InvalidationListener {
         return InvalidationListener { _: Observable? ->
-            val ex = endX
-            val ey = endY
             val sx = startX
             val sy = startY
+
+            val ex = computeEx(startX, startY, endX, endY, pane2)
+            val ey = computeEy(startX, startY, endX, endY, pane2)
+
             arrow1.endX = ex
             arrow1.endY = ey
             arrow2.endX = ex
@@ -103,15 +117,48 @@ class Connector private constructor(
                 // part ortogonal to main line
                 val ox = (sx - ex) * factorO
                 val oy = (sy - ey) * factorO
+
                 arrow1.startX = ex + dx - oy
                 arrow1.startY = ey + dy + ox
                 arrow2.startX = ex + dx + oy
                 arrow2.startY = ey + dy - ox
-
-
             }
         }
 
+    }
+
+    private fun computeEx(startX: Double, startY: Double, endX: Double, endY: Double, pane: Pane): Double {
+        val hyp = hypot(abs(endX - startX), abs(endY - startY))
+        val height = (endY - startY)
+        val cosAngle = height.div(hyp)
+
+        var triangleHeight = if (abs(endY - startY) < pane.height.div(2)) abs(endY - startY) else pane.height.div(2)
+
+        val squareHyp = triangleHeight.div(cosAngle)
+
+        var triangleWidth = sqrt(squareHyp.pow(2) - triangleHeight.pow(2))
+
+        triangleWidth = if (triangleWidth > pane.width / 2) pane.width / 2 else triangleWidth
+        triangleWidth = if (startX < endX) triangleWidth else -triangleWidth
+
+        return endX - triangleWidth
+    }
+
+    private fun computeEy(startX: Double, startY: Double, endX: Double, endY: Double, pane: Pane): Double {
+        val hyp = hypot(abs(endX - startX), abs(endY - startY))
+        val width = abs(endX - startX)
+        val cosAngle = width.div(hyp)
+
+        val triangleWidth = if (abs(endX - startX) < pane.width.div(2)) abs(endX - startX) else pane.width.div(2)
+
+        val triangleHyp = triangleWidth.div(cosAngle)
+
+        var triangleHeight = sqrt(triangleHyp.pow(2) - triangleWidth.pow(2))
+
+        triangleHeight = if (triangleHeight > pane.height / 2) pane.height / 2 else triangleHeight
+        triangleHeight = if (startY < endY) triangleHeight else -triangleHeight
+
+        return endY - triangleHeight
     }
 
     // start/end properties
