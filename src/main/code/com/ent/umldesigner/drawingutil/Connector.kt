@@ -83,7 +83,7 @@ class Connector private constructor(
 
                 text2.y = (startY + endY) / 2
                 if (text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
-                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10 */
+                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10 
             }
         }
     }
