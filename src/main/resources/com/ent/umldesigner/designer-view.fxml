@@ -4,8 +4,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import org.fxmisc.richtext.*?>
 
-<?import org.fxmisc.richtext.CodeArea?>
 <VBox alignment="CENTER" maxHeight="841.0" maxWidth="880.0" minHeight="400.0" minWidth="400.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="841.0" prefWidth="880.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ent.umldesigner.DrawingController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -13,10 +13,14 @@
     <SplitPane dividerPositions="0.5" VBox.vgrow="ALWAYS">
         <items>
             <CodeArea fx:id="umlTextArea" minWidth="250.0" SplitPane.resizableWithParent="false" />
-            <Pane fx:id="drawingArea" />
+            <ScrollPane fx:id="scrollPane">
+                <content>
+                    <Pane fx:id="drawingArea" />
+                </content>
+            </ScrollPane>
         </items>
     </SplitPane>
-    <TextArea fx:id="resultArea" editable="false" />
+    <TextArea fx:id="resultArea" editable="false" minHeight="-Infinity" minWidth="-Infinity" />
     <Button onAction="#convertUml" text="Generate UML">
         <font>
             <Font size="27.0" />

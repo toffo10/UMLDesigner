@@ -9,8 +9,10 @@ import compiler.objects.Component
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
+import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.input.MouseEvent
+import javafx.scene.input.TransferMode
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
@@ -28,6 +30,9 @@ class DrawingController {
     private lateinit var resultArea: TextArea
 
     @FXML
+    private lateinit var scrollPane: ScrollPane
+
+    @FXML
     private lateinit var drawingArea: Pane
 
     private var orgSceneX = 0.0
@@ -37,6 +42,9 @@ class DrawingController {
     private var y = 0.0
     private var maxY = 0.0
 
+    private var drawingAreaWidth = 0.0
+    private var drawingAreaHeight = 0.0
+
     private var components: HashMap<String, Pane> = HashMap()
 
     @FXML
@@ -44,6 +52,8 @@ class DrawingController {
         x = 0.0
         y = 0.0
         maxY = 0.0
+
+        scrollPane.isPannable = true
 
         drawingArea.children.clear()
         resultArea.text = ""
@@ -55,10 +65,16 @@ class DrawingController {
             drawUml()
         } else {
             resultArea.text += "Compilation ended with errors: \n"
-            for(error in parserResponse) {
+            for (error in parserResponse) {
                 resultArea.text += error.message.toString() + "\n"
             }
         }
+
+        calculateDrawingAreaHeigth()
+        calculateDrawingAreaWidth()
+
+        drawingArea.prefWidth = if (drawingArea.prefWidth < drawingAreaWidth) drawingAreaWidth else drawingArea.prefWidth
+        drawingArea.prefHeight = if (drawingArea.prefHeight < drawingAreaHeight) drawingAreaHeight else drawingArea.prefHeight
     }
 
     private fun drawUml() {
@@ -168,18 +184,41 @@ class DrawingController {
 
     private fun setMouseDraggedEvent(umlElement: Pane) {
         umlElement.onMouseDragged = EventHandler { t: MouseEvent ->
+            scrollPane.isPannable = false
+
             val offsetX = t.sceneX - orgSceneX
             val offsetY = t.sceneY - orgSceneY
             val c = t.source as Pane
 
-            if (c.layoutX + offsetX >= 0 && c.layoutX + offsetX <= drawingArea.width - c.width)
+            if (c.layoutX + offsetX >= 0)
                 c.layoutX = c.layoutX + offsetX
 
-            if (c.layoutY + offsetY >= 0 && c.layoutY + offsetY <= drawingArea.height - c.height)
+            if (c.layoutY + offsetY >= 0)
                 c.layoutY = c.layoutY + offsetY
 
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
+
+            println("dio")
+
+            calculateDrawingAreaHeigth()
+            calculateDrawingAreaWidth()
+
+            if (drawingArea.prefWidth < drawingAreaWidth)
+                drawingArea.prefWidth = drawingAreaWidth
+
+            if (drawingArea.prefHeight < drawingAreaHeight)
+                drawingArea.prefHeight = drawingAreaHeight
+        }
+
+        umlElement.onMouseReleased = EventHandler { _ ->
+            calculateDrawingAreaHeigth()
+            calculateDrawingAreaWidth()
+
+            drawingArea.prefWidth = drawingAreaWidth
+            drawingArea.prefHeight = drawingAreaHeight
+
+            scrollPane.isPannable = true
         }
     }
 
@@ -218,5 +257,21 @@ class DrawingController {
 
         drawingArea.children.add(connector)
         connector.toBack()
+    }
+
+    private fun calculateDrawingAreaHeigth() {
+        drawingAreaHeight = 0.0
+        for (component in components) {
+            if (component.value.layoutY + component.value.height > drawingAreaHeight)
+                drawingAreaHeight = component.value.layoutY + component.value.height
+        }
+    }
+
+    private fun calculateDrawingAreaWidth() {
+        drawingAreaWidth = 0.0
+        for (component in components) {
+            if (component.value.layoutX + component.value.width > drawingAreaWidth)
+                drawingAreaWidth = component.value.layoutX + component.value.width
+        }
     }
 }
