@@ -15,7 +15,7 @@
             <CodeArea fx:id="umlTextArea" minWidth="250.0" SplitPane.resizableWithParent="false" />
             <ScrollPane fx:id="scrollPane">
                 <content>
-                    <Pane fx:id="drawingArea" />
+                    <Pane fx:id="drawingArea" minWidth="${scrollPane.width}" minHeight="${scrollPane.height}"/>
                 </content>
             </ScrollPane>
         </items>

@@ -59,31 +59,13 @@ class Connector private constructor(
 
                 text1.text = cardinality.split("/")[0]
 
-                /*text1.x = computeEx(startX, startY, endX, endY, pane2)
-                text1.y = computeEy(startX, startY, endX, endY, pane2)
+                text1.x = computeEx(startX, startY, endX, endY, pane2, true)
+                text1.y = computeEy(startX, startY, endX, endY, pane2, true)
 
                 text2.text = cardinality.split("/")[1]
 
-                text2.x = computeEx(endX, endY, startX, startY, pane1)
-                text2.y = computeEy(endX, endY, startX, startY, pane1)*/
-
-                text1.x = (startX + endX) / 2
-                if (text1.x > (pane2.layoutX + pane2.width)) text1.x = pane2.layoutX + pane2.width
-                if (text1.x < pane2.layoutX - 20) text1.x = pane2.layoutX - 20
-
-                text1.y = (startY + endY) / 2
-                if (text1.y > (pane2.layoutY + pane2.height + 20)) text1.y = pane2.layoutY + pane2.height + 20
-                if (text1.y < pane2.layoutY - 10) text1.y = pane2.layoutY - 10
-
-                text2.text = cardinality.split("/")[1]
-
-                text2.x = (startX + endX) / 2
-                if (text2.x > (pane1.layoutX + pane1.width)) text2.x = pane1.layoutX + pane1.width
-                if (text2.x < pane1.layoutX - 20) text2.x = pane1.layoutX - 20
-
-                text2.y = (startY + endY) / 2
-                if (text2.y > (pane1.layoutY + pane1.height + 20)) text2.y = pane1.layoutY + pane1.height + 20
-                if (text2.y < pane1.layoutY - 10) text2.y = pane1.layoutY - 10 
+                text2.x = computeEx(endX, endY, startX, startY, pane1, true)
+                text2.y = computeEy(endX, endY, startX, startY, pane1, true)
             }
         }
     }
@@ -93,8 +75,8 @@ class Connector private constructor(
             val sx = startX
             val sy = startY
 
-            val ex = computeEx(startX, startY, endX, endY, pane2)
-            val ey = computeEy(startX, startY, endX, endY, pane2)
+            val ex = computeEx(startX, startY, endX, endY, pane2, false)
+            val ey = computeEy(startX, startY, endX, endY, pane2, false)
 
             arrow1.endX = ex
             arrow1.endY = ey
@@ -127,7 +109,14 @@ class Connector private constructor(
 
     }
 
-    private fun computeEx(startX: Double, startY: Double, endX: Double, endY: Double, pane: Pane): Double {
+    private fun computeEx(
+        startX: Double,
+        startY: Double,
+        endX: Double,
+        endY: Double,
+        pane: Pane,
+        addExtraPadding: Boolean
+    ): Double {
         val hyp = hypot(abs(endX - startX), abs(endY - startY))
         val height = (endY - startY)
         val cosAngle = height.div(hyp)
@@ -141,10 +130,21 @@ class Connector private constructor(
         triangleWidth = if (triangleWidth > pane.width / 2) pane.width / 2 else triangleWidth
         triangleWidth = if (startX < endX) triangleWidth else -triangleWidth
 
+        if (addExtraPadding) {
+            triangleWidth += 20 * sign(triangleWidth)
+        }
+
         return endX - triangleWidth
     }
 
-    private fun computeEy(startX: Double, startY: Double, endX: Double, endY: Double, pane: Pane): Double {
+    private fun computeEy(
+        startX: Double,
+        startY: Double,
+        endX: Double,
+        endY: Double,
+        pane: Pane,
+        addExtraPadding: Boolean
+    ): Double {
         val hyp = hypot(abs(endX - startX), abs(endY - startY))
         val width = abs(endX - startX)
         val cosAngle = width.div(hyp)
@@ -157,6 +157,10 @@ class Connector private constructor(
 
         triangleHeight = if (triangleHeight > pane.height / 2) pane.height / 2 else triangleHeight
         triangleHeight = if (startY < endY) triangleHeight else -triangleHeight
+
+        if (addExtraPadding) {
+            triangleHeight += 20 * sign(triangleHeight)
+        }
 
         return endY - triangleHeight
     }

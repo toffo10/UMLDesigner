@@ -4,7 +4,9 @@ import javafx.application.Application
 import javafx.fxml.FXMLLoader
 import javafx.scene.Scene
 import javafx.scene.control.ContextMenu
+import javafx.scene.control.ScrollPane
 import javafx.scene.image.Image
+import javafx.scene.layout.Pane
 import javafx.stage.Stage
 import org.fxmisc.richtext.CodeArea
 import org.fxmisc.richtext.LineNumberFactory
