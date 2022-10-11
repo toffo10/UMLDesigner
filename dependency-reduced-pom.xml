@@ -129,13 +129,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-    <dependency>
-      <groupId>antlr</groupId>
-      <artifactId>antlr</artifactId>
-      <version>1.0</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/antlr-4.8-complete.jar</systemPath>
-    </dependency>
   </dependencies>
   <properties>
     <kotlin.version>1.5.31</kotlin.version>
