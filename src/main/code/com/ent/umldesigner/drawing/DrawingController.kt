@@ -1,6 +1,5 @@
-package com.ent.umldesigner
+package com.ent.umldesigner.drawing
 
-import com.ent.umldesigner.drawingutil.Connector
 import com.ent.umldesigner.compiler.Parser
 import com.ent.umldesigner.compiler.enums.ComponentType
 import com.ent.umldesigner.compiler.enums.ConnectionType
