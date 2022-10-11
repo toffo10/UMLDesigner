@@ -7,7 +7,7 @@ import compiler.objects.behaviour.ComponentBehaviour;
 import compiler.objects.behaviour.InterfaceBehaviour;
 import org.antlr.runtime.Token;
 
-import java.util.Hashtable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Component {
@@ -21,8 +21,8 @@ public class Component {
         this.name = name;
         this.componentBehaviour = componentBehaviour;
         this.token = token;
-        methods = new Hashtable<>();
-        params = new Hashtable<>();
+        methods = new LinkedHashMap<>();
+        params = new LinkedHashMap<>();
     }
 
     public void addParam(Token id, Param param) throws SemanticException {

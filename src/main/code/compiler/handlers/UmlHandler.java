@@ -16,16 +16,16 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 
 public class UmlHandler {
-    private static Hashtable<String, Component> components;
+    private static HashMap<String, Component> components;
     private List<Error> errorList;
 
     public UmlHandler() {
         errorList = new ArrayList<>();
-        components = new Hashtable<>();
+        components = new HashMap<>();
     }
 
     public void createNewInterface(Token id) {

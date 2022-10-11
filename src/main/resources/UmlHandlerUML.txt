@@ -77,7 +77,6 @@ class
 	params:
     		+name: String
     		+type: String
-		+visibility: String
 endClass
 
 class

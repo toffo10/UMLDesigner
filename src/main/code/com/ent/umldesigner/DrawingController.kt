@@ -73,8 +73,10 @@ class DrawingController {
         calculateDrawingAreaHeigth()
         calculateDrawingAreaWidth()
 
-        drawingArea.prefWidth = if (drawingArea.prefWidth < drawingAreaWidth) drawingAreaWidth else drawingArea.prefWidth
-        drawingArea.prefHeight = if (drawingArea.prefHeight < drawingAreaHeight) drawingAreaHeight else drawingArea.prefHeight
+        drawingArea.prefWidth = if (drawingArea.prefWidth < drawingAreaWidth) drawingAreaWidth
+            else drawingArea.prefWidth
+        drawingArea.prefHeight = if (drawingArea.prefHeight < drawingAreaHeight) drawingAreaHeight
+            else drawingArea.prefHeight
     }
 
     private fun drawUml() {
@@ -198,8 +200,6 @@ class DrawingController {
 
             orgSceneX = t.sceneX
             orgSceneY = t.sceneY
-
-            println("dio")
 
             calculateDrawingAreaHeigth()
             calculateDrawingAreaWidth()
