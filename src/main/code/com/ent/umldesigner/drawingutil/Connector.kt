@@ -1,6 +1,6 @@
 package com.ent.umldesigner.drawingutil
 
-import compiler.enums.ConnectionType
+import com.ent.umldesigner.compiler.enums.ConnectionType
 import javafx.beans.InvalidationListener
 import javafx.beans.Observable
 import javafx.beans.property.DoubleProperty

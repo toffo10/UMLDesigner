@@ -1,18 +1,17 @@
 package com.ent.umldesigner
 
 import com.ent.umldesigner.drawingutil.Connector
-import compiler.Parser
-import compiler.enums.ComponentType
-import compiler.enums.ConnectionType
-import compiler.handlers.UmlHandler
-import compiler.objects.Component
+import com.ent.umldesigner.compiler.Parser
+import com.ent.umldesigner.compiler.enums.ComponentType
+import com.ent.umldesigner.compiler.enums.ConnectionType
+import com.ent.umldesigner.compiler.handlers.UmlHandler
+import com.ent.umldesigner.compiler.objects.Component
 import javafx.event.EventHandler
 import javafx.fxml.FXML
 import javafx.scene.Cursor
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.input.MouseEvent
-import javafx.scene.input.TransferMode
 import javafx.scene.layout.Pane
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
