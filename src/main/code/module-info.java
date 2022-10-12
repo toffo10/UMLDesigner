@@ -8,6 +8,6 @@ module com.ent.umldesigner {
     requires org.fxmisc.richtext;
     requires antlr.runtime;
 
-    opens com.ent.umldesigner to javafx.fxml;
-    exports com.ent.umldesigner;
+    opens com.ent.umldesigner.drawing to javafx.fxml;
+    exports com.ent.umldesigner.drawing;
 }
