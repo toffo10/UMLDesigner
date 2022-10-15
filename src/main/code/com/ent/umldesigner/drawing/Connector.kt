@@ -44,6 +44,10 @@ class Connector private constructor(
             ConnectionType.RELATION -> returnRelArrow(relText1, relText2, pane1, pane2)
         }
 
+        if (connectionType.equals(ConnectionType.EXTENSION)) {
+            line.strokeDashArray.addAll(20.0, 20.0, 20.0)
+        }
+
         // add updater to properties
         startXProperty().addListener(updater)
         startYProperty().addListener(updater)
